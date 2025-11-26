@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://m78qc1n8x5ey"
+path="res://.godot/imported/login music candidate2_Caketown 1.mp3-aefe00ba9e1f94928c85895eec5089de.mp3str"
+
+[deps]
+
+source_file="res://music/login music candidate2_Caketown 1.mp3"
+dest_files=["res://.godot/imported/login music candidate2_Caketown 1.mp3-aefe00ba9e1f94928c85895eec5089de.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

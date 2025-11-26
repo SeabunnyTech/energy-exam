@@ -1,0 +1,115 @@
+[gd_scene load_steps=14 format=3 uid="uid://bwcn7eme7ij4q"]
+
+[ext_resource type="Script" uid="uid://c2jq0exv5b3tq" path="res://ui/outline_button.gd" id="1_ssvtk"]
+[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="1_wu0au"]
+[ext_resource type="AudioStream" uid="uid://6q3itqgo6yjp" path="res://sfx/button-pressed-38129.wav" id="2_8ycl8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ycl8"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 55
+corner_radius_top_right = 55
+corner_radius_bottom_right = 55
+corner_radius_bottom_left = 55
+shadow_color = Color(0.03, 0.03, 0.03, 0)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63whc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 44
+corner_radius_top_right = 44
+corner_radius_bottom_right = 44
+corner_radius_bottom_left = 44
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmuo3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 43
+corner_radius_top_right = 43
+corner_radius_bottom_right = 43
+corner_radius_bottom_left = 43
+
+[sub_resource type="Gradient" id="Gradient_twblg"]
+colors = PackedColorArray(0.355, 0.71, 0.44375, 1, 0.2555, 0.4532, 0.73, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uo0y8"]
+gradient = SubResource("Gradient_twblg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ycl8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63whc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmuo3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twblg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0g72q"]
+
+[node name="OutlineButton" type="PanelContainer"]
+offset_right = 184.0
+offset_bottom = 105.0
+pivot_offset = Vector2(330.5, 62.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ycl8")
+script = ExtResource("1_ssvtk")
+spacing_color = Color(1, 1, 1, 0)
+outer_outline_glow_size = 3
+glow_color = Color(0.03, 0.03, 0.03, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_63whc")
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer"]
+clip_children = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmuo3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_uo0y8")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wu0au")
+theme_override_font_sizes/font_size = 80
+text = "Button Text"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ycl8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_63whc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xmuo3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_twblg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0g72q")
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8ycl8")
