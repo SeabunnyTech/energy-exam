@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bti2ssyewljk7"]
+
+[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="1_f5ya4"]
+[ext_resource type="StyleBox" uid="uid://csb32770pr68f" path="res://screens/button_style/round_corners.tres" id="2_f5ya4"]
+[ext_resource type="Script" uid="uid://bomwqmtpif5nq" path="res://ui/quiz_button/quiz_button.gd" id="4_y0870"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0870"]
+bg_color = Color(1, 1, 1, 0.4509804)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[node name="QuizButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2160.0
+offset_bottom = -1299.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_f5ya4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("2_f5ya4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y0870")
+theme_override_styles/hover = ExtResource("2_f5ya4")
+theme_override_styles/disabled = ExtResource("2_f5ya4")
+theme_override_styles/focus = ExtResource("2_f5ya4")
+text = "選項"
+script = ExtResource("4_y0870")

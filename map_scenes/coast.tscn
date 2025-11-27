@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi315bxy5e1pk"]
+
+[ext_resource type="PackedScene" uid="uid://dxvrqggvu48ux" path="res://maps/Scene/map01/map_coast_model.tscn" id="1_5dhjd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lucee"]
+size = Vector3(1.131958, 0.184021, 0.44262695)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3lcpo"]
+size = Vector3(0.47009277, 0.2897339, 0.7628174)
+
+[node name="Coast" type="Node3D"]
+
+[node name="MapCoastModel_tscn" parent="." instance=ExtResource("1_5dhjd")]
+
+[node name="ESS_Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.290085)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ESS_Area"]
+transform = Transform3D(0.8761637, 0, 0.4820137, 0, 1, 0, -0.4820137, 0, 0.8761637, -0.10860196, 0.23153687, 0.20025122)
+shape = SubResource("BoxShape3D_lucee")
+debug_color = Color(0.96, 0, 0.51199996, 0.9843137)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ESS_Area"]
+transform = Transform3D(0.8831851, 0, 0.4690246, 0, 1, 0, -0.4690246, 0, 0.8831851, 1.8345765, 0.20236206, -0.11913133)
+shape = SubResource("BoxShape3D_3lcpo")
+debug_color = Color(0.99, 0, 0.26399976, 0.7607843)
+
+[node name="Area3D" type="Area3D" parent="."]

@@ -1,6 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://28pdjaed2f40"]
+[gd_scene load_steps=9 format=3 uid="uid://28pdjaed2f40"]
 
 [ext_resource type="Script" uid="uid://doyteno2rnkn5" path="res://screens/map_select/map_select_screen.gd" id="1_u1425"]
+[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="2_cr1ej"]
+[ext_resource type="Texture2D" uid="uid://bew7uyo0yjwuq" path="res://screens/map_select/map_select_ref.jpg" id="2_rptjb"]
+[ext_resource type="PackedScene" uid="uid://bhrxelmoqk216" path="res://screens/map_select/map_card.tscn" id="4_mej0n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i60tu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rptjb"]
+bg_color = Color(0, 0, 0, 0.3254902)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="Gradient" id="Gradient_mej0n"]
+colors = PackedColorArray(0.22959997, 0.2394401, 0.82, 0.5882353, 0.06820001, 0.62, 0.31651005, 0.5882353)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3fnio"]
+gradient = SubResource("Gradient_mej0n")
 
 [node name="MapSelectScreen" type="Control"]
 layout_mode = 3
@@ -10,3 +43,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1425")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rptjb")
+
+[node name="GuideBox" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.126
+anchor_top = 0.061
+anchor_right = 0.874
+anchor_bottom = 0.24
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i60tu")
+
+[node name="MarginContainer" type="MarginContainer" parent="GuideBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="GuideBox/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rptjb")
+
+[node name="TextureRect" type="TextureRect" parent="GuideBox/MarginContainer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3fnio")
+
+[node name="Label" type="Label" parent="GuideBox/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_cr1ej")
+theme_override_font_sizes/font_size = 58
+text = "臺灣各地已發展多種不同的能源設施，蘊藏許多再生能源發展潛力，請點選你想要挑戰的地理環境"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.955
+offset_left = 200.0
+offset_right = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="MapCard" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
+layout_mode = 2
+
+[node name="MapCard2" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
+layout_mode = 2
+title = "西部平原"
+
+[node name="MapCard3" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
+layout_mode = 2
+title = "東部淺山"

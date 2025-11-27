@@ -9,8 +9,8 @@ var screen_instances = {}
 
 # MODIFIED: 更新要載入的畫面列表
 const SCREENS_TO_LOAD = {
-	#"MapBrowsing": "res://screens/map_browsing_screen.tscn",
-	#"Quiz": "res://screens/quiz_screen.tscn",
+	"map": "res://screens/map_screen.tscn",
+	"quiz": "res://screens/quiz_screen.tscn",
 	"login": "res://screens/login_screen.tscn", # Login 畫面可以暫時移除或保留
 	"select_map": "res://screens/map_select/map_select_screen.tscn"
 }
@@ -21,6 +21,7 @@ func _ready() -> void:
 		var screen_path = SCREENS_TO_LOAD[screen_name]
 		var screen_scene = load(screen_path)
 		var screen_instance = screen_scene.instantiate()
+		screen_instance._super_scene = self
 		screen_instances[screen_name] = screen_instance
 		
 	# 載入初始地圖
@@ -37,17 +38,16 @@ func goto_screen(screen_name: String) -> void:
 	# 只要有前一個頁面存在就應該播放離開並把它移除
 	if _current_screen != null:
 		_current_screen.goto_screen.disconnect(goto_screen)
-		await _current_screen.__leave__()
-		container.remove_child(_current_screen)
-
-	var new_screen:BaseScreen = screen_instances[screen_name]
+		_current_screen.__leave__()
+		await _current_screen.almost_finish_leaving
 
 	# 加入新 Screen 並讓它進場
+	var new_screen:BaseScreen = screen_instances[screen_name]
 	container.add_child(new_screen)
-	await new_screen.__enter__()
+	new_screen.__enter__()
 	new_screen.goto_screen.connect(goto_screen)
-	_current_screen = new_screen
 
+	_current_screen = new_screen
 
 
 # MODIFIED: 更換地圖時，需要確保當前畫面能拿到新的地圖引用

@@ -2,6 +2,7 @@
 class_name OutlineButton
 extends PanelContainer
 
+signal pressed
 
 ## The text displayed on the button.
 @export var text: String = "Button Text":
@@ -16,7 +17,7 @@ extends PanelContainer
 		_update_appearance()
 
 ## The width of the outermost border line.
-@export_range(0, 20, 1) var outer_border_width: int = 1:
+@export_range(0, 20, 1) var outer_border_width: int = 3:
 	set(value):
 		outer_border_width = value
 		_update_appearance()
@@ -40,7 +41,7 @@ extends PanelContainer
 		_update_appearance()
 
 ## The width of the inner border line.
-@export_range(0, 20, 1) var inner_border_width: int = 1:
+@export_range(0, 20, 1) var inner_border_width: int = 3:
 	set(value):
 		inner_border_width = value
 		_update_appearance()
@@ -112,12 +113,12 @@ func _ready() -> void:
 	pivot_offset = size / 2.0
 	
 	# Connect signals for feedback
-	if not button.is_connected("pressed", Callable(self, "_on_pressed")):
-		button.pressed.connect(_on_pressed)
-	if not button.is_connected("button_down", Callable(self, "_on_button_down")):
-		button.button_down.connect(_on_button_down)
-	if not button.is_connected("button_up", Callable(self, "_on_button_up")):
-		button.button_up.connect(_on_button_up)
+	button.pressed.connect(pressed.emit)
+
+	button.pressed.connect(_on_pressed)
+	button.button_down.connect(_on_button_down)
+	button.button_up.connect(_on_button_up)
+
 	
 	_update_gradient_offsets(0.0)
 
