@@ -116,11 +116,17 @@ alignment = 1
 
 [node name="MapCard" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
+map_name = "coast"
 
 [node name="MapCard2" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
 title = "西部平原"
+map_name = "west"
 
 [node name="MapCard3" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
 title = "東部淺山"
+map_name = "east"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0

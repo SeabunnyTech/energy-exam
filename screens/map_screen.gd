@@ -1,13 +1,12 @@
 extends BaseScreen
 
-# Assuming the buttons are in a container named "ButtonContainer"
-@onready var button_container = $ButtonContainer
-
 @onready var buttons = [$WindPowerButton, $GroundSolarButton, $RoofSolarButton, $EnergyStorageButton]
 
 var idle_timer: Timer
 
 func _ready():
+	
+	ui_to_fade = buttons
 	# Create and configure the timer for the idle animation
 	idle_timer = Timer.new()
 	idle_timer.wait_time = 5.0 # Every 5 seconds
@@ -16,12 +15,6 @@ func _ready():
 
 	$WindPowerButton.pressed.connect(_on_windpower_pressed)
 	reset()
-
-func reset():
-	# Set initial state (all buttons invisible and disabled)
-	for button in buttons:
-		button.modulate.a = 0.0
-		#button.disabled = true
 
 # --- Screen Lifecycle Functions ---
 
@@ -44,7 +37,6 @@ func enter_animation():
 
 func leave_animation():
 	await fade_all(0.0)
-
 
 
 func set_input_enable(enable: bool):
