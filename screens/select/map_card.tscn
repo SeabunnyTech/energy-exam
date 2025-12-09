@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bhrxelmoqk216"]
 
-[ext_resource type="Script" uid="uid://dxqc3lwjsadet" path="res://screens/map_select/map_card.gd" id="1_3nbru"]
-[ext_resource type="Texture2D" uid="uid://c1heflwwrcjti" path="res://screens/map_select/coast.jpg" id="1_fcklk"]
+[ext_resource type="Script" uid="uid://dxqc3lwjsadet" path="res://screens/select/map_card.gd" id="1_3nbru"]
+[ext_resource type="Texture2D" uid="uid://c1heflwwrcjti" path="res://screens/select/coast.jpg" id="1_fcklk"]
 [ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="2_3nbru"]
-[ext_resource type="StyleBox" uid="uid://bjies8eibmhts" path="res://screens/map_select/map_card_button.tres" id="3_0whvf"]
-[ext_resource type="StyleBox" uid="uid://kuysv3xunp5v" path="res://screens/map_select/map_card_button_pressed.tres" id="5_3nbru"]
+[ext_resource type="StyleBox" uid="uid://bjies8eibmhts" path="res://screens/select/map_card_button.tres" id="3_0whvf"]
+[ext_resource type="StyleBox" uid="uid://kuysv3xunp5v" path="res://screens/select/map_card_button_pressed.tres" id="5_3nbru"]
 [ext_resource type="AudioStream" uid="uid://6q3itqgo6yjp" path="res://sfx/button-pressed-38129.wav" id="6_4x6k5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50kjd"]

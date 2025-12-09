@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b21n5r5we2hww"]
 
-[ext_resource type="Script" uid="uid://b7c77e6qgykh5" path="res://screens/map_changing.gd" id="1_kdb50"]
+[ext_resource type="Script" uid="uid://b7c77e6qgykh5" path="res://screens/maps/map_changing_screen.gd" id="1_kdb50"]
 [ext_resource type="FontFile" uid="uid://de8mxpa7l15n2" path="res://fonts/GenSenRounded2TW-B.otf" id="2_7bgbq"]
 
 [node name="MapChanging" type="Control"]

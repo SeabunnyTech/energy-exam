@@ -2,8 +2,6 @@ extends Control
 
 class_name BaseScreen
 
-@export var map=null
-
 signal goto_screen(new_screen_name:String, param:Dictionary)
 
 signal almost_finish_leaving
@@ -65,6 +63,10 @@ func on_pre_leave():
 
 func on_leave():
 	pass
+
+
+func move_camera_to_topic(topic:String):
+	self._super_scene.current_map.zoom_to_topic(topic)
 
 
 func __enter__(param=null):

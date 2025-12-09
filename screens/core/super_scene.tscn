@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://buq1x0a7gcl6x"]
 
-[ext_resource type="Script" uid="uid://dddeu4331p18o" path="res://super_scene.gd" id="1_wjc88"]
+[ext_resource type="Script" uid="uid://dddeu4331p18o" path="res://screens/core/super_scene.gd" id="1_wjc88"]
 
 [node name="SuperScene" type="Node"]
 script = ExtResource("1_wjc88")

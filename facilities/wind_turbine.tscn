@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://yjee51i1wdbj"]
 
 [ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://maps/Model/map01_model/map01_windbase.glb" id="1_p50qj"]
-[ext_resource type="Script" uid="uid://bdecvu8fejb4m" path="res://wind_turbine.gd" id="2_t7ujj"]
+[ext_resource type="Script" uid="uid://bdecvu8fejb4m" path="res://facilities/wind_turbine.gd" id="2_t7ujj"]
 
 [node name="map01_windbase" instance=ExtResource("1_p50qj")]
 script = ExtResource("2_t7ujj")
-random_phase = null
 
 [node name="WindNearFan" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, -0.9977476, 0.065777294, 0, -0.065777294, -0.9977476, 0.13403545, 0.5734843, 8.524276e-06)
+transform = Transform3D(1, 0, 0, 0, 0.853741, -0.5205353, 0, 0.5205353, 0.853741, 0.13403545, 0.5734843, 8.524276e-06)
+custom_aabb = AABB(-10000, -10000, -10000, 20000, 20000, 20000)

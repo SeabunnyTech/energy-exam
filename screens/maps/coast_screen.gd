@@ -47,5 +47,6 @@ func _on_idle_timer_timeout():
 
 
 func _on_windpower_pressed():
-	leave_for_screen("quiz")
+	move_camera_to_topic("wind")
+	leave_for_screen("pre_quiz", {'topic':'wind'})
 	#request_camera_zoom_to("windpower")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1heflwwrcjti"
-path="res://.godot/imported/coast.jpg-09bbe381b15110fc2bc80de3a034bd82.ctex"
+uid="uid://bew7uyo0yjwuq"
+path="res://.godot/imported/map_select_ref.jpg-81ca181143decccb9785cea639397ab9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screens/map_select/coast.jpg"
-dest_files=["res://.godot/imported/coast.jpg-09bbe381b15110fc2bc80de3a034bd82.ctex"]
+source_file="res://screens/select/map_select_ref.jpg"
+dest_files=["res://.godot/imported/map_select_ref.jpg-81ca181143decccb9785cea639397ab9.ctex"]
 
 [params]
 

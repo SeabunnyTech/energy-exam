@@ -6,13 +6,15 @@ extends Node
 var _current_screen: BaseScreen = null
 var screen_instances = {}
 
+
 # MODIFIED: 更新要載入的畫面列表
 const SCREENS_TO_LOAD = {
-	"quiz": "res://screens/quiz_screen.tscn",
+	"pre_quiz": "res://screens/quiz/pre_quiz_screen.tscn",
+	"quiz": "res://screens/quiz/quiz_screen.tscn",
 	"login": "res://screens/login_screen.tscn", # Login 畫面可以暫時移除或保留
-	"select_map": "res://screens/map_select/map_select_screen.tscn",
-	"map_changing": "res://screens/map_changing.tscn",
-	"coast":"res://screens/map_screen/coast_screen.tscn"
+	"select_map": "res://screens/select/map_select_screen.tscn",
+	"map_changing": "res://screens/maps/map_changing_screen.tscn",
+	"coast":"res://screens/maps/coast_screen.tscn"
 }
 
 func _ready() -> void:
