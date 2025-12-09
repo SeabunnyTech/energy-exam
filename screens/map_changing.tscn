@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://b21n5r5we2hww"]
+
+[ext_resource type="Script" uid="uid://b7c77e6qgykh5" path="res://screens/map_changing.gd" id="1_kdb50"]
+[ext_resource type="FontFile" uid="uid://de8mxpa7l15n2" path="res://fonts/GenSenRounded2TW-B.otf" id="2_7bgbq"]
+
+[node name="MapChanging" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdb50")
+
+[node name="Curtain" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7bgbq")
+theme_override_font_sizes/font_size = 80
+text = "載入中...
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1

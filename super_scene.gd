@@ -8,11 +8,11 @@ var screen_instances = {}
 
 # MODIFIED: 更新要載入的畫面列表
 const SCREENS_TO_LOAD = {
-	"map": "res://screens/map_screen.tscn",
 	"quiz": "res://screens/quiz_screen.tscn",
 	"login": "res://screens/login_screen.tscn", # Login 畫面可以暫時移除或保留
 	"select_map": "res://screens/map_select/map_select_screen.tscn",
-	"map_changing": "res://screens/map_changing.tscn"
+	"map_changing": "res://screens/map_changing.tscn",
+	"coast":"res://screens/map_screen/coast_screen.tscn"
 }
 
 func _ready() -> void:
