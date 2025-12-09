@@ -16,28 +16,6 @@ func _ready():
 	$WindPowerButton.pressed.connect(_on_windpower_pressed)
 	reset()
 
-# --- Screen Lifecycle Functions ---
-
-
-func fade_all(target_opacity):
-	var tween = create_tween().set_parallel(true)
-	#tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-
-	# Sequentially fade out each button (in parallel with delays for a cascade effect)
-	var delay = 0.0
-	for button in buttons:
-		tween.tween_property(button, "modulate:a", target_opacity, 0.3).set_delay(delay)
-		delay += 0.15
-	await tween.finished
-
-
-func enter_animation():
-	await fade_all(1.0)
-
-
-func leave_animation():
-	await fade_all(0.0)
-
 
 func set_input_enable(enable: bool):
 	for button in buttons:

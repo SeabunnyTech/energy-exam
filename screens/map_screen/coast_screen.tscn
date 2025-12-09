@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dl2scqkpcjq4l"]
 
 [ext_resource type="Texture2D" uid="uid://c1heflwwrcjti" path="res://screens/map_select/coast.jpg" id="1_ssr5f"]
-[ext_resource type="Script" uid="uid://dffadx6g4gibw" path="res://screens/map_screen.gd" id="1_vjsye"]
+[ext_resource type="Script" uid="uid://dffadx6g4gibw" path="res://screens/map_screen/coast_screen.gd" id="1_vjsye"]
 [ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="2_vjsye"]
 [ext_resource type="StyleBox" uid="uid://kuysv3xunp5v" path="res://screens/map_select/map_card_button_pressed.tres" id="3_08kek"]
 [ext_resource type="StyleBox" uid="uid://bt4tygm7f5t3n" path="res://screens/button_style/map_button.tres" id="4_08kek"]
