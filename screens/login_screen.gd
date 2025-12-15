@@ -68,7 +68,4 @@ func set_input_enable(enable):
 
 
 func _on_enter_map_button_pressed():
-	var sfx:AudioStreamPlayer = $AudioStreamPlayer
-	sfx.play()
-	#await sfx.finished
 	leave_for_screen("select_map")

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dsngbl3g3srxa"
+
+[deps]
+
+files=["res://questions/geothermal.問題題標.translation", "res://questions/geothermal.問答內容.translation", "res://questions/geothermal.答案.translation", "res://questions/geothermal.選項1.translation", "res://questions/geothermal.選項2.translation", "res://questions/geothermal.選項3.translation", "res://questions/geothermal.選項4.translation", "res://questions/geothermal.選項5.translation"]
+
+source_file="res://questions/geothermal.csv"
+dest_files=["res://questions/geothermal.問題題標.translation", "res://questions/geothermal.問答內容.translation", "res://questions/geothermal.答案.translation", "res://questions/geothermal.選項1.translation", "res://questions/geothermal.選項2.translation", "res://questions/geothermal.選項3.translation", "res://questions/geothermal.選項4.translation", "res://questions/geothermal.選項5.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -18,8 +18,6 @@ func set_input_enable(_enable):
 	pass
 
 var ui_to_fade = []
-var anim_duration = 0.7
-var anim_latency = 0.2
 
 func reset():
 	# 確保已經 ready 才去繼續
@@ -28,12 +26,12 @@ func reset():
 		ui.modulate.a = 0.0
 
 
-func fade_all(target_opacity):
+func fade_all(target_opacity, duration=0.7, latency=0.2):
 	var tween = create_tween().set_parallel(true)
 	var delay = 0.0
 	for ui in ui_to_fade:
-		tween.tween_property(ui, "modulate:a", target_opacity, anim_duration).set_delay(delay)
-		delay += anim_latency
+		tween.tween_property(ui, "modulate:a", target_opacity, duration).set_delay(delay)
+		delay += latency
 	await tween.finished
 
 

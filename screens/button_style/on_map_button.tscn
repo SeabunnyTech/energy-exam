@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5kqoy1ol2mnq"]
+
+[ext_resource type="Script" uid="uid://j58x4vbc4xf7" path="res://screens/button_style/on_map_button.gd" id="1_1pt4i"]
+[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="1_eqdsw"]
+[ext_resource type="StyleBox" uid="uid://bt4tygm7f5t3n" path="res://screens/button_style/map_button.tres" id="2_su534"]
+[ext_resource type="AudioStream" uid="uid://6q3itqgo6yjp" path="res://sfx/button-pressed-38129.wav" id="2_v7mfj"]
+[ext_resource type="StyleBox" uid="uid://biuiv1my7smux" path="res://screens/button_style/map_button_pressed.tres" id="3_su534"]
+
+[node name="OnMapButton" type="Button"]
+anchors_preset = -1
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_eqdsw")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("2_su534")
+theme_override_styles/pressed = ExtResource("3_su534")
+theme_override_styles/hover = ExtResource("2_su534")
+theme_override_styles/disabled = ExtResource("3_su534")
+theme_override_styles/focus = ExtResource("3_su534")
+text = "On Map"
+script = ExtResource("1_1pt4i")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_v7mfj")

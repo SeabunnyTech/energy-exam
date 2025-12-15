@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bti2ssyewljk7"]
+[gd_scene load_steps=7 format=3 uid="uid://bti2ssyewljk7"]
 
 [ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="1_f5ya4"]
-[ext_resource type="StyleBox" uid="uid://csb32770pr68f" path="res://screens/button_style/round_corners.tres" id="2_f5ya4"]
+[ext_resource type="StyleBox" uid="uid://c6xboeax38bh0" path="res://screens/button_style/quiz_button.tres" id="2_s51xa"]
 [ext_resource type="AudioStream" uid="uid://6q3itqgo6yjp" path="res://sfx/button-pressed-38129.wav" id="4_s51xa"]
 [ext_resource type="Script" uid="uid://bomwqmtpif5nq" path="res://ui/quiz_button/quiz_button.gd" id="4_y0870"]
+[ext_resource type="AudioStream" uid="uid://gk4tevntfrxh" path="res://sfx/gong.wav" id="5_s51xa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0870"]
 bg_color = Color(1, 1, 1, 0.4509804)
@@ -26,11 +27,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_f5ya4")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("2_f5ya4")
+theme_override_styles/normal = ExtResource("2_s51xa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y0870")
-theme_override_styles/hover = ExtResource("2_f5ya4")
-theme_override_styles/disabled = ExtResource("2_f5ya4")
-theme_override_styles/focus = ExtResource("2_f5ya4")
+theme_override_styles/hover = ExtResource("2_s51xa")
+theme_override_styles/disabled = ExtResource("2_s51xa")
+theme_override_styles/focus = ExtResource("2_s51xa")
 text = "選項"
 script = ExtResource("4_y0870")
 
@@ -39,5 +40,5 @@ stream = ExtResource("4_s51xa")
 pitch_scale = 1.3
 
 [node name="wrong_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_s51xa")
+stream = ExtResource("5_s51xa")
 pitch_scale = 0.5

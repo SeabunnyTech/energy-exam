@@ -144,7 +144,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8lpv3")
 
-[node name="Q" type="Label" parent="Panel/Panel/Panel/Panel"]
+[node name="Q_index" type="Label" parent="Panel/Panel/Panel/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.056
@@ -154,7 +155,8 @@ anchor_bottom = 0.155
 text = "Q1:"
 label_settings = SubResource("LabelSettings_o04c3")
 
-[node name="Label" type="Label" parent="Panel/Panel/Panel/Panel"]
+[node name="Q_title" type="Label" parent="Panel/Panel/Panel/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.07
@@ -164,7 +166,8 @@ anchor_bottom = 0.07
 theme_override_font_sizes/font_size = 32
 text = "離岸風電政策與社會溝通"
 
-[node name="Label2" type="Label" parent="Panel/Panel/Panel/Panel"]
+[node name="Q_score" type="Label" parent="Panel/Panel/Panel/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.119
@@ -175,10 +178,10 @@ offset_right = 126.0
 offset_bottom = 120.79114
 theme_override_fonts/font = ExtResource("2_x82q0")
 theme_override_font_sizes/font_size = 80
-text = "1/10
-"
+text = "1/10"
 
-[node name="Label3" type="Label" parent="Panel/Panel/Panel/Panel"]
+[node name="Q_content" type="Label" parent="Panel/Panel/Panel/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.352
@@ -193,7 +196,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dbu53")
 text = "台灣海峽是一個風力資源非常充沛的地區，世界前 50 名的風場，將近一半都位在台灣西部，清問該地區適合發展哪一種類型的再生能源？"
 autowrap_mode = 2
 
-[node name="ButtonContainer" type="Control" parent="Panel"]
+[node name="FourAnswerContainer" type="Control" parent="Panel"]
 layout_mode = 1
 anchor_left = 0.095
 anchor_top = 0.555
@@ -202,7 +205,7 @@ anchor_bottom = 0.935
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QuizButton" parent="Panel/ButtonContainer" instance=ExtResource("3_x82q0")]
+[node name="Button1" parent="Panel/FourAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.39
@@ -211,7 +214,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 text = "生質能發電"
 
-[node name="QuizButton2" parent="Panel/ButtonContainer" instance=ExtResource("3_x82q0")]
+[node name="Button2" parent="Panel/FourAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.61
@@ -220,7 +223,16 @@ offset_right = 0.0
 offset_bottom = 0.0
 text = "氫能發電"
 
-[node name="QuizButton3" parent="Panel/ButtonContainer" instance=ExtResource("3_x82q0")]
+[node name="Button3" parent="Panel/FourAnswerContainer" instance=ExtResource("3_x82q0")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.567
+anchor_right = 0.39
+offset_right = 0.0
+offset_bottom = 0.0
+text = "太陽能發電"
+
+[node name="Button4" parent="Panel/FourAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.61
@@ -229,11 +241,31 @@ offset_right = 0.0
 offset_bottom = 0.0
 text = "離岸風力發電"
 
-[node name="QuizButton4" parent="Panel/ButtonContainer" instance=ExtResource("3_x82q0")]
+[node name="TwoAnswerContainer" type="Control" parent="Panel"]
+layout_mode = 1
+anchor_left = 0.095
+anchor_top = 0.555
+anchor_right = 0.905
+anchor_bottom = 0.935
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button1" parent="Panel/TwoAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.433
+offset_right = 0.0
+offset_bottom = 0.0
+text = "生質能發電"
+
+[node name="Button2" parent="Panel/TwoAnswerContainer" instance=ExtResource("3_x82q0")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
 anchor_top = 0.567
-anchor_right = 0.39
+anchor_right = 0.8
 offset_right = 0.0
 offset_bottom = 0.0
 text = "太陽能發電"

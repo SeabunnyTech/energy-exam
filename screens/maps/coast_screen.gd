@@ -48,5 +48,10 @@ func _on_idle_timer_timeout():
 
 func _on_windpower_pressed():
 	move_camera_to_topic("wind")
-	leave_for_screen("pre_quiz", {'topic':'wind'})
+	leave_for_screen("pre_quiz", {'map_name':'coast', 'topic':'wind'})
 	#request_camera_zoom_to("windpower")
+
+
+func reset():
+	for btn in [$WindPowerButton, $GroundSolarButton]:
+		btn.reset()

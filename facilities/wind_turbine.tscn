@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://maps/Model/map01_model/map01_windbase.glb" id="1_p50qj"]
 [ext_resource type="Script" uid="uid://bdecvu8fejb4m" path="res://facilities/wind_turbine.gd" id="2_t7ujj"]
 
-[node name="map01_windbase" instance=ExtResource("1_p50qj")]
+[node name="Turbine" instance=ExtResource("1_p50qj")]
 script = ExtResource("2_t7ujj")
+base_speed = null
 
 [node name="WindNearFan" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.853741, -0.5205353, 0, 0.5205353, 0.853741, 0.13403545, 0.5734843, 8.524276e-06)
-custom_aabb = AABB(-10000, -10000, -10000, 20000, 20000, 20000)
+transform = Transform3D(1, 0, 0, 0, -0.98404235, -0.177458, 0, 0.177458, -0.98404235, 0.13403545, 0.5734843, 8.524276e-06)
+custom_aabb = AABB(-15, -15, -15, 30, 30, 30)

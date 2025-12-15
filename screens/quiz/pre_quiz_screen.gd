@@ -8,11 +8,15 @@ extends BaseScreen
 var beat_tween: Tween
 var initial_button_position_y: float
 
+var map_name:String
 var topic:String
 
 func on_pre_enter(param):
+	map_name = param['map_name']
 	topic = param['topic']
-	var title_and_guide = GameState.load_topic_title_and_guide(topic)
+	var title_and_guide = GameState.load_topic_title_and_guide(map_name, topic)
+	title.text = title_and_guide['title']
+	guide.text = title_and_guide['guide']
 	GlobalAudioPlayer.fade_out(2.0)
 
 
@@ -71,4 +75,4 @@ func _on_enter_map_button_pressed():
 	var sfx:AudioStreamPlayer = $AudioStreamPlayer
 	sfx.play()
 	#await sfx.finished
-	leave_for_screen("quiz", {'topic':topic})
+	leave_for_screen("quiz", {'map_name':map_name, 'topic':topic, 'index':0})

@@ -1,0 +1,197 @@
+[gd_scene load_steps=9 format=3 uid="uid://ihlkl3pem413"]
+
+[ext_resource type="Script" uid="uid://buf8tufpklokm" path="res://screens/quiz/result_screen.gd" id="1_1nxxb"]
+[ext_resource type="Texture2D" uid="uid://cregmq7gf0s2n" path="res://screens/quiz/quiz.jpg" id="2_7cpcy"]
+[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="3_ps13k"]
+[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="4_7cpcy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rphkv"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mo8v"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6rhq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lpv3"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+corner_detail = 5
+
+[node name="ResultScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nxxb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7cpcy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.085
+anchor_top = 0.03
+anchor_right = 0.915
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rphkv")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.399994
+offset_top = 29.999996
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mo8v")
+
+[node name="Panel" type="Panel" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.085
+anchor_top = 0.064
+anchor_right = 0.915
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6rhq")
+
+[node name="Panel" type="Panel" parent="Panel/Panel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8lpv3")
+
+[node name="Q_index" type="Label" parent="Panel/Panel/Panel/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.155
+anchor_right = 0.7
+anchor_bottom = 0.155
+theme_override_fonts/font = ExtResource("3_ps13k")
+theme_override_font_sizes/font_size = 100
+text = "挑戰完成!"
+horizontal_alignment = 1
+
+[node name="score" type="Label" parent="Panel/Panel/Panel/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.49237564
+anchor_right = 0.9
+anchor_bottom = 0.8341626
+theme_override_fonts/font = ExtResource("3_ps13k")
+theme_override_font_sizes/font_size = 150
+text = "你獲得了 4 點積分"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Control" parent="Panel"]
+layout_mode = 1
+anchor_left = 0.095
+anchor_top = 0.555
+anchor_right = 0.905
+anchor_bottom = 0.935
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoreQuizButton" parent="Panel/Options" instance=ExtResource("4_7cpcy")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.25
+anchor_right = 0.45
+anchor_bottom = 0.65
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+grow_vertical = 2
+text = "挑戰更多關卡"
+
+[node name="MorePolicyButton" parent="Panel/Options" instance=ExtResource("4_7cpcy")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.55
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.65
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+grow_vertical = 2
+text = "認識更多政策"

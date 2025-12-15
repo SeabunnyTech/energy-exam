@@ -108,7 +108,7 @@ theme_override_styles/pressed = ExtResource("4_pbshd")
 theme_override_styles/hover = ExtResource("4_pbshd")
 theme_override_styles/disabled = ExtResource("4_pbshd")
 theme_override_styles/focus = ExtResource("4_pbshd")
-text = "START"
+text = "開始"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_dhtwf")

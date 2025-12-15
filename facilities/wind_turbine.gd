@@ -2,7 +2,7 @@
 extends Node3D
 
 # deg per second
-@export var speed : float = 20.0
+@export var base_speed : float = 20.0
 
 # 避免多台風積因為轉速相同變得看起來太整齊
 @export var speed_deviation : float = 2.0
@@ -11,6 +11,13 @@ extends Node3D
 var random_speed : float = 0.0
 var phase : float = 0.0
 
+var boost_level = 0:
+	set(value):
+		boost_level = value
+		restart_spin()
+
+
+var spin_tween
 func _ready() -> void:
 	# --- 隨機化初始角度和速度 ---
 	random_speed = randf_range(-speed_deviation, speed_deviation)
@@ -26,11 +33,17 @@ func _ready() -> void:
 	if has_node("WindNearFan") and get_node("WindNearFan") is GeometryInstance3D:
 		get_node("WindNearFan").custom_aabb = AABB(box_pos, box_size)
 
+	restart_spin()
+
+
+func restart_spin():
 	# --- 使用 Tween 建立循環動畫 ---
-	var spin_tween = create_tween()
+	if spin_tween:
+		spin_tween.kill()
+	spin_tween = create_tween()
 	spin_tween.set_loops()
 	
-	var current_speed = speed + random_speed
+	var current_speed = base_speed * (1. + boost_level/3.0) + random_speed
 	# 避免速度為零導致除零錯誤
 	if is_zero_approx(current_speed):
 		return

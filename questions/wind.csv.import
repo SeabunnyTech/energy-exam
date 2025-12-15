@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ky1msk4it3kg"
+valid=false
+
+[deps]
+
+source_file="res://questions/wind.csv"
+
+[params]
+
+compress=true
+delimiter=0
