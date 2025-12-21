@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://28pdjaed2f40"]
+[gd_scene load_steps=11 format=3 uid="uid://28pdjaed2f40"]
 
 [ext_resource type="Script" uid="uid://doyteno2rnkn5" path="res://screens/select/map_select_screen.gd" id="1_u1425"]
 [ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="2_cr1ej"]
 [ext_resource type="Texture2D" uid="uid://bew7uyo0yjwuq" path="res://screens/select/map_select_ref.jpg" id="2_rptjb"]
 [ext_resource type="PackedScene" uid="uid://bhrxelmoqk216" path="res://screens/select/map_card.tscn" id="4_mej0n"]
+[ext_resource type="Texture2D" uid="uid://bv8tktgxc5oq2" path="res://screens/select/west.jpg" id="5_x668e"]
+[ext_resource type="Texture2D" uid="uid://b2psyirodwbm5" path="res://screens/select/east.jpg" id="6_2ultx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i60tu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -122,11 +124,13 @@ map_name = "coast"
 layout_mode = 2
 title = "西部平原"
 map_name = "west"
+map_texture = ExtResource("5_x668e")
 
 [node name="MapCard3" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
 title = "東部淺山"
 map_name = "east"
+map_texture = ExtResource("6_2ultx")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

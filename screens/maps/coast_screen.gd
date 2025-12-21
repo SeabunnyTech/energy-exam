@@ -4,6 +4,7 @@ extends BaseScreen
 
 var idle_timer: Timer
 
+
 func _ready():
 	
 	ui_to_fade = buttons

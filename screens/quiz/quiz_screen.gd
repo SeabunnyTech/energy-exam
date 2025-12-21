@@ -106,13 +106,15 @@ func answered(is_correct):
 
 	################ 答完一題直接跳到結局的暫時邏輯 ##################
 	if  new_index == 1:
-		reset()
 		leave_for_screen('result', {'map_name':map_name, 'topic':topic})
 		return
 
 	### 以下才是原有的邏輯
 	if new_index == questions.size():
-		reset()
 		leave_for_screen('result', {'map_name':map_name, 'topic':topic})
 	else:
 		load_next_question()
+
+
+func on_leave():
+	reset()

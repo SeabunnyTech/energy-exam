@@ -17,7 +17,7 @@ func _ready() -> void:
 func on_enter(param):
 	# param = {'map_name':map_name}
 	var map_name : String = param["map_name"]
-	self._super_scene.change_map(map_name)
+	self._super_scene.change_map(map_name, 0.0)
 	await get_tree().create_timer(1.0).timeout
 	leave_for_screen(map_name)
 

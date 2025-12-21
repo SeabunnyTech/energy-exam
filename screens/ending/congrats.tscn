@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://fpfmt40an35g"]
+
+[ext_resource type="Script" uid="uid://8gmio3nfofc0" path="res://screens/ending/congrats.gd" id="1_20y25"]
+[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="2_no18x"]
+[ext_resource type="Texture2D" uid="uid://bbdpmcxums8ti" path="res://screens/ending/風機獎盃.png" id="3_no18x"]
+[ext_resource type="AudioStream" uid="uid://clnpgcf17ddpm" path="res://sfx/溫柔的小獎品.mp3" id="4_ilq18"]
+
+[node name="PolicyScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_20y25")
+
+[node name="GuideLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6070312
+anchor_top = 0.37638888
+anchor_right = 0.89140624
+anchor_bottom = 0.47152779
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "恭喜你完成挑戰!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GuideLabel2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55742186
+anchor_top = 0.5172309
+anchor_right = 0.9410156
+anchor_bottom = 0.59361976
+offset_top = -15.8125305
+offset_bottom = -15.8125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "請和工作人員領取小獎品喔!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LeaveButton" parent="." instance=ExtResource("2_no18x")]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5902344
+anchor_top = 0.7027778
+anchor_right = 0.89023435
+anchor_bottom = 0.7798611
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+theme_override_font_sizes/font_size = 50
+text = "我瞭解了!"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00859375
+anchor_top = 0.2048611
+anchor_right = 0.61158854
+anchor_bottom = 0.7895833
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_no18x")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ilq18")

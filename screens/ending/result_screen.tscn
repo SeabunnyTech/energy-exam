@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://ihlkl3pem413"]
 
-[ext_resource type="Script" uid="uid://buf8tufpklokm" path="res://screens/quiz/result_screen.gd" id="1_1nxxb"]
-[ext_resource type="Texture2D" uid="uid://cregmq7gf0s2n" path="res://screens/quiz/quiz.jpg" id="2_7cpcy"]
-[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="3_ps13k"]
-[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="4_7cpcy"]
+[ext_resource type="Script" uid="uid://buf8tufpklokm" path="res://screens/ending/result_screen.gd" id="1_bext7"]
+[ext_resource type="Texture2D" uid="uid://cregmq7gf0s2n" path="res://screens/quiz/quiz.jpg" id="2_l8tp6"]
+[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="3_cflco"]
+[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="4_qnfiq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rphkv"]
 content_margin_left = 0.0
@@ -74,7 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1nxxb")
+script = ExtResource("1_bext7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -84,7 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_7cpcy")
+texture = ExtResource("2_l8tp6")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -142,7 +142,7 @@ anchor_left = 0.3
 anchor_top = 0.155
 anchor_right = 0.7
 anchor_bottom = 0.155
-theme_override_fonts/font = ExtResource("3_ps13k")
+theme_override_fonts/font = ExtResource("3_cflco")
 theme_override_font_sizes/font_size = 100
 text = "挑戰完成!"
 horizontal_alignment = 1
@@ -155,21 +155,17 @@ anchor_left = 0.1
 anchor_top = 0.49237564
 anchor_right = 0.9
 anchor_bottom = 0.8341626
-theme_override_fonts/font = ExtResource("3_ps13k")
+theme_override_fonts/font = ExtResource("3_cflco")
 theme_override_font_sizes/font_size = 150
 text = "你獲得了 4 點積分"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="MorePolicyButton" parent="Panel/Panel" instance=ExtResource("4_7cpcy")]
+[node name="MorePolicyButton" parent="Panel/Panel" instance=ExtResource("4_qnfiq")]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_top = 0.5
-anchor_bottom = 0.5
 offset_left = -360.20007
 offset_top = 261.13202
 offset_right = 359.79993
 offset_bottom = 402.13208
-grow_vertical = 2
 text = "認識更多政策"

@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://0x0rwxyg52od"]
+
+[ext_resource type="Script" uid="uid://dr6ix05ckb071" path="res://screens/ending/policy.gd" id="1_mpu76"]
+[ext_resource type="Texture2D" uid="uid://cgswrvjv4kh2v" path="res://screens/ending/Gemini_風場.jpg" id="3_lbd8q"]
+[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_u2qgy"]
+
+[node name="PolicyScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mpu76")
+
+[node name="GuideLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06679688
+anchor_top = 0.09513889
+anchor_right = 0.59414065
+anchor_bottom = 0.80069447
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "臺灣具備優良離岸風場資源，經濟部參考國際離岸風電發展趨勢，
+以三階段規劃離岸風電政策推動路徑：「先示範、次潛力、後區塊」，
+逐步建立我國離岸風電市場開發量能。
+
+全球離岸風電工程進度均受疫情影響，經濟部藉由跨部會合作降低影響，
+維持設置進度開發，截至2025年2月共有274座風力機併網，
+併網量超過3GW，全球排名第七，截至114年累積併網容量已突破 3GW ，
+經濟部已持續掌握各風場開發期程及辦理進度，
+並定期召開工作會議追蹤各案場的開發進度。
+
+離岸風電推動階段亦皆辦理多場社會溝通之公民參與機制，
+如於政策推動階段舉辦相關說明會及座談會、
+施工前辦理地方說明會等。經濟部持續不定期辦理社會溝通會議，
+建立與所有利害關係人對話及溝通機制，
+即時掌握面臨議題與困難，
+並共同研商解決方案，持續努力推動離岸風電政策。 
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="LeaveButton" parent="." instance=ExtResource("3_u2qgy")]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.85
+anchor_right = 0.65
+anchor_bottom = 0.85
+offset_left = -345.0
+offset_top = 9.0
+offset_right = -656.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 50
+text = "我瞭解了!"
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.59765625
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51057345
+anchor_top = -0.027083335
+anchor_right = 1.6105734
+anchor_bottom = 1.0395833
+offset_left = -1149.8906
+offset_right = 533.1094
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lbd8q")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true

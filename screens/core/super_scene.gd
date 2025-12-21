@@ -16,8 +16,9 @@ const SCREENS_TO_LOAD = {
 	"coast":"res://screens/maps/coast_screen.tscn",
 	"pre_quiz": "res://screens/quiz/pre_quiz_screen.tscn",
 	"quiz": "res://screens/quiz/quiz_screen.tscn",
-	"result": "res://screens/quiz/result_screen.tscn",
-	"policy": "res://screens/quiz/policy.tscn"
+	"result": "res://screens/ending/result_screen.tscn",
+	"policy": "res://screens/ending/policy.tscn",
+	"congrats":"res://screens/ending/congrats.tscn",
 }
 
 func _ready() -> void:
@@ -64,6 +65,12 @@ var map_paths = {
 	'east':"res://maps/Scene/map03/map_east_model.tscn"
 }
 
+func fade_curtain(opacity:float, duration: float=1.5):
+	print("super scene fade curtain to ", duration)
+	var tween = create_tween()
+	tween.tween_property($Curtain, 'modulate:a', opacity, duration)
+
+
 func change_map(map_name: String, duration: float=1.5, topic: String="overview") -> void:
 	if current_map:
 		map_container.remove_child(current_map)
@@ -74,5 +81,5 @@ func change_map(map_name: String, duration: float=1.5, topic: String="overview")
 	current_map = map_scene
 
 	map_container.add_child(current_map)
-	$Curtain.visible = false
+	$Curtain.modulate.a = 0.0
 	current_map.zoom_to_topic(topic, duration)
