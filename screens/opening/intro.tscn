@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpsqk5gq8gyg8"]
+
+[ext_resource type="Script" uid="uid://cigy26cvtnpuc" path="res://screens/opening/intro.gd" id="1_bvr78"]
+[ext_resource type="AudioStream" uid="uid://m78qc1n8x5ey" path="res://music/login music candidate2_Caketown 1.mp3" id="2_nphfg"]
+[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_xpbca"]
+
+[node name="IntroScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bvr78")
+idle_music = ExtResource("2_nphfg")
+
+[node name="GuideLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.67604166
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "臺灣正積極推動第二次能源轉型
+將「多元綠能」視為能源轉型的核心策略
+以推動風、光、地熱、小水力等提升再生能源占比
+並搭配「深度節能」措施降低整體電力需求
+
+我國致力於離岸風電發展已有所成
+新的再生能源技術發展與產業落實節能
+以及儲能系統與電網韌性相關設備布建
+是臺灣未來能源發展的關鍵課題
+
+經濟部將持續推動再生能源發展
+透過多元能源布局
+穩健推動我國能源轉型並邁向淨零排放目標"
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "歡迎來到能源轉型問答聲光互動遊戲! (Energy Quiz)"
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" parent="." instance=ExtResource("3_xpbca")]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.85
+anchor_right = 0.8
+anchor_bottom = 0.85
+offset_left = -120.0
+offset_top = 0.0
+offset_right = 120.0
+theme_override_font_sizes/font_size = 60
+text = "開始"
+metadata/_edit_use_anchors_ = true

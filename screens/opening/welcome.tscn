@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7e5aoaa24bb0"]
+
+[ext_resource type="Script" uid="uid://bc8mogyf4gfqb" path="res://screens/opening/welcome.gd" id="1_x2pcs"]
+[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_xhiol"]
+
+[node name="WelcomeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2pcs")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "歡迎來到能源轉型問答聲光互動遊戲! (Energy Quiz)"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" parent="." instance=ExtResource("3_xhiol")]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.88819444
+anchor_bottom = 0.88819444
+text = "開始"
+metadata/_edit_use_anchors_ = true

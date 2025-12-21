@@ -23,6 +23,7 @@ func _ready() -> void:
 	random_speed = randf_range(-speed_deviation, speed_deviation)
 	if random_phase:
 		phase = randf_range(0, 360.0)
+		$WindNearFan.rotation_degrees.x = phase
 		
 	# --- 手動為旋轉的風扇設定一個固定的 AABB ---
 	# 這是解決抖動的關鍵。我們將 AABB 應用在 $WindNearFan 而不是 self。
@@ -49,7 +50,8 @@ func restart_spin():
 		return
 		
 	var duration = 360.0 / current_speed
-	
-	spin_tween.tween_property($WindNearFan, "rotation_degrees:x", 360.0 + phase, duration).from(phase)
+	#var current_phase = $WindNearFan.rotation_degrees.x
+	#print('phase ', current_phase, '   phase+ ',360.0 + current_phase, '   duration ', duration)
+	spin_tween.tween_property($WindNearFan, "rotation_degrees:x", 360.0, duration).as_relative()
 
 # 不需要 _physics_process 函數

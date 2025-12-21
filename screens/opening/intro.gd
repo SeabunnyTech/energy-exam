@@ -1,9 +1,9 @@
 extends BaseScreen
 
 
-@onready var button = $Control/EnterMapButton
-@onready var title = $Control/TitleLabel
-@onready var guide = $Control/GuideLabel
+@onready var button = $StartButton
+@onready var title = $Title
+@onready var guide = $GuideLabel
 
 var beat_tween: Tween
 var initial_button_position_y: float

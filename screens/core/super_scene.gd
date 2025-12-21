@@ -9,7 +9,8 @@ var screen_instances = {}
 
 # MODIFIED: 更新要載入的畫面列表
 const SCREENS_TO_LOAD = {
-	"login": "res://screens/login_screen.tscn", # Login 畫面可以暫時移除或保留
+	"welcome":"res://screens/opening/welcome.tscn",
+	"intro": "res://screens/opening/intro.tscn", # Login 畫面可以暫時移除或保留
 	"select_map": "res://screens/select/map_select_screen.tscn",
 	"map_changing": "res://screens/maps/map_changing_screen.tscn",
 	"coast":"res://screens/maps/coast_screen.tscn",
@@ -29,9 +30,9 @@ func _ready() -> void:
 		screen_instances[screen_name] = screen_instance
 
 	# 載入初始地圖
-	change_map("coast") 
+	#change_map("coast", 0.0)
 	# 進入初始畫面
-	goto_screen("login")
+	goto_screen("welcome")
 
 
 # MODIFIED: goto_screen 現在是狀態切換和依賴注入的核心
@@ -63,13 +64,15 @@ var map_paths = {
 	'east':"res://maps/Scene/map03/map_east_model.tscn"
 }
 
-func change_map(map_name: String) -> void:
+func change_map(map_name: String, duration: float=1.5, topic: String="overview") -> void:
 	if current_map:
 		map_container.remove_child(current_map)
 
 	var map_scene = map_instances[map_name]
 	if map_scene == null:
-		map_scene = load(map_paths[map_name])
-		current_map = map_scene.instantiate()
+		map_scene = load(map_paths[map_name]).instantiate()
+	current_map = map_scene
 
 	map_container.add_child(current_map)
+	$Curtain.visible = false
+	current_map.zoom_to_topic(topic, duration)

@@ -13,9 +13,9 @@ func on_pre_enter(param):
 
 
 func _ready() -> void:
-	ui_to_fade = [$Panel, %MoreQuizButton, %MorePolicyButton]
+	ui_to_fade = [$Panel, %MorePolicyButton]
 
-	%MoreQuizButton.pressed.connect(_on_more_quiz_pressed)
+	#%MoreQuizButton.pressed.connect(_on_more_quiz_pressed)
 	%MorePolicyButton.pressed.connect(_on_more_policy_pressed)
 	reset()
 

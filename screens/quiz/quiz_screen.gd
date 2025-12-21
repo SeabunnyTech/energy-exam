@@ -39,7 +39,7 @@ func reset_buttons():
 			btn.reset()
 
 
-
+var answer_container
 func load_question():
 	var question = questions[index]
 
@@ -59,7 +59,7 @@ func load_question():
 
 	two_ans.visible = use_two_ans
 	four_ans.visible = not use_two_ans
-	var answer_container = two_ans if use_two_ans else four_ans
+	answer_container = two_ans if use_two_ans else four_ans
 
 	## ui_to_fade
 	ui_to_fade = [$Panel, answer_container]
@@ -97,8 +97,20 @@ func load_next_question():
 
 func answered(is_correct):
 	# 計分
+	
 	GameState.push_score(map_name, topic, is_correct)
+	if is_correct:
+		self._super_scene.current_map.boost_facility(topic)
+
 	var new_index = index + 1
+
+	################ 答完一題直接跳到結局的暫時邏輯 ##################
+	if  new_index == 1:
+		reset()
+		leave_for_screen('result', {'map_name':map_name, 'topic':topic})
+		return
+
+	### 以下才是原有的邏輯
 	if new_index == questions.size():
 		reset()
 		leave_for_screen('result', {'map_name':map_name, 'topic':topic})
