@@ -8,19 +8,12 @@ extends BaseScreen
 var beat_tween: Tween
 var initial_button_position_y: float
 
-@export var idle_music: AudioStream
-
-
 
 func _ready():
 	button.pressed.connect(_on_enter_map_button_pressed)
 	initial_button_position_y = button.position.y # Initialize here
 	ui_to_fade = [self, title, guide, button]
 	reset()
-
-
-func on_pre_enter(_param):
-	GlobalAudioPlayer.play_music(idle_music, 1.)
 
 
 func start_beat_animation():

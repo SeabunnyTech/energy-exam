@@ -11,13 +11,13 @@ var initial_button_position_y: float
 var map_name:String
 var topic:String
 
+
 func on_pre_enter(param):
 	map_name = param['map_name']
 	topic = param['topic']
 	var title_and_guide = GameState.load_topic_title_and_guide(map_name, topic)
 	title.text = title_and_guide['title']
 	guide.text = title_and_guide['guide']
-	GlobalAudioPlayer.fade_out(2.0)
 
 
 func _ready():

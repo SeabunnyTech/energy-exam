@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpsqk5gq8gyg8"]
+[gd_scene load_steps=3 format=3 uid="uid://dpsqk5gq8gyg8"]
 
 [ext_resource type="Script" uid="uid://cigy26cvtnpuc" path="res://screens/opening/intro.gd" id="1_bvr78"]
-[ext_resource type="AudioStream" uid="uid://m78qc1n8x5ey" path="res://music/login music candidate2_Caketown 1.mp3" id="2_nphfg"]
 [ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_xpbca"]
 
 [node name="IntroScreen" type="Control"]
@@ -12,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bvr78")
-idle_music = ExtResource("2_nphfg")
 
 [node name="GuideLabel" type="Label" parent="."]
 layout_mode = 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://x2be0vulm4mu"]
+[gd_scene load_steps=12 format=3 uid="uid://x2be0vulm4mu"]
 
 [ext_resource type="Texture2D" uid="uid://cregmq7gf0s2n" path="res://screens/quiz/quiz.jpg" id="1_o3em0"]
 [ext_resource type="Script" uid="uid://vusk8qwsou6o" path="res://screens/quiz/quiz_screen.gd" id="1_rphkv"]
+[ext_resource type="AudioStream" uid="uid://cngue62jlox8o" path="res://music/digital-city-the-tech-corporate-408660.mp3" id="2_rh5rl"]
 [ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="2_x82q0"]
 [ext_resource type="PackedScene" uid="uid://bti2ssyewljk7" path="res://ui/quiz_button/quiz_button.tscn" id="3_x82q0"]
 
@@ -85,6 +86,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rphkv")
+idle_music = ExtResource("2_rh5rl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false

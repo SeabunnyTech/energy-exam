@@ -5,6 +5,11 @@ extends BaseScreen
 @onready var animation_timer: Timer = $Timer
 
 
+@export var idle_music: AudioStream
+
+func on_pre_enter(_param):
+	GlobalAudioPlayer.play_music(idle_music, 1.)
+
 
 func _ready():
 	for card in map_cards_container.get_children():

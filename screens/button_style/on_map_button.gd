@@ -6,7 +6,12 @@ class_name OnMapButton
 
 func _ready() -> void:
 	pressed.connect(_on_pressed)
-
+	pressed.connect(func():
+		var tween = create_tween()
+		var init_y =	 position.y
+		tween.tween_property(self, 'position:y', init_y + size.y * 0.1, 0.01)
+		tween.tween_property(self, 'position:y', init_y, 0.09)
+	)
 
 # 當按鈕被按下時調用
 func _on_pressed():

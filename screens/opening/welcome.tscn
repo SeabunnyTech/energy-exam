@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7e5aoaa24bb0"]
+[gd_scene load_steps=4 format=3 uid="uid://c7e5aoaa24bb0"]
 
 [ext_resource type="Script" uid="uid://bc8mogyf4gfqb" path="res://screens/opening/welcome.gd" id="1_x2pcs"]
+[ext_resource type="AudioStream" uid="uid://cwo0hfyolqqyh" path="res://music/smart-sparks-436614.mp3" id="2_1bms1"]
 [ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_xhiol"]
 
 [node name="WelcomeScreen" type="Control"]
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x2pcs")
+idle_music = ExtResource("2_1bms1")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1

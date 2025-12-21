@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://28pdjaed2f40"]
+[gd_scene load_steps=12 format=3 uid="uid://28pdjaed2f40"]
 
 [ext_resource type="Script" uid="uid://doyteno2rnkn5" path="res://screens/select/map_select_screen.gd" id="1_u1425"]
+[ext_resource type="AudioStream" uid="uid://cwo0hfyolqqyh" path="res://music/smart-sparks-436614.mp3" id="2_2ultx"]
 [ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="2_cr1ej"]
 [ext_resource type="Texture2D" uid="uid://bew7uyo0yjwuq" path="res://screens/select/map_select_ref.jpg" id="2_rptjb"]
 [ext_resource type="PackedScene" uid="uid://bhrxelmoqk216" path="res://screens/select/map_card.tscn" id="4_mej0n"]
@@ -20,7 +21,7 @@ corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rptjb"]
-bg_color = Color(0, 0, 0, 0.3254902)
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -45,6 +46,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1425")
+idle_music = ExtResource("2_2ultx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -57,6 +59,7 @@ grow_vertical = 2
 texture = ExtResource("2_rptjb")
 
 [node name="GuideBox" type="PanelContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.126

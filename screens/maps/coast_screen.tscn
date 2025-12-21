@@ -22,6 +22,7 @@ texture = ExtResource("1_ssr5f")
 
 [node name="WindPowerButton" parent="." instance=ExtResource("7_4odi3")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.20703125
 anchor_top = 0.37118056
 anchor_right = 0.20703125
@@ -31,6 +32,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="GroundSolarButton" parent="." instance=ExtResource("7_4odi3")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5972656
 anchor_top = 0.28715277
 anchor_right = 0.5972656
@@ -40,6 +42,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="RoofSolarButton" parent="." instance=ExtResource("7_4odi3")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.7398437
 anchor_top = 0.11666667
 anchor_right = 0.9507812
@@ -49,6 +52,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EnergyStorageButton" parent="." instance=ExtResource("7_4odi3")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5875
 anchor_top = 0.55104166
 anchor_right = 0.5875

@@ -6,12 +6,14 @@ var index = 0
 
 var questions = []
 
+@export var idle_music: AudioStream
+
 func on_pre_enter(param):
 	# 載入所有問題
 	map_name = param['map_name']
 	topic = param['topic']
 	questions = QuestionReader.load_questions(topic)
-	
+	GlobalAudioPlayer.play_music(idle_music, 1.)
 	# print(questions)
 	load_question()
 
@@ -25,6 +27,7 @@ func on_pre_enter(param):
 ### 答案選項
 @onready var four_ans = $Panel/FourAnswerContainer
 @onready var two_ans = $Panel/TwoAnswerContainer
+
 
 
 func reset():

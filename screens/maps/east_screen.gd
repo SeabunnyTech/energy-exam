@@ -1,6 +1,6 @@
 extends BaseScreen
 
-@onready var buttons = [$WindPowerButton, $GroundSolarButton, $RoofSolarButton, $EnergyStorageButton]
+@onready var buttons = [$HydroPowerButton, $GeothermalButton, $RoofSolarButton, $EnergyStorageButton]
 
 var idle_timer: Timer
 
@@ -14,7 +14,7 @@ func _ready():
 	idle_timer.timeout.connect(_on_idle_timer_timeout)
 	add_child(idle_timer)
 
-	$WindPowerButton.pressed.connect(_on_windpower_pressed)
+	$GeothermalButton.pressed.connect(_on_geothermal_pressed)
 	reset()
 
 
@@ -47,10 +47,10 @@ func _on_idle_timer_timeout():
 		tween.chain().tween_interval(0.1)
 
 
-func _on_windpower_pressed():
+func _on_geothermal_pressed():
 	GlobalAudioPlayer.fade_out(1.0)
-	move_camera_to_topic("wind")
-	leave_for_screen("pre_quiz", {'map_name':'coast', 'topic':'wind'})
+	move_camera_to_topic("geothermal")
+	leave_for_screen("pre_quiz", {'map_name':'east', 'topic':'geothermal'})
 	#request_camera_zoom_to("windpower")
 
 
