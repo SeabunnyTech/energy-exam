@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqx7akbefkcrn"]
+
+[ext_resource type="Script" uid="uid://b0ynk0inhvoqr" path="res://screens/maps/west_screen.gd" id="1_8e5lm"]
+[ext_resource type="Texture2D" uid="uid://djpp7rb7w47iy" path="res://screens/maps/west.jpg" id="2_8e5lm"]
+[ext_resource type="PackedScene" uid="uid://b5kqoy1ol2mnq" path="res://screens/button_style/on_map_button.tscn" id="3_y22tb"]
+
+[node name="MapScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8e5lm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8e5lm")
+
+[node name="HydroPowerButton" parent="." instance=ExtResource("3_y22tb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65703124
+anchor_top = 0.16041666
+anchor_right = 0.79765624
+anchor_bottom = 0.23055555
+text = "水力發電"
+metadata/_edit_use_anchors_ = true
+
+[node name="GroundSolarButton" parent="." instance=ExtResource("3_y22tb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10507812
+anchor_top = 0.2888889
+anchor_right = 0.31601563
+anchor_bottom = 0.35902777
+text = "地面型太陽能板"
+metadata/_edit_use_anchors_ = true
+
+[node name="EnergyStorageButton" parent="." instance=ExtResource("3_y22tb")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7847656
+anchor_top = 0.56631947
+anchor_right = 0.7847656
+anchor_bottom = 0.56631947
+offset_left = -180.0
+offset_top = -50.5
+offset_right = 180.0
+offset_bottom = 50.5
+text = "儲能設施"
+metadata/_edit_use_anchors_ = true

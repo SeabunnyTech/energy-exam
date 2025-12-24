@@ -25,7 +25,3 @@ QuestionReader="*res://globals/question_reader.gd"
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
-
-[rendering]
-
-renderer/rendering_method.mobile="gl_compatibility"

@@ -108,7 +108,7 @@ func answered(is_correct):
 	var new_index = index + 1
 
 	################ 答完一題直接跳到結局的暫時邏輯 ##################
-	if  new_index == 1:
+	if  new_index == 3:
 		leave_for_screen('result', {'map_name':map_name, 'topic':topic})
 		return
 

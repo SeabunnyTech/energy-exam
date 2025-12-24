@@ -161,7 +161,7 @@ func _ready():
 		set_process(true)
 	else:
 		set_process(false)
-	_singleton = get_node("/root/SimpleGrass")
+	_singleton = get_node("/root")
 	if not has_meta(&"SimpleGrassTextured"):
 		set_meta(&"SimpleGrassTextured", "2.0.5")
 	else:

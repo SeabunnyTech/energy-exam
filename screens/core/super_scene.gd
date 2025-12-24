@@ -14,6 +14,7 @@ const SCREENS_TO_LOAD = {
 	"select_map": "res://screens/select/map_select_screen.tscn",
 	"map_changing": "res://screens/maps/map_changing_screen.tscn",
 	"coast":"res://screens/maps/coast_screen.tscn",
+	"west":"res://screens/maps/west_screen.tscn",
 	"east":"res://screens/maps/east_screen.tscn",
 	"pre_quiz": "res://screens/quiz/pre_quiz_screen.tscn",
 	"quiz": "res://screens/quiz/quiz_screen.tscn",

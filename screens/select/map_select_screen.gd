@@ -1,6 +1,5 @@
 extends BaseScreen
 
-@onready var guide_box = $GuideBox
 @onready var map_cards_container = $HBoxContainer
 @onready var animation_timer: Timer = $Timer
 
@@ -16,7 +15,7 @@ func _ready():
 		card.button_pressed.connect(_on_map_card_pressed.bind(card.map_name))
 
 	animation_timer.timeout.connect(_on_animation_timer_timeout)
-	ui_to_fade = [guide_box] +  map_cards_container.get_children()
+	ui_to_fade = [$Label] +  map_cards_container.get_children()
 	reset()
 
 
