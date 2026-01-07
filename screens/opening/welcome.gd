@@ -21,6 +21,7 @@ func _ready():
 
 func on_pre_enter(_param):
 	GlobalAudioPlayer.play_music(idle_music, 1.)
+	GameState.reset_all_scores()
 
 
 func start_beat_animation():

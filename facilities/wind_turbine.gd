@@ -1,57 +1,74 @@
-@tool
 extends Node3D
 
-# deg per second
-@export var base_speed : float = 20.0
+# 基礎轉速 (度/秒)
+@export var base_speed: float = 30.0
 
-# 避免多台風積因為轉速相同變得看起來太整齊
-@export var speed_deviation : float = 2.0
-@export var random_phase : bool = true
+# 避免多台風機因為轉速相同變得看起來太整齊
+@export var speed_deviation: float = 5.0
+@export var random_phase: bool = true
 
-var random_speed : float = 0.0
-var phase : float = 0.0
+var _random_speed_offset: float = 0.0
+var _current_speed: float = 0.0
+var _target_speed: float = 0.0
 
-var boost_level = 0:
+# 加速等級，每答對一題增加 1
+var boost_level: int = 0:
 	set(value):
 		boost_level = value
-		restart_spin()
+		_update_target_speed()
+		_update_particles()
+
+@onready var _fan: Node3D = $WindNearFan
+@onready var _particles: Array[GPUParticles3D] = [
+	$WindNearFan/WindParticles1,
+	$WindNearFan/WindParticles2,
+	$WindNearFan/WindParticles3
+]
 
 
-var spin_tween
 func _ready() -> void:
-	# --- 隨機化初始角度和速度 ---
-	random_speed = randf_range(-speed_deviation, speed_deviation)
-	if random_phase:
-		phase = randf_range(0, 360.0)
-		$WindNearFan.rotation_degrees.x = phase
-		
-	# --- 手動為旋轉的風扇設定一個固定的 AABB ---
-	# 這是解決抖動的關鍵。我們將 AABB 應用在 $WindNearFan 而不是 self。
-	var box_size = Vector3(30, 30, 30)
-	# var box_pos = Vector3(-box_size.x / 2.0, 0, -box_size.z / 2.0)
-	var box_pos = -box_size / 2.0
-	#var box_pos = Vector3.ZERO
-	if has_node("WindNearFan") and get_node("WindNearFan") is GeometryInstance3D:
-		get_node("WindNearFan").custom_aabb = AABB(box_pos, box_size)
+	# 隨機化初始角度和速度偏移
+	_random_speed_offset = randf_range(-speed_deviation, speed_deviation)
+	if random_phase and _fan:
+		_fan.rotation_degrees.x = randf_range(0, 360.0)
 
-	restart_spin()
+	# 設定固定的 AABB 避免視錐剔除導致的閃爍
+	if _fan is GeometryInstance3D:
+		var box_size = Vector3(30, 30, 30)
+		_fan.custom_aabb = AABB(-box_size / 2.0, box_size)
+
+	_update_target_speed()
+	_current_speed = _target_speed
+	_update_particles()
 
 
-func restart_spin():
-	# --- 使用 Tween 建立循環動畫 ---
-	if spin_tween:
-		spin_tween.kill()
-	spin_tween = create_tween()
-	spin_tween.set_loops()
-	
-	var current_speed = base_speed * (1. + boost_level/3.0) + random_speed
-	# 避免速度為零導致除零錯誤
-	if is_zero_approx(current_speed):
+func _update_target_speed() -> void:
+	# 每個 boost_level 轉速翻倍
+	# boost 0: 30, boost 1: 60, boost 2: 120, boost 3: 240 度/秒
+	_target_speed = base_speed * pow(2, boost_level) + _random_speed_offset
+
+
+func _update_particles() -> void:
+	for p in _particles:
+		if p == null:
+			continue
+
+		if boost_level == 0:
+			# 沒有 boost 時不顯示粒子
+			p.emitting = false
+		else:
+			# 有 boost 時開啟粒子，數量和速度隨 boost_level 增加
+			p.emitting = true
+			p.amount = 5 * boost_level  # 每個發射器: boost 1: 5, boost 2: 10, boost 3: 15
+			p.speed_scale = 0.5 + boost_level * 0.5  # boost 1: 1.0, boost 2: 1.5, boost 3: 2.0
+
+
+func _physics_process(delta: float) -> void:
+	if _fan == null:
 		return
-		
-	var duration = 360.0 / current_speed
-	#var current_phase = $WindNearFan.rotation_degrees.x
-	#print('phase ', current_phase, '   phase+ ',360.0 + current_phase, '   duration ', duration)
-	spin_tween.tween_property($WindNearFan, "rotation_degrees:x", 360.0, duration).as_relative()
 
-# 不需要 _physics_process 函數
+	# 平滑過渡到目標速度
+	_current_speed = lerp(_current_speed, _target_speed, delta * 5.0)
+
+	# 繞 X 軸旋轉
+	_fan.rotate_x(deg_to_rad(_current_speed * delta))

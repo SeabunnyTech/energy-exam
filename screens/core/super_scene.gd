@@ -85,3 +85,7 @@ func change_map(map_name: String, duration: float=1.5, topic: String="overview")
 	map_container.add_child(current_map)
 	$Curtain.modulate.a = 0.0
 	current_map.zoom_to_topic(topic, duration)
+
+	# 重置地圖上的設施狀態（如風機 boost_level）
+	if current_map.has_method("reset"):
+		current_map.reset()

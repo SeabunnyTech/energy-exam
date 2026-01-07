@@ -100,7 +100,6 @@ func load_next_question():
 
 func answered(is_correct):
 	# 計分
-	
 	GameState.push_score(map_name, topic, is_correct)
 	if is_correct:
 		self._super_scene.current_map.boost_facility(topic)

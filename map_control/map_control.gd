@@ -20,7 +20,7 @@ func _input(event):
 			print("運鏡到: ", pos_id)
 
 
-func boost_facility(topic:String):
+func boost_facility(topic: String):
 	if topic == 'wind':
 		for turbine in $WindTurbines.get_children():
 			turbine.boost_level += 1
