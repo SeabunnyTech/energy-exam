@@ -1,4 +1,7 @@
-extends Node3D
+extends BaseFacility
+
+## 風力發電機
+## 繼承 BaseFacility，添加風扇旋轉和風粒子效果
 
 # 基礎轉速 (度/秒)
 @export var base_speed: float = 30.0
@@ -7,26 +10,27 @@ extends Node3D
 @export var speed_deviation: float = 5.0
 @export var random_phase: bool = true
 
+# 升級閃光顏色
+@export var upgrade_emission_color: Color = Color(1.0, 0.8, 0.2, 1.0)
+
 var _random_speed_offset: float = 0.0
 var _current_speed: float = 0.0
 var _target_speed: float = 0.0
 
-# 加速等級，每答對一題增加 1
-var boost_level: int = 0:
-	set(value):
-		boost_level = value
-		_update_target_speed()
-		_update_particles()
+# 材質相關
+var _mesh_instances: Array[MeshInstance3D] = []
+var _original_materials: Array[Material] = []
+var _glow_materials: Array[StandardMaterial3D] = []
 
 @onready var _fan: Node3D = $WindNearFan
-@onready var _particles: Array[GPUParticles3D] = [
+@onready var _wind_particles: Array[GPUParticles3D] = [
 	$WindNearFan/WindParticles1,
 	$WindNearFan/WindParticles2,
 	$WindNearFan/WindParticles3
 ]
 
 
-func _ready() -> void:
+func _facility_ready() -> void:
 	# 隨機化初始角度和速度偏移
 	_random_speed_offset = randf_range(-speed_deviation, speed_deviation)
 	if random_phase and _fan:
@@ -39,7 +43,15 @@ func _ready() -> void:
 
 	_update_target_speed()
 	_current_speed = _target_speed
-	_update_particles()
+	_update_wind_particles()
+
+	# 收集所有 MeshInstance3D 並準備發光材質
+	_setup_glow_materials()
+
+
+func _on_boost_level_changed(_old_value: int, _new_value: int) -> void:
+	_update_target_speed()
+	_update_wind_particles()
 
 
 func _update_target_speed() -> void:
@@ -48,8 +60,8 @@ func _update_target_speed() -> void:
 	_target_speed = base_speed * pow(2, boost_level) + boost_level * 60.0 + _random_speed_offset
 
 
-func _update_particles() -> void:
-	for p in _particles:
+func _update_wind_particles() -> void:
+	for p in _wind_particles:
 		if p == null:
 			continue
 
@@ -72,3 +84,59 @@ func _physics_process(delta: float) -> void:
 
 	# 繞 X 軸旋轉
 	_fan.rotate_x(deg_to_rad(_current_speed * delta))
+
+
+func _setup_glow_materials() -> void:
+	# 遞迴收集所有 MeshInstance3D
+	_collect_mesh_instances(self)
+
+	# 為每個 mesh 創建發光材質
+	for mesh_instance in _mesh_instances:
+		var surface_count = mesh_instance.get_surface_override_material_count()
+		if surface_count == 0:
+			continue
+
+		# 保存原始材質並創建發光版本
+		for i in range(surface_count):
+			var original_mat = mesh_instance.get_active_material(i)
+			_original_materials.append(original_mat)
+
+			# 創建發光材質
+			var glow_mat = StandardMaterial3D.new()
+			glow_mat.albedo_color = upgrade_emission_color
+			glow_mat.emission_enabled = true
+			glow_mat.emission = upgrade_emission_color
+			glow_mat.emission_energy_multiplier = 2.0
+			_glow_materials.append(glow_mat)
+
+
+func _collect_mesh_instances(node: Node) -> void:
+	if node is MeshInstance3D:
+		_mesh_instances.append(node)
+	for child in node.get_children():
+		_collect_mesh_instances(child)
+
+
+func _play_extra_upgrade_animation() -> void:
+	# 瞬間切換到發光材質
+	var material_index = 0
+	for mesh_instance in _mesh_instances:
+		var surface_count = mesh_instance.get_surface_override_material_count()
+		for i in range(surface_count):
+			if material_index < _glow_materials.size():
+				mesh_instance.set_surface_override_material(i, _glow_materials[material_index])
+				material_index += 1
+
+	# 延遲後恢復原始材質
+	var restore_tween = create_tween()
+	restore_tween.tween_callback(_restore_original_materials).set_delay(0.15)
+
+
+func _restore_original_materials() -> void:
+	var material_index = 0
+	for mesh_instance in _mesh_instances:
+		var surface_count = mesh_instance.get_surface_override_material_count()
+		for i in range(surface_count):
+			if material_index < _original_materials.size():
+				mesh_instance.set_surface_override_material(i, _original_materials[material_index])
+				material_index += 1
