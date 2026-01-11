@@ -1,8 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl2scqkpcjq4l"]
+[gd_scene load_steps=8 format=3 uid="uid://dl2scqkpcjq4l"]
 
-[ext_resource type="Texture2D" uid="uid://c1heflwwrcjti" path="res://screens/select/coast.jpg" id="1_ssr5f"]
 [ext_resource type="Script" uid="uid://dffadx6g4gibw" path="res://screens/maps/coast_screen.gd" id="1_vjsye"]
+[ext_resource type="Texture2D" uid="uid://c1t8lfuhbx3oa" path="res://screens/maps/coast_screenshot.jpg" id="2_thlpt"]
 [ext_resource type="PackedScene" uid="uid://b5kqoy1ol2mnq" path="res://screens/button_style/on_map_button.tscn" id="7_4odi3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thlpt"]
+content_margin_left = 90.0
+content_margin_top = 35.0
+content_margin_right = 90.0
+content_margin_bottom = 35.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7aevs"]
+content_margin_left = 90.0
+content_margin_top = 35.0
+content_margin_right = 90.0
+content_margin_bottom = 35.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1121"]
+content_margin_left = 90.0
+content_margin_top = 35.0
+content_margin_right = 90.0
+content_margin_bottom = 35.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwjvs"]
+content_margin_left = 90.0
+content_margin_top = 35.0
+content_margin_right = 90.0
+content_margin_bottom = 35.0
 
 [node name="MapScreen" type="Control"]
 layout_mode = 3
@@ -14,19 +38,27 @@ grow_vertical = 2
 script = ExtResource("1_vjsye")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 3840.0
-offset_bottom = 2160.0
-texture = ExtResource("1_ssr5f")
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_thlpt")
 
 [node name="WindPowerButton" parent="." instance=ExtResource("7_4odi3")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.20703125
-anchor_top = 0.37118056
-anchor_right = 0.20703125
-anchor_bottom = 0.37118056
+anchor_left = 0.074652776
+anchor_top = 0.453125
+anchor_right = 0.2204861
+anchor_bottom = 0.52135414
+theme_override_styles/normal = SubResource("StyleBoxEmpty_thlpt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_thlpt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_thlpt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_thlpt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_thlpt")
 text = "離岸風電"
 metadata/_edit_use_anchors_ = true
 
@@ -37,29 +69,44 @@ anchor_left = 0.5972656
 anchor_top = 0.28715277
 anchor_right = 0.5972656
 anchor_bottom = 0.28715277
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7aevs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7aevs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7aevs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7aevs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7aevs")
 text = "地面型太陽能板"
 metadata/_edit_use_anchors_ = true
 
 [node name="RoofSolarButton" parent="." instance=ExtResource("7_4odi3")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7398437
-anchor_top = 0.11666667
-anchor_right = 0.9507812
-anchor_bottom = 0.18680556
+anchor_left = 0.77569443
+anchor_top = 0.12916666
+anchor_right = 0.9840278
+anchor_bottom = 0.19739583
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e1121")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e1121")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_e1121")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e1121")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e1121")
 text = "屋頂型太陽能板"
 metadata/_edit_use_anchors_ = true
 
 [node name="EnergyStorageButton" parent="." instance=ExtResource("7_4odi3")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5875
-anchor_top = 0.55104166
-anchor_right = 0.5875
-anchor_bottom = 0.55104166
+anchor_left = 0.7270833
+anchor_top = 0.64765626
+anchor_right = 0.74791664
+anchor_bottom = 0.66328126
 offset_left = -180.0
 offset_top = -50.5
 offset_right = 180.0
 offset_bottom = 50.5
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vwjvs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vwjvs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vwjvs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vwjvs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vwjvs")
 text = "儲能設施"
 metadata/_edit_use_anchors_ = true
