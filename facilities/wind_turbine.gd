@@ -44,8 +44,8 @@ func _ready() -> void:
 
 func _update_target_speed() -> void:
 	# 每個 boost_level 轉速翻倍
-	# boost 0: 30, boost 1: 60, boost 2: 120, boost 3: 240 度/秒
-	_target_speed = base_speed * pow(2, boost_level) + _random_speed_offset
+	# 兼顧低速與高速區段的成長差距
+	_target_speed = base_speed * pow(2, boost_level) + boost_level * 60.0 + _random_speed_offset
 
 
 func _update_particles() -> void:

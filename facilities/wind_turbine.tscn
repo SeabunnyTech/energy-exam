@@ -6,11 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_particle"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.8, 0.9, 1.0, 0.6)
-
-[sub_resource type="SphereMesh" id="SphereMesh_particle"]
-radius = 0.01
-height = 0.02
+albedo_color = Color(0.8, 0.9, 1, 0.6)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wind"]
 emission_shape = 1
@@ -22,7 +18,11 @@ initial_velocity_max = 1.5
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 1.5
-color = Color(0.8, 0.9, 1.0, 0.6)
+color = Color(0.8, 0.9, 1, 0.6)
+
+[sub_resource type="SphereMesh" id="SphereMesh_particle"]
+radius = 0.01
+height = 0.02
 
 [node name="Turbine" instance=ExtResource("1_p50qj")]
 script = ExtResource("2_t7ujj")
@@ -31,35 +31,32 @@ script = ExtResource("2_t7ujj")
 transform = Transform3D(1, 0, 0, 0, -0.74345654, -0.6686576, 0, 0.6686576, -0.74345654, 0.13403545, 0.5734843, 8.524276e-06)
 custom_aabb = AABB(-15, -15, -15, 30, 30, 30)
 
-[node name="WindParticles1" type="GPUParticles3D" parent="WindNearFan"]
+[node name="WindParticles1" type="GPUParticles3D" parent="WindNearFan" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_particle")
 emitting = false
 amount = 10
 lifetime = 2.0
-speed_scale = 1.0
 visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
 process_material = SubResource("ParticleProcessMaterial_wind")
 draw_pass_1 = SubResource("SphereMesh_particle")
-material_override = SubResource("StandardMaterial3D_particle")
 
-[node name="WindParticles2" type="GPUParticles3D" parent="WindNearFan"]
+[node name="WindParticles2" type="GPUParticles3D" parent="WindNearFan" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.433)
+material_override = SubResource("StandardMaterial3D_particle")
 emitting = false
 amount = 10
 lifetime = 2.0
-speed_scale = 1.0
 visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
 process_material = SubResource("ParticleProcessMaterial_wind")
 draw_pass_1 = SubResource("SphereMesh_particle")
-material_override = SubResource("StandardMaterial3D_particle")
 
-[node name="WindParticles3" type="GPUParticles3D" parent="WindNearFan"]
+[node name="WindParticles3" type="GPUParticles3D" parent="WindNearFan" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.433)
+material_override = SubResource("StandardMaterial3D_particle")
 emitting = false
 amount = 10
 lifetime = 2.0
-speed_scale = 1.0
 visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
 process_material = SubResource("ParticleProcessMaterial_wind")
 draw_pass_1 = SubResource("SphereMesh_particle")
-material_override = SubResource("StandardMaterial3D_particle")
