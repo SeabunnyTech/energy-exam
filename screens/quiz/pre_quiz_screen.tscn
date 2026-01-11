@@ -46,38 +46,35 @@ color = Color(0.1, 0.1, 0.1, 0.6)
 [node name="Control" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 304.0
-offset_top = 227.5
-offset_right = 2256.0
-offset_bottom = 1212.5
+anchor_left = 0.12
+anchor_top = 0.12
+anchor_right = 0.88
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8w0i8")
 
 [node name="TitleLabel" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.1
-anchor_right = 0.5
-anchor_bottom = 0.1
-offset_left = -976.0
-offset_right = 976.0
-offset_bottom = 165.0
+anchor_left = 0.02
+anchor_top = 0.05
+anchor_right = 0.98
+anchor_bottom = 0.25
 grow_horizontal = 2
+grow_vertical = 2
 text = "離岸風電知多少!"
 label_settings = SubResource("LabelSettings_68r2w")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GuideLabel" type="Label" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -976.0
-offset_top = -142.5
-offset_right = 976.0
-offset_bottom = 142.5
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.28
+anchor_right = 0.95
+anchor_bottom = 0.7
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
@@ -85,20 +82,17 @@ text = "你體驗過新竹的大風嗎?
 如果你曾經被新竹的大風吹到站不穩而印象深刻
 那麼台灣海峽上空三倍速率的強風絕對會讓你更加驚嘆喔!"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButton" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.86
-anchor_right = 0.5
-anchor_bottom = 0.86
-offset_left = -213.5
-offset_top = -151.53503
-offset_right = 213.5
-offset_bottom = -30.535034
+anchor_left = 0.35
+anchor_top = 0.75
+anchor_right = 0.65
+anchor_bottom = 0.92
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_m8oqg")
