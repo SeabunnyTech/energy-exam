@@ -28,7 +28,8 @@ var _flash_light: OmniLight3D = null
 
 # 測試模式節點
 var _debug_light: DirectionalLight3D = null
-var _debug_label: Label3D = null
+var _debug_label: Label = null
+var _debug_canvas: CanvasLayer = null
 var _debug_camera: Camera3D = null
 
 
@@ -92,16 +93,24 @@ func _setup_debug_mode() -> void:
 	_debug_light.rotation_degrees = Vector3(-45, -45, 0)
 	add_child(_debug_light)
 
-	# 添加測試用標籤顯示 boost_level
-	_debug_label = Label3D.new()
+	# 添加測試用 2D 標籤顯示 boost_level（固定在螢幕底部）
+	_debug_canvas = CanvasLayer.new()
+	_debug_canvas.name = "DebugCanvas"
+	add_child(_debug_canvas)
+
+	_debug_label = Label.new()
 	_debug_label.name = "DebugLabel"
 	_debug_label.text = "Boost: 0\n[SPACE] +1  [R] Reset"
-	_debug_label.position = Vector3(0, 1.5, 0)
-	_debug_label.font_size = 64
-	_debug_label.outline_size = 8
-	_debug_label.modulate = Color.WHITE
-	_debug_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	add_child(_debug_label)
+	_debug_label.add_theme_font_size_override("font_size", 48)
+	_debug_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_debug_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	# 設置錨點在底部中央，位置在螢幕底部 1/10 高度處
+	_debug_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	_debug_label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	_debug_label.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	# 往上偏移螢幕高度的 1/10
+	_debug_label.position.y = -get_viewport().get_visible_rect().size.y * 0.1
+	_debug_canvas.add_child(_debug_label)
 
 	print("[DEBUG] %s: Debug mode enabled. Press SPACE to boost, R to reset." % name)
 
