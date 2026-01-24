@@ -62,9 +62,9 @@ func goto_screen(screen_name: String, param=null) -> void:
 var current_map: Node3D = null
 var map_instances = {'coast':null, 'west':null, 'east':null}
 var map_paths = {
-	'coast':"res://maps/Scene/map01/map_coast_model.tscn",
-	'west':"res://maps/Scene/map02/map_west.tscn",
-	'east':"res://maps/Scene/map03/map_east_model.tscn"
+	'coast': "res://maps/Scene/map_coast.tscn",
+	'west': "res://maps/Scene/map_west.tscn",
+	'east': "res://maps/Scene/map_east.tscn",
 }
 
 func fade_curtain(opacity:float, duration: float=1.5):

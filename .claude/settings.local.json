@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"\\(Get-Item ''C:\\\\Users\\\\User\\\\Documents\\\\GitHub\\\\energy-exam\\\\web\\\\photo\\\\taiwan_buildings.png''\\).Length / 1KB\")",
+      "Bash(dir:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -1,8 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqx7akbefkcrn"]
+[gd_scene load_steps=7 format=3 uid="uid://cqx7akbefkcrn"]
 
 [ext_resource type="Script" uid="uid://b0ynk0inhvoqr" path="res://screens/maps/west_screen.gd" id="1_8e5lm"]
 [ext_resource type="Texture2D" uid="uid://djpp7rb7w47iy" path="res://screens/maps/west.jpg" id="2_8e5lm"]
 [ext_resource type="PackedScene" uid="uid://b5kqoy1ol2mnq" path="res://screens/button_style/on_map_button.tscn" id="3_y22tb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e5lm"]
+content_margin_left = 90.0
+content_margin_top = 35.0
+content_margin_right = 90.0
+content_margin_bottom = 35.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_upmrt"]
+content_margin_left = 90.0
+content_margin_top = 35.0
+content_margin_right = 90.0
+content_margin_bottom = 35.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y22tb"]
+content_margin_left = 90.0
+content_margin_top = 35.0
+content_margin_right = 90.0
+content_margin_bottom = 35.0
 
 [node name="MapScreen" type="Control"]
 layout_mode = 3
@@ -15,6 +33,7 @@ script = ExtResource("1_8e5lm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
+z_index = -10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +49,11 @@ anchor_left = 0.65703124
 anchor_top = 0.16041666
 anchor_right = 0.79765624
 anchor_bottom = 0.23055555
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8e5lm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8e5lm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8e5lm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8e5lm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8e5lm")
 text = "水力發電"
 metadata/_edit_use_anchors_ = true
 
@@ -40,6 +64,11 @@ anchor_left = 0.10507812
 anchor_top = 0.2888889
 anchor_right = 0.31601563
 anchor_bottom = 0.35902777
+theme_override_styles/normal = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_upmrt")
 text = "地面型太陽能板"
 metadata/_edit_use_anchors_ = true
 
@@ -54,5 +83,10 @@ offset_left = -180.0
 offset_top = -50.5
 offset_right = 180.0
 offset_bottom = 50.5
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y22tb")
 text = "儲能設施"
 metadata/_edit_use_anchors_ = true

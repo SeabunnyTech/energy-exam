@@ -5,9 +5,9 @@ extends Node
 #       "答案是2" -> 2
 func _extract_number_from_string(s: String) -> int:
 	var num_str := ""
-	for char in s:
-		if char.is_valid_int():
-			num_str += char
+	for c in s:
+		if c.is_valid_int():
+			num_str += c
 	
 	if num_str.is_empty():
 		printerr("無法從字串中提取答案數字: ", s)

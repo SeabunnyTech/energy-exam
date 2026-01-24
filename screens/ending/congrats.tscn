@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://fpfmt40an35g"]
+[gd_scene load_steps=6 format=3 uid="uid://fpfmt40an35g"]
 
 [ext_resource type="Script" uid="uid://8gmio3nfofc0" path="res://screens/ending/congrats.gd" id="1_20y25"]
 [ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="2_no18x"]
 [ext_resource type="Texture2D" uid="uid://bbdpmcxums8ti" path="res://screens/ending/風機獎盃.png" id="3_no18x"]
 [ext_resource type="AudioStream" uid="uid://clnpgcf17ddpm" path="res://sfx/溫柔的小獎品.mp3" id="4_ilq18"]
+[ext_resource type="Texture2D" uid="uid://dv1r4b6lnkiwd" path="res://screens/ending/photo-frame-qrcode.png" id="5_qrcode"]
 
 [node name="PolicyScreen" type="Control"]
 layout_mode = 3
@@ -18,9 +19,9 @@ script = ExtResource("1_20y25")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6070312
-anchor_top = 0.37638888
+anchor_top = 0.15
 anchor_right = 0.89140624
-anchor_bottom = 0.47152779
+anchor_bottom = 0.21
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -33,16 +34,43 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.55742186
-anchor_top = 0.5172309
+anchor_top = 0.23
 anchor_right = 0.9410156
-anchor_bottom = 0.59361976
-offset_top = -15.8125305
-offset_bottom = -15.8125
+anchor_bottom = 0.29
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 text = "請和工作人員領取小獎品喔!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QRCodeRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.33
+anchor_right = 0.84
+anchor_bottom = 0.61
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_qrcode")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="QRCodeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.58
+anchor_top = 0.63
+anchor_right = 0.92
+anchor_bottom = 0.69
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "掃描 QR Code 上傳照片分享！"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -52,9 +80,9 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.67578125
-anchor_top = 0.7027778
+anchor_top = 0.73
 anchor_right = 0.82421875
-anchor_bottom = 0.7798611
+anchor_bottom = 0.81
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -66,14 +94,15 @@ metadata/_edit_use_anchors_ = true
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00859375
-anchor_top = 0.2048611
-anchor_right = 0.61158854
-anchor_bottom = 0.7895833
+anchor_left = 0.0072916667
+anchor_top = 0.24947916
+anchor_right = 0.6102865
+anchor_bottom = 0.7539931
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_no18x")
 expand_mode = 1
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]

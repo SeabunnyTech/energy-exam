@@ -10,7 +10,7 @@ func on_enter(_param):
 
 
 func _ready() -> void:
-	ui_to_fade = [$GuideLabel, $GuideLabel, %LeaveButton, $TextureRect]
+	ui_to_fade = [$GuideLabel, $GuideLabel2, %LeaveButton, $TextureRect, $QRCodeRect, $QRCodeLabel]
 
 	%LeaveButton.pressed.connect(_on_leave_pressed)
 	reset()

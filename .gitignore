@@ -15,5 +15,10 @@ export_credentials.cfg
 data_*/
 mono_crash.*.json
 
-maps/*
+# Symbolic links to map project (EnergyCityMaps_TRI)
+# maps/ links to the entire EnergyCityMaps_TRI repo (includes its own .git, .godot)
+maps/
+map_control/
+facilities/
+
 export/*
