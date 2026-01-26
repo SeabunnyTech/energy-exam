@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b553i670hmbyd"
+
+[deps]
+
+files=["res://questions/solar_roof.問題題標.translation", "res://questions/solar_roof.問答內容.translation", "res://questions/solar_roof.答案.translation", "res://questions/solar_roof.選項1.translation", "res://questions/solar_roof.選項2.translation", "res://questions/solar_roof.選項3.translation", "res://questions/solar_roof.選項4.translation", "res://questions/solar_roof.選項5.translation"]
+
+source_file="res://questions/solar_roof.csv"
+dest_files=["res://questions/solar_roof.問題題標.translation", "res://questions/solar_roof.問答內容.translation", "res://questions/solar_roof.答案.translation", "res://questions/solar_roof.選項1.translation", "res://questions/solar_roof.選項2.translation", "res://questions/solar_roof.選項3.translation", "res://questions/solar_roof.選項4.translation", "res://questions/solar_roof.選項5.translation"]
+
+[params]
+
+compress=true
+delimiter=0

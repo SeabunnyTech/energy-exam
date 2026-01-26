@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://yy4fhupgek5f"
+
+[deps]
+
+files=["res://questions/hydro.問題題標.translation", "res://questions/hydro.問答內容.translation", "res://questions/hydro.答案.translation", "res://questions/hydro.選項1.translation", "res://questions/hydro.選項2.translation", "res://questions/hydro.選項3.translation", "res://questions/hydro.選項4.translation", "res://questions/hydro.選項5.translation"]
+
+source_file="res://questions/hydro.csv"
+dest_files=["res://questions/hydro.問題題標.translation", "res://questions/hydro.問答內容.translation", "res://questions/hydro.答案.translation", "res://questions/hydro.選項1.translation", "res://questions/hydro.選項2.translation", "res://questions/hydro.選項3.translation", "res://questions/hydro.選項4.translation", "res://questions/hydro.選項5.translation"]
+
+[params]
+
+compress=true
+delimiter=0
