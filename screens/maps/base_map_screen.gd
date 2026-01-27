@@ -120,8 +120,10 @@ func _position_buttons_from_3d():
 			button.anchor_bottom = 0
 
 			# 將按鈕尖端對準螢幕位置（尖端在按鈕底部中央向下延伸）
+			# 額外往上挪動半個按鈕高度
 			var pointer_height = button.pointer_size.y if button is OnMapButton else 0
-			button.position = screen_pos - Vector2(button.size.x / 2, button.size.y + pointer_height)
+			var extra_offset = button.size.y / 2
+			button.position = screen_pos - Vector2(button.size.x / 2, button.size.y + pointer_height + extra_offset)
 
 
 # 輔助方法：子類可用來簡化按鈕事件處理
