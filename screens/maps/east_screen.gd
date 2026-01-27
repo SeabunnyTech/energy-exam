@@ -3,11 +3,12 @@ extends BaseMapScreen
 
 func _setup_buttons():
 	buttons = [$HydroPowerButton, $GeothermalButton, $RoofSolarButton, $EnergyStorageButton]
-	ui_to_fade = buttons
+	ui_to_fade = buttons + [%BackButton]
 	$GeothermalButton.pressed.connect(_on_geothermal_pressed)
 	$HydroPowerButton.pressed.connect(_on_hydro_pressed)
 	$RoofSolarButton.pressed.connect(_on_roof_solar_pressed)
 	$EnergyStorageButton.pressed.connect(_on_energy_storage_pressed)
+	%BackButton.pressed.connect(_on_back_pressed)
 
 
 func _on_geothermal_pressed():
@@ -24,3 +25,7 @@ func _on_roof_solar_pressed():
 
 func _on_energy_storage_pressed():
 	go_to_quiz('east', 'energy_storage')
+
+
+func _on_back_pressed():
+	leave_for_screen('select_map')

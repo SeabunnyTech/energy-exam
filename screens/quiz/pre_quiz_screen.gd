@@ -22,8 +22,9 @@ func on_pre_enter(param):
 
 func _ready():
 	button.pressed.connect(_on_enter_map_button_pressed)
+	%BackButton.pressed.connect(_on_back_pressed)
 	initial_button_position_y = button.position.y # Initialize here
-	ui_to_fade = [self, title, guide, button]
+	ui_to_fade = [self, title, guide, button, %BackButton]
 	reset()
 
 
@@ -64,6 +65,7 @@ func stop_beat_animation():
 
 func set_input_enable(enable):
 	button.disabled = not enable
+	%BackButton.disabled = not enable
 
 	if enable:
 		start_beat_animation()
@@ -74,5 +76,12 @@ func set_input_enable(enable):
 func _on_enter_map_button_pressed():
 	var sfx:AudioStreamPlayer = $AudioStreamPlayer
 	sfx.play()
-	#await sfx.finished
+	GlobalAudioPlayer.fade_out(1.0)
 	leave_for_screen("quiz", {'map_name':map_name, 'topic':topic, 'index':0})
+
+
+func _on_back_pressed():
+	# 相機回到 overview 位置
+	move_camera_to_topic('overview')
+	# 返回到對應的地圖畫面
+	leave_for_screen(map_name)

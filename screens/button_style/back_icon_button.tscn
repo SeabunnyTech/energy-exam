@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://back_icon_button"]
+
+[ext_resource type="FontFile" uid="uid://cwxuws7xjvwlr" path="res://fonts/jf-openhuninn-2.1.ttf" id="1_font"]
+[ext_resource type="Script" path="res://screens/button_style/back_icon_button.gd" id="3_script"]
+[ext_resource type="AudioStream" uid="uid://6q3itqgo6yjp" path="res://sfx/button-pressed-38129.wav" id="4_sfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_circle"]
+bg_color = Color(0, 0, 0, 0.6)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.8)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[node name="BackIconButton" type="Button"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -160.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_circle")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_circle")
+theme_override_styles/hover = SubResource("StyleBoxFlat_circle")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_circle")
+theme_override_styles/focus = SubResource("StyleBoxFlat_circle")
+text = "←"
+script = ExtResource("3_script")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sfx")

@@ -5,6 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://cmk6x68t0cnte" path="res://screens/button_style/simple_button_normal.tres" id="3_7vwis"]
 [ext_resource type="StyleBox" uid="uid://co2bor23tugoc" path="res://screens/button_style/simple_button_pressed.tres" id="4_pbshd"]
 [ext_resource type="AudioStream" uid="uid://6q3itqgo6yjp" path="res://sfx/button-pressed-38129.wav" id="5_dhtwf"]
+[ext_resource type="PackedScene" uid="uid://back_icon_button" path="res://screens/button_style/back_icon_button.tscn" id="6_back"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w0i8"]
 bg_color = Color(0, 0, 0, 0.43529412)
@@ -106,3 +107,18 @@ text = "開始"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_dhtwf")
+
+[node name="BackButton" parent="." instance=ExtResource("6_back")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -160.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0

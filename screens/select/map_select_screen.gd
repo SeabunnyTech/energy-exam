@@ -8,6 +8,8 @@ extends BaseScreen
 
 func on_pre_enter(_param):
 	GlobalAudioPlayer.play_music(idle_music, 1.)
+	# 恢復白色遮罩（從地圖返回時需要）
+	_super_scene.fade_curtain(1.0, 0.5)
 
 
 func _ready():

@@ -56,7 +56,7 @@ const reset_scores = {
 		'energy_storage':{'answered':0, 'correct':0},
 	},
 	'west' : {
-		'solar':{'answered':0, 'correct':0},
+		'solar_ground':{'answered':0, 'correct':0},
 		'hydro':{'answered':0, 'correct':0},
 		'energy_storage':{'answered':0, 'correct':0},
 	},
@@ -91,7 +91,7 @@ func load_policy(map_name:String, topic:String):
 			'energy_storage':'（儲能政策內容待補充）',
 		},
 		'west': {
-			'solar':solar_policy,
+			'solar_ground':solar_policy,
 			'hydro':'（水力發電政策內容待補充）',
 			'energy_storage':'（儲能政策內容待補充）',
 		},
@@ -118,7 +118,7 @@ func load_topic_title_and_guide(map_name:String, topic:String):
 		'coast' : {
 			'wind':{
 				'title':'離岸風電知多少!',
-				'guide':'你體驗過新竹的大風嗎?\n如果你曾經被新竹的大風吹到站不穩而印象深刻\n那麼台灣海峽上空三倍速率的強風絕對會讓你更加驚嘆喔!'
+				'guide':'臺灣位於季風帶，海域風力強勁，適合發展離岸風電，\n利用海上風力發電，可成為低碳主力電源，\n但海上施工與維運成本仍是發展離岸風電的主要挑戰'
 			},
 			'solar_ground':{
 				'title':'地面太陽能發電!',
@@ -134,7 +134,7 @@ func load_topic_title_and_guide(map_name:String, topic:String):
 			},
 		},
 		'west':{
-			'solar':{
+			'solar_ground':{
 				'title':'太陽底下都可以成為發電廠!',
 				'guide':'你知道當台灣遭遇颱風或地震，\n導致台電的供電線路暫時中斷時\n最能在偏遠的山區或鄉鎮內就近供電的設施是什麼嗎?'
 			},

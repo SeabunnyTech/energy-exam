@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dffadx6g4gibw" path="res://screens/maps/coast_screen.gd" id="1_vjsye"]
 [ext_resource type="Texture2D" uid="uid://c1t8lfuhbx3oa" path="res://screens/maps/coast_screenshot.jpg" id="2_thlpt"]
 [ext_resource type="PackedScene" uid="uid://b5kqoy1ol2mnq" path="res://screens/button_style/on_map_button.tscn" id="7_4odi3"]
+[ext_resource type="PackedScene" uid="uid://back_icon_button" path="res://screens/button_style/back_icon_button.tscn" id="8_back"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thlpt"]
 content_margin_left = 90.0
@@ -111,3 +112,18 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_vwjvs")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vwjvs")
 text = "儲能設施"
 metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" parent="." instance=ExtResource("8_back")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -160.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0

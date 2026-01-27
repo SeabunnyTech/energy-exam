@@ -68,7 +68,7 @@ func move_camera_to_topic(topic:String):
 
 
 func __enter__(param=null):
-	on_pre_enter(param)
+	await on_pre_enter(param)
 	await enter_animation()
 	on_enter(param)
 	set_input_enable(true)

@@ -22,15 +22,31 @@ func play_music(new_track: AudioStream, fade_duration: float = 1.0):
 
 	if stream:
 		fade_out(fade_duration)
-	
+
 	current_track = new_track
+
+	# 設定音樂為 looping
+	_set_stream_loop(new_track, true)
+
 	stream = new_track
 	play()
-	
+
 	if is_muted:
 		volume_db = -80
 	else:
 		fade_in(fade_duration)
+
+
+func _set_stream_loop(audio_stream: AudioStream, loop: bool):
+	if audio_stream is AudioStreamMP3:
+		audio_stream.loop = loop
+	elif audio_stream is AudioStreamOggVorbis:
+		audio_stream.loop = loop
+	elif audio_stream is AudioStreamWAV:
+		if loop:
+			audio_stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		else:
+			audio_stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
 
 
 func fade_in(duration: float = 1.0):
