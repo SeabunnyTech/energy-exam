@@ -29,27 +29,32 @@ script = ExtResource("1_bvr78")
 [node name="GuideLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.4
-anchor_right = 0.5
-anchor_bottom = 0.67604166
+anchor_left = 0.103472225
+anchor_top = 0.29895833
+anchor_right = 0.57569444
+anchor_bottom = 0.8411458
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "臺灣正積極推動第二次能源轉型
-將「多元綠能」視為能源轉型的核心策略
-以推動風、光、地熱、小水力等提升再生能源占比
-並搭配「深度節能」措施降低整體電力需求
+text = "歡迎參與能源轉型互動體驗遊戲！
+本遊戲結合聲光效果的數位互動展具，
+透過操作與問答，帶領你認識我國能源轉型的多元面向，
+了解各類再生能源的特色，
+以及政府在推動過程中所採取的政策與解決方案，
+一起思考如何透過能源轉型減少溫室氣體排放。
 
-我國致力於離岸風電發展已有所成
-新的再生能源技術發展與產業落實節能
-以及儲能系統與電網韌性相關設備布建
-是臺灣未來能源發展的關鍵課題
+體驗過程中，你可自由選擇不同的地圖環境，
+例如臨海城市、西部平原或東部淺山，
+並搭配不同的能源設施，如離岸風電、陸域風電、
+水力發電、燃煤發電或屋頂型太陽光電。
+每一種能源皆設計有專屬的互動問答模組，
+讓你在遊戲中輕鬆了解我國能源發展現況與相關政策重點。
 
-經濟部將持續推動再生能源發展
-透過多元能源布局
-穩健推動我國能源轉型並邁向淨零排放目標"
+完成遊戲後，還可使用拍照圖框功能，
+透過 QR Code 下載或分享專屬紀念照片。
+完成指定任務即可獲得精美贈品一份，歡迎一起來挑戰，成為能源轉型達人！
+"
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="."]
