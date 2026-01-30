@@ -4,6 +4,7 @@ extends BaseScreen
 @onready var button = $Control/StartButton
 @onready var title = $Control/TitleLabel
 @onready var guide = $Control/GuideLabel
+@onready var photo = $Control/PhotoRect
 
 var beat_tween: Tween
 var initial_button_position_y: float
@@ -19,12 +20,20 @@ func on_pre_enter(param):
 	title.text = title_and_guide['title']
 	guide.text = title_and_guide['guide']
 
+	# 載入主題照片
+	var photo_path = "res://screens/quiz/photo/%s.jpg" % topic
+	if ResourceLoader.exists(photo_path):
+		photo.texture = load(photo_path)
+	else:
+		push_warning("[PreQuizScreen] 找不到照片: %s" % photo_path)
+		photo.texture = null
+
 
 func _ready():
 	button.pressed.connect(_on_enter_map_button_pressed)
 	%BackButton.pressed.connect(_on_back_pressed)
 	initial_button_position_y = button.position.y # Initialize here
-	ui_to_fade = [self, title, guide, button, %BackButton]
+	ui_to_fade = [self, title, photo, guide, button, %BackButton]
 	reset()
 
 
