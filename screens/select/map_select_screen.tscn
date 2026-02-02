@@ -44,7 +44,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_cr1ej")
 theme_override_font_sizes/font_size = 58
-text = "臺灣各地已發展多種不同的能源設施，蘊藏許多再生能源發展潛力，
+text = "臺灣各地已發展多種不同的能源設施，蘊藏許多再生能源發展潛力
 請點選你想要挑戰的地理環境"
 horizontal_alignment = 1
 
@@ -63,7 +63,8 @@ alignment = 1
 
 [node name="MapCard" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
-guide = "臨海城市風場佳、日照足，配置離岸風電與地面/屋頂太陽能，搭配科技儲能穩定供電。"
+guide = "臨海城市風場佳、日照足
+配置離岸風電與地面/屋頂太陽能，搭配科技儲能穩定供電"
 map_name = "coast"
 
 [node name="MapCard2" parent="HBoxContainer" instance=ExtResource("4_mej0n")]

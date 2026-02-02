@@ -3,24 +3,45 @@ extends MarginContainer
 
 signal button_pressed
 
-@export var title: String = "Default Title"
-@export var guide: String = "Default guide text."
+@export var title: String = "Default Title":
+	set(value):
+		title = value
+		if title_label:
+			title_label.text = value
+
+@export_multiline var guide: String = "Default guide text.":
+	set(value):
+		guide = value
+		if guide_label:
+			guide_label.text = value
+
 @export var map_name: String = ""
-@export var map_texture: Texture2D
 
-@onready var title_label: Label = $Outline/MarginContainer/Panel/TitleLabel
-@onready var guide_label: Label = $Outline/MarginContainer/Panel/GuideLabel
-@onready var map_image: TextureRect = $Outline/MarginContainer/Panel/MapImage
+@export var map_texture: Texture2D:
+	set(value):
+		map_texture = value
+		if map_image:
+			map_image.texture = value
 
-@onready var button: Button = $Outline/MarginContainer/Panel/Button
+var title_label: Label
+var guide_label: Label
+var map_image: TextureRect
+var button: Button
 
 
 func _ready() -> void:
+	title_label = $Outline/MarginContainer/Panel/TitleLabel
+	guide_label = $Outline/MarginContainer/Panel/GuideLabel
+	map_image = $Outline/MarginContainer/Panel/MapImage
+	button = $Outline/MarginContainer/Panel/Button
+
 	title_label.text = title
 	guide_label.text = guide
-	button.pressed.connect(_button_pressed)
 	if map_texture:
 		map_image.texture = map_texture
+
+	if not Engine.is_editor_hint():
+		button.pressed.connect(_button_pressed)
 
 
 func _button_pressed():

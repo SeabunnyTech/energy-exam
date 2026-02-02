@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpsqk5gq8gyg8"]
+[gd_scene load_steps=7 format=3 uid="uid://dpsqk5gq8gyg8"]
 
 [ext_resource type="Script" uid="uid://cigy26cvtnpuc" path="res://screens/opening/intro.gd" id="1_bvr78"]
 [ext_resource type="VideoStream" uid="uid://cwk1otrc0atuo" path="res://screens/opening/temp.ogv" id="3_bvr78"]
@@ -16,6 +16,20 @@ corner_radius_top_right = 400
 corner_radius_bottom_right = 400
 corner_radius_bottom_left = 400
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_active"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_inactive"]
+bg_color = Color(0.7, 0.7, 0.7, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="IntroScreen" type="Control"]
 layout_mode = 3
@@ -36,25 +50,13 @@ anchor_bottom = 0.8411458
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 48
 text = "歡迎參與能源轉型互動體驗遊戲！
 本遊戲結合聲光效果的數位互動展具，
 透過操作與問答，帶領你認識我國能源轉型的多元面向，
 了解各類再生能源的特色，
 以及政府在推動過程中所採取的政策與解決方案，
-一起思考如何透過能源轉型減少溫室氣體排放。
-
-體驗過程中，你可自由選擇不同的地圖環境，
-例如臨海城市、西部平原或東部淺山，
-並搭配不同的能源設施，如離岸風電、陸域風電、
-水力發電、燃煤發電或屋頂型太陽光電。
-每一種能源皆設計有專屬的互動問答模組，
-讓你在遊戲中輕鬆了解我國能源發展現況與相關政策重點。
-
-完成遊戲後，還可使用拍照圖框功能，
-透過 QR Code 下載或分享專屬紀念照片。
-完成指定任務即可獲得精美贈品一份，歡迎一起來挑戰，成為能源轉型達人！
-"
+一起思考如何透過能源轉型減少溫室氣體排放。"
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="."]
@@ -74,11 +76,11 @@ metadata/_edit_use_anchors_ = true
 [node name="Panel" type="Panel" parent="."]
 clip_children = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_left = 0.55798614
+anchor_top = 0.49583334
+anchor_right = 0.55798614
+anchor_bottom = 0.49583334
 offset_left = 86.0
 offset_top = -376.0
 offset_right = 886.0
@@ -86,6 +88,7 @@ offset_bottom = 424.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nphfg")
+metadata/_edit_use_anchors_ = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Panel"]
 layout_mode = 1
@@ -103,6 +106,7 @@ grow_vertical = 2
 stream = ExtResource("3_bvr78")
 autoplay = true
 loop = true
+metadata/_edit_lock_ = true
 
 [node name="StartButton" parent="." instance=ExtResource("3_xpbca")]
 unique_name_in_owner = true
@@ -118,5 +122,36 @@ offset_top = -25.25
 offset_right = 200.0
 offset_bottom = 95.75
 theme_override_font_sizes/font_size = 60
-text = "開始"
+text = "下一步"
 metadata/_edit_use_anchors_ = true
+
+[node name="PageDots" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.92
+anchor_right = 0.5
+anchor_bottom = 0.92
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Dot1" type="Panel" parent="PageDots"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dot_active")
+
+[node name="Dot2" type="Panel" parent="PageDots"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dot_inactive")
+
+[node name="Dot3" type="Panel" parent="PageDots"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dot_inactive")
