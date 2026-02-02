@@ -63,17 +63,20 @@ alignment = 1
 
 [node name="MapCard" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
+guide = "臨海城市風場佳、日照足，配置離岸風電與地面/屋頂太陽能，搭配科技儲能穩定供電。"
 map_name = "coast"
 
 [node name="MapCard2" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
 title = "西部平原"
+guide = "西部平原地勢開闊、灌溉水系多，適合地面太陽能與小水力發電，並以儲能調節尖離峰。"
 map_name = "west"
 map_texture = ExtResource("5_x668e")
 
 [node name="MapCard3" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
 title = "東部淺山"
+guide = "東部淺山具地熱潛力，可發展地熱發電，結合屋頂太陽能與儲能提升韌性。"
 map_name = "east"
 map_texture = ExtResource("6_2ultx")
 
