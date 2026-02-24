@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://0x0rwxyg52od"]
+[gd_scene load_steps=5 format=3 uid="uid://0x0rwxyg52od"]
 
 [ext_resource type="Script" uid="uid://dr6ix05ckb071" path="res://screens/ending/policy.gd" id="1_mpu76"]
 [ext_resource type="Texture2D" uid="uid://cgswrvjv4kh2v" path="res://screens/ending/Gemini_風場.jpg" id="3_lbd8q"]
 [ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_u2qgy"]
+[ext_resource type="Texture2D" uid="uid://cu0uqxc22fu3u" path="res://screens/opening/multiple_goal.png" id="4_goal"]
 
 [node name="PolicyScreen" type="Control"]
 layout_mode = 3
@@ -16,18 +17,32 @@ script = ExtResource("1_mpu76")
 [node name="GuideLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.06679688
-anchor_top = 0.09513889
-anchor_right = 0.53085935
-anchor_bottom = 0.80069447
+anchor_left = 0.05
+anchor_top = 0.06
+anchor_right = 0.55
+anchor_bottom = 0.34270832
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字
-
-政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字政策文字"
+theme_override_font_sizes/font_size = 48
+text = "政策文字"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="GoalImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.37760416
+anchor_right = 0.55
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_goal")
+expand_mode = 1
+stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="LeaveButton" parent="." instance=ExtResource("3_u2qgy")]
@@ -35,13 +50,11 @@ unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35
-anchor_top = 0.85
-anchor_right = 0.65
-anchor_bottom = 0.85
-offset_left = -345.0
+anchor_left = 0.15
+anchor_top = 0.84
+anchor_right = 0.45
+anchor_bottom = 0.84
 offset_top = 9.0
-offset_right = -656.0
 offset_bottom = 120.0
 theme_override_font_sizes/font_size = 50
 text = "我瞭解了!"

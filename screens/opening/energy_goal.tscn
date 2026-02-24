@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2bvass76bn0g"]
+
+[ext_resource type="Script" uid="uid://duyssokqwehft" path="res://screens/opening/energy_goal.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cu0uqxc22fu3u" path="res://screens/opening/multiple_goal.png" id="2_image"]
+[ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_button"]
+
+[node name="EnergyGoalScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="GuideLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.0984375
+anchor_right = 0.85
+anchor_bottom = 0.23416665
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "我國以發展「多元綠能」搭配「深度節能」推動第二次能源轉型，積極布建太陽光電、風力發電、地熱與小水力等無碳電力，並推動節能降低整體電力需求，同時強韌電網建設穩定供電，朝2050年淨零目標邁進。"
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="GoalImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.20625
+anchor_right = 0.92
+anchor_bottom = 0.84
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_image")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" parent="." instance=ExtResource("3_button")]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.88
+anchor_right = 0.8
+anchor_bottom = 0.88
+offset_left = -120.0
+offset_top = -25.25
+offset_right = 200.0
+offset_bottom = 95.75
+theme_override_font_sizes/font_size = 60
+text = "下一步"
+metadata/_edit_use_anchors_ = true

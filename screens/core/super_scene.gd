@@ -10,7 +10,8 @@ var screen_instances = {}
 # MODIFIED: 更新要載入的畫面列表
 const SCREENS_TO_LOAD = {
 	"welcome":"res://screens/opening/welcome.tscn",
-	"intro": "res://screens/opening/intro.tscn", # Login 畫面可以暫時移除或保留
+	"energy_goal": "res://screens/opening/energy_goal.tscn",
+	"intro": "res://screens/opening/intro.tscn",
 	"select_map": "res://screens/select/map_select_screen.tscn",
 	"map_changing": "res://screens/maps/map_changing_screen.tscn",
 	"coast":"res://screens/maps/coast_screen.tscn",
@@ -22,6 +23,11 @@ const SCREENS_TO_LOAD = {
 	"policy": "res://screens/ending/policy.tscn",
 	"congrats":"res://screens/ending/congrats.tscn",
 }
+
+# 後台管理畫面（單獨載入，不在遊戲流程中）
+var admin_screen: Control = null
+var is_admin_mode: bool = false
+var screen_before_admin: String = ""
 
 func _ready() -> void:
 	# 預載入所有畫面
@@ -89,3 +95,62 @@ func change_map(map_name: String, duration: float=1.5, topic: String="overview")
 	# 重置地圖上的設施狀態（如風機 boost_level）
 	if current_map.has_method("reset"):
 		current_map.reset()
+
+
+func _input(event: InputEvent) -> void:
+	# Tab 切換後台管理模式
+	if event.is_action_pressed("admin_toggle"):
+		_toggle_admin_mode()
+
+
+func _toggle_admin_mode() -> void:
+	if is_admin_mode:
+		_exit_admin_mode()
+	else:
+		_enter_admin_mode()
+
+
+func _enter_admin_mode() -> void:
+	if is_admin_mode:
+		return
+
+	is_admin_mode = true
+
+	# 隱藏當前遊戲畫面
+	if _current_screen:
+		_current_screen.visible = false
+
+	# 載入後台管理畫面（如果還沒載入）
+	if admin_screen == null:
+		var admin_scene = load("res://screens/admin/admin_screen.tscn")
+		admin_screen = admin_scene.instantiate()
+		admin_screen.goto_screen.connect(_on_admin_goto_screen)
+
+	screen_container.add_child(admin_screen)
+	admin_screen.visible = true
+
+	print("[SuperScene] 進入後台管理模式")
+
+
+func _exit_admin_mode() -> void:
+	if not is_admin_mode:
+		return
+
+	is_admin_mode = false
+
+	# 移除後台管理畫面
+	if admin_screen and admin_screen.get_parent():
+		screen_container.remove_child(admin_screen)
+
+	# 重新載入內容並顯示遊戲畫面
+	ContentLoader.reload_content()
+
+	if _current_screen:
+		_current_screen.visible = true
+
+	print("[SuperScene] 離開後台管理模式")
+
+
+func _on_admin_goto_screen(screen_name: String, _param: Dictionary) -> void:
+	# 後台返回遊戲
+	_exit_admin_mode()

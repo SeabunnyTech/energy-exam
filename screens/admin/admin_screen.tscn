@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1234admin"]
+
+[ext_resource type="Script" path="res://screens/admin/admin_screen.gd" id="1_admin"]
+
+[node name="AdminScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_admin")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 48
+text = "後台管理"
+vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.2, 0.6, 0.2, 1)
+theme_override_font_sizes/font_size = 32
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "儲存"
+
+[node name="ReturnButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "返回遊戲"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 400
+
+[node name="NavPanel" type="PanelContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="NavTree" type="Tree" parent="HSplitContainer/NavPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+
+[node name="EditorPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditorContainer" type="Control" parent="HSplitContainer/EditorPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

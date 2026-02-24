@@ -13,26 +13,7 @@ var beat_tween: Tween
 var initial_button_position_y: float
 
 var current_page: int = 0
-var pages: Array[String] = [
-	"歡迎參與能源轉型互動體驗遊戲！
-本遊戲結合聲光效果的數位互動展具，
-透過操作與問答，帶領你認識我國能源轉型的多元面向，
-了解各類再生能源的特色，
-以及政府在推動過程中所採取的政策與解決方案，
-一起思考如何透過能源轉型減少溫室氣體排放。",
-
-	"體驗過程中，你可自由選擇不同的地圖環境，
-例如臨海城市、西部平原或東部淺山，
-並搭配不同的能源設施，如離岸風電、陸域風電、
-水力發電、燃煤發電或屋頂型太陽光電。
-每一種能源皆設計有專屬的互動問答模組，
-讓你在遊戲中輕鬆了解我國能源發展現況與相關政策重點。",
-
-	"完成遊戲後，還可使用拍照圖框功能，
-透過 QR Code 下載或分享專屬紀念照片。
-完成指定任務即可獲得精美贈品一份，
-歡迎一起來挑戰，成為能源轉型達人！"
-]
+var pages: Array = []
 
 
 func _ready():
@@ -52,6 +33,8 @@ func _ready():
 
 
 func on_pre_enter(_param):
+	# 從 ContentLoader 載入頁面內容
+	pages = ContentLoader.get_intro_pages()
 	current_page = 0
 	guide.modulate.a = 1.0
 	_update_page()

@@ -1,0 +1,146 @@
+[gd_scene load_steps=2 format=3 uid="uid://question_editor"]
+
+[ext_resource type="Script" path="res://screens/admin/question_editor.gd" id="1_question"]
+
+[node name="QuestionEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_question")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 36
+text = "題庫"
+
+[node name="AddButton" type="Button" parent="VBoxContainer/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "新增題目"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 400
+
+[node name="ListPanel" type="PanelContainer" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="QuestionList" type="ItemList" parent="VBoxContainer/HSplitContainer/ListPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="DetailPanel" type="Control" parent="VBoxContainer/HSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/DetailPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="TitleSection" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/TitleSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 28
+text = "題目標題"
+
+[node name="QuestionTitleEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/TitleSection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+placeholder_text = "輸入題目標題..."
+
+[node name="ContentSection" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/ContentSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 28
+text = "問題內容"
+
+[node name="ContentEdit" type="TextEdit" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/ContentSection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+placeholder_text = "輸入問題內容..."
+wrap_mode = 1
+
+[node name="OptionsSection" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/OptionsSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/OptionsSection/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 28
+text = "選項 (勾選正確答案)"
+
+[node name="AddOptionButton" type="Button" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/OptionsSection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "+新增選項"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/OptionsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonSection" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="DeleteButton" type="Button" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/ButtonSection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 28
+text = "刪除此題"

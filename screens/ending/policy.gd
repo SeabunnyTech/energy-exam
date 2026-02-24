@@ -41,7 +41,7 @@ func on_pre_enter(param):
 
 
 func _ready() -> void:
-	ui_to_fade = [$GuideLabel, %LeaveButton, $Control]
+	ui_to_fade = [$GuideLabel, $GoalImage, %LeaveButton, $Control]
 
 	%LeaveButton.pressed.connect(_on_leave_pressed)
 	reset()
