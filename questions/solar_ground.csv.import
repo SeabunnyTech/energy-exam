@@ -6,10 +6,10 @@ uid="uid://cmtlcsap1eo7b"
 
 [deps]
 
-files=["res://questions/solar_ground.問題題標.translation", "res://questions/solar_ground.問答內容.translation", "res://questions/solar_ground.答案.translation", "res://questions/solar_ground.選項1.translation", "res://questions/solar_ground.選項2.translation", "res://questions/solar_ground.選項3.translation", "res://questions/solar_ground.選項4.translation", "res://questions/solar_ground.選項5.translation"]
+files=["res://questions/solar_ground.問題題標.translation", "res://questions/solar_ground.問答內容.translation", "res://questions/solar_ground.答案.translation", "res://questions/solar_ground.選項1.translation", "res://questions/solar_ground.選項2.translation", "res://questions/solar_ground.選項3.translation", "res://questions/solar_ground.選項4.translation"]
 
 source_file="res://questions/solar_ground.csv"
-dest_files=["res://questions/solar_ground.問題題標.translation", "res://questions/solar_ground.問答內容.translation", "res://questions/solar_ground.答案.translation", "res://questions/solar_ground.選項1.translation", "res://questions/solar_ground.選項2.translation", "res://questions/solar_ground.選項3.translation", "res://questions/solar_ground.選項4.translation", "res://questions/solar_ground.選項5.translation"]
+dest_files=["res://questions/solar_ground.問題題標.translation", "res://questions/solar_ground.問答內容.translation", "res://questions/solar_ground.答案.translation", "res://questions/solar_ground.選項1.translation", "res://questions/solar_ground.選項2.translation", "res://questions/solar_ground.選項3.translation", "res://questions/solar_ground.選項4.translation"]
 
 [params]
 

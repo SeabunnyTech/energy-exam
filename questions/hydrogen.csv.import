@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://wbfml3w7kpuq"
+
+[deps]
+
+files=["res://questions/hydrogen.問題題標.translation", "res://questions/hydrogen.問答內容.translation", "res://questions/hydrogen.答案.translation", "res://questions/hydrogen.選項1.translation", "res://questions/hydrogen.選項2.translation", "res://questions/hydrogen.選項3.translation", "res://questions/hydrogen.選項4.translation"]
+
+source_file="res://questions/hydrogen.csv"
+dest_files=["res://questions/hydrogen.問題題標.translation", "res://questions/hydrogen.問答內容.translation", "res://questions/hydrogen.答案.translation", "res://questions/hydrogen.選項1.translation", "res://questions/hydrogen.選項2.translation", "res://questions/hydrogen.選項3.translation", "res://questions/hydrogen.選項4.translation"]
+
+[params]
+
+compress=true
+delimiter=0

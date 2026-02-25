@@ -154,7 +154,7 @@ grow_vertical = 2
 text = "台灣西部的臨海城市有著這樣這樣的樣光與那樣那樣的風場特性，很適合放置太陽光電與離岸風電"
 label_settings = SubResource("LabelSettings_1lmhx")
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true
 

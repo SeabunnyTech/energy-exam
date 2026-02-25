@@ -96,7 +96,7 @@ text = "你體驗過新竹的大風嗎?
 那麼台灣海峽上空三倍速率的強風絕對會讓你更加驚嘆喔!"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="StartButton" type="Button" parent="Control"]
 layout_mode = 1

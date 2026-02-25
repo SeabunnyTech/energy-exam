@@ -6,10 +6,10 @@ uid="uid://bw43vq24p6i0c"
 
 [deps]
 
-files=["res://questions/energy_storage.問題題標.translation", "res://questions/energy_storage.問答內容.translation", "res://questions/energy_storage.答案.translation", "res://questions/energy_storage.選項1.translation", "res://questions/energy_storage.選項2.translation", "res://questions/energy_storage.選項3.translation", "res://questions/energy_storage.選項4.translation", "res://questions/energy_storage.選項5.translation"]
+files=["res://questions/energy_storage.問題題標.translation", "res://questions/energy_storage.問答內容.translation", "res://questions/energy_storage.答案.translation", "res://questions/energy_storage.選項1.translation", "res://questions/energy_storage.選項2.translation", "res://questions/energy_storage.選項3.translation", "res://questions/energy_storage.選項4.translation"]
 
 source_file="res://questions/energy_storage.csv"
-dest_files=["res://questions/energy_storage.問題題標.translation", "res://questions/energy_storage.問答內容.translation", "res://questions/energy_storage.答案.translation", "res://questions/energy_storage.選項1.translation", "res://questions/energy_storage.選項2.translation", "res://questions/energy_storage.選項3.translation", "res://questions/energy_storage.選項4.translation", "res://questions/energy_storage.選項5.translation"]
+dest_files=["res://questions/energy_storage.問題題標.translation", "res://questions/energy_storage.問答內容.translation", "res://questions/energy_storage.答案.translation", "res://questions/energy_storage.選項1.translation", "res://questions/energy_storage.選項2.translation", "res://questions/energy_storage.選項3.translation", "res://questions/energy_storage.選項4.translation"]
 
 [params]
 

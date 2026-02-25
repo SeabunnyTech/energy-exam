@@ -32,6 +32,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_y0870")
 theme_override_styles/hover = ExtResource("2_s51xa")
 theme_override_styles/disabled = ExtResource("2_s51xa")
 theme_override_styles/focus = ExtResource("2_s51xa")
+clip_text = true
+autowrap_mode = 3
 text = "選項"
 script = ExtResource("4_y0870")
 
