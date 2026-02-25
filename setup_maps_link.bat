@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 
-set "DEFAULT_PATH=C:\%USERNAME%\Documents\EnergyCityMaps_TRI\maps"
+set "DEFAULT_PATH=C:\Users\%USERNAME%\Documents\EnergyCityMaps_TRI\maps"
 
 echo ====================================
 echo   設定 maps 符號連結
