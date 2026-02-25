@@ -61,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
-text = "歡迎來到能源轉型問答聲光互動遊戲! (Energy Quiz)"
+text = "歡迎來到 Energy Quiz 源來如此！"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
