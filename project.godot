@@ -26,7 +26,6 @@ QuestionReader="*res://globals/question_reader.gd"
 
 window/size/viewport_width=2880
 window/size/viewport_height=1920
-window/size/mode=3
 
 [input]
 
