@@ -2,7 +2,6 @@ extends BaseScreen
 
 
 @onready var button = $StartButton
-@onready var guide = $GuideLabel
 @onready var image = $GoalImage
 
 var beat_tween: Tween
@@ -18,7 +17,7 @@ var frame_timer: float = 0.0
 func _ready():
 	button.pressed.connect(_on_button_pressed)
 	initial_button_position_y = button.position.y
-	ui_to_fade = [self, guide, image, button]
+	ui_to_fade = [self, image, button]
 	_load_frames()
 	reset()
 
@@ -80,6 +79,13 @@ func set_input_enable(enable):
 		start_beat_animation()
 	else:
 		stop_beat_animation()
+
+
+func on_pre_enter(_param):
+	current_frame = 0
+	frame_timer = 0.0
+	if not frames.is_empty():
+		image.texture = frames[0]
 
 
 func _on_button_pressed():

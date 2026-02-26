@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgswrvjv4kh2v"
-path="res://.godot/imported/Gemini_風場.jpg-40f2a4cec5c8cc52f2e454b4f08af054.ctex"
+uid="uid://b0twqdfv8me3a"
+path="res://.godot/imported/仁澤地熱發電廠.jpg-9244af68c70118f2b5343de8a03ed21c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screens/ending/Gemini_風場.jpg"
-dest_files=["res://.godot/imported/Gemini_風場.jpg-40f2a4cec5c8cc52f2e454b4f08af054.ctex"]
+source_file="res://screens/ending/仁澤地熱發電廠.jpg"
+dest_files=["res://.godot/imported/仁澤地熱發電廠.jpg-9244af68c70118f2b5343de8a03ed21c.ctex"]
 
 [params]
 

@@ -168,20 +168,6 @@ anchor_bottom = 0.07
 theme_override_font_sizes/font_size = 32
 text = "離岸風電政策與社會溝通"
 
-[node name="Q_score" type="Label" parent="Panel/Panel/Panel/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.119
-anchor_top = 0.724
-anchor_right = 0.119
-anchor_bottom = 0.76
-offset_right = 126.0
-offset_bottom = 120.79114
-theme_override_fonts/font = ExtResource("2_x82q0")
-theme_override_font_sizes/font_size = 80
-text = "1/10"
-
 [node name="Q_content" type="Label" parent="Panel/Panel/Panel/Panel"]
 unique_name_in_owner = true
 layout_mode = 1

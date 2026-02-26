@@ -21,7 +21,6 @@ func on_pre_enter(param):
 
 @onready var q_index = %Q_index
 @onready var q_title = %Q_title
-@onready var q_score = %Q_score
 @onready var q_content = %Q_content
 
 ### 答案選項
@@ -49,9 +48,6 @@ func load_question():
 	### 設定問題區塊的文字
 	q_index.text = "Q" + str(index+1) + ":"
 	q_title.text = question['標題']
-	
-	var records = GameState.get_topic_score(map_name, topic)
-	q_score.text = str(records['correct']) + '/' + str(records['answered']) + "/" + str(questions.size())
 	q_content.text = question['內容']
 
 	### 設定選項區塊的文字

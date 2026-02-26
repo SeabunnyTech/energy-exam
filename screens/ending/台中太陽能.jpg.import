@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://botgvaawayhrp"
-valid=false
+uid="uid://b4w7jxcvo0fxr"
+path="res://.godot/imported/台中太陽能.jpg-55a24d8d787c47225d9b3a5e4f3b6b58.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://screens/quiz/photo/solar_ground.jpg"
+source_file="res://screens/ending/台中太陽能.jpg"
+dest_files=["res://.godot/imported/台中太陽能.jpg-55a24d8d787c47225d9b3a5e4f3b6b58.ctex"]
 
 [params]
 

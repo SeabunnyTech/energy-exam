@@ -4,14 +4,13 @@ var map_name
 var topic
 
 var tex_path = {
-	'wind': "res://screens/ending/Gemini_風場.jpg",
-	'geothermal': "res://screens/ending/Gemini_地熱.jpg",
-	'solar': "res://screens/ending/太陽能.jpg",
-	# 以下為新主題，尚未有專屬圖片
-	'solar_ground': "res://screens/ending/太陽能.jpg",
-	'solar_roof': "res://screens/ending/太陽能.jpg",
-	'hydro': null,  # 水力發電圖片待補充
-	'energy_storage': null,  # 儲能圖片待補充
+	'wind': "res://screens/ending/苗栗離岸風電.jpg",
+	'geothermal': "res://screens/ending/仁澤地熱發電廠.jpg",
+	'solar': "res://screens/ending/台中太陽能.jpg",
+	'solar_ground': "res://screens/ending/台中太陽能.jpg",
+	'solar_roof': "res://screens/ending/台中太陽能.jpg",
+	'hydro': "res://screens/ending/鯉魚潭.jpg",
+	'energy_storage': "res://screens/quiz/photo/energy_storage.jpg",
 }
 
 const MISSING_TEXTURE_MSG = "[缺少圖片] 請為主題 '%s' 添加圖片到 tex_path"

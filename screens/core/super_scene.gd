@@ -151,6 +151,6 @@ func _exit_admin_mode() -> void:
 	print("[SuperScene] 離開後台管理模式")
 
 
-func _on_admin_goto_screen(screen_name: String, _param: Dictionary) -> void:
+func _on_admin_goto_screen(_screen_name: String, _param: Dictionary) -> void:
 	# 後台返回遊戲
 	_exit_admin_mode()

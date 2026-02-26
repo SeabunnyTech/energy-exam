@@ -20,12 +20,16 @@ func on_pre_enter(param):
 	title.text = title_and_guide['title']
 	guide.text = title_and_guide['guide']
 
-	# 載入主題照片
-	var photo_path = "res://screens/quiz/photo/%s.jpg" % topic
-	if ResourceLoader.exists(photo_path):
-		photo.texture = load(photo_path)
-	else:
-		push_warning("[PreQuizScreen] 找不到照片: %s" % photo_path)
+	# 載入主題照片（支援 .jpg 和 .png）
+	var photo_loaded := false
+	for ext in ["jpg", "png"]:
+		var photo_path = "res://screens/quiz/photo/%s.%s" % [topic, ext]
+		if ResourceLoader.exists(photo_path):
+			photo.texture = load(photo_path)
+			photo_loaded = true
+			break
+	if not photo_loaded:
+		push_warning("[PreQuizScreen] 找不到照片: res://screens/quiz/photo/%s.*" % topic)
 		photo.texture = null
 
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0s6tapos8nn6"
-path="res://.godot/imported/Gemini_地熱.jpg-e00e0e6809417233149f46bd9caded52.ctex"
+uid="uid://pyl3pj77up0h"
+path="res://.godot/imported/苗栗離岸風電.jpg-235a182a0d17aebbd83949ac06ee273d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screens/ending/Gemini_地熱.jpg"
-dest_files=["res://.godot/imported/Gemini_地熱.jpg-e00e0e6809417233149f46bd9caded52.ctex"]
+source_file="res://screens/ending/苗栗離岸風電.jpg"
+dest_files=["res://.godot/imported/苗栗離岸風電.jpg-235a182a0d17aebbd83949ac06ee273d.ctex"]
 
 [params]
 

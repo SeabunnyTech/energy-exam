@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx7v3w3rna0rc"
-path="res://.godot/imported/太陽能.jpg-de6ff9f5cfeece2494ad7e747465f264.ctex"
+uid="uid://bs64tkvsce2qe"
+path="res://.godot/imported/solar_ground.png-019e15e12c189aabaa8d8e95787a794e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screens/ending/太陽能.jpg"
-dest_files=["res://.godot/imported/太陽能.jpg-de6ff9f5cfeece2494ad7e747465f264.ctex"]
+source_file="res://screens/quiz/photo/solar_ground.png"
+dest_files=["res://.godot/imported/solar_ground.png-019e15e12c189aabaa8d8e95787a794e.ctex"]
 
 [params]
 
