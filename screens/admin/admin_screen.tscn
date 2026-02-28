@@ -22,9 +22,9 @@ color = Color(0.95, 0.95, 0.95, 1)
 
 [node name="TopBar" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 80.0
+anchor_bottom = 0.041667
 grow_horizontal = 2
 theme_override_constants/separation = 20
 
@@ -62,11 +62,10 @@ text = "返回遊戲"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.052083
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 100.0
-offset_bottom = -20.0
+anchor_bottom = 0.989583
 grow_horizontal = 2
 grow_vertical = 2
 split_offset = 400
