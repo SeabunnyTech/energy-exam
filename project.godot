@@ -26,7 +26,7 @@ ScreenshotTool="*res://globals/screenshot_tool.gd"
 [display]
 
 window/size/viewport_width=2880
-window/size/viewport_height=1920
+window/size/viewport_height=1620
 
 [input]
 
