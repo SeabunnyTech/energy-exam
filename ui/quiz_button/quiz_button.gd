@@ -12,8 +12,21 @@ const INCORRECT_COLOR := Color(0.8, 0.3, 0.2, 1.0) # Red
 
 @onready var disabled_stylebox = get_theme_stylebox("disabled")
 
+const _WRONG_BUS := "WrongSFX_PitchComp"
+
 func _ready() -> void:
 	pressed.connect(_on_pressed)
+	_init_wrong_sfx_bus()
+
+func _init_wrong_sfx_bus() -> void:
+	if AudioServer.get_bus_index(_WRONG_BUS) == -1:
+		AudioServer.add_bus()
+		var idx := AudioServer.bus_count - 1
+		AudioServer.set_bus_name(idx, _WRONG_BUS)
+		var fx := AudioEffectPitchShift.new()
+		fx.pitch_scale = 1.0 / 1.5  # 補償 1.5x 速度造成的音高上升
+		AudioServer.add_bus_effect(idx, fx)
+	$wrong_sfx.bus = _WRONG_BUS
 
 
 # 當按鈕被按下時調用
