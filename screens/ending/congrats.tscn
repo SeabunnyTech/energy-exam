@@ -25,7 +25,7 @@ anchor_bottom = 0.21
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 75
 text = "恭喜你完成挑戰!"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -40,7 +40,7 @@ anchor_bottom = 0.35364583
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 45
 text = "請掃描QR Code 
 選擇喜愛圖框上傳照片分享好友!"
 horizontal_alignment = 1
@@ -74,7 +74,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 38
 text = "OK"
 metadata/_edit_use_anchors_ = true
 

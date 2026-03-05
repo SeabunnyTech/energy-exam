@@ -101,13 +101,13 @@ func _add_option_editor(text: String = "", is_correct: bool = false):
 	var option_num = option_editors.size() + 1
 
 	var hbox = HBoxContainer.new()
-	hbox.add_theme_constant_override("separation", 10)
+	hbox.add_theme_constant_override("separation", 8)
 
 	# 選項編號 + 正確答案選擇
 	var radio = CheckBox.new()
 	radio.text = "%d." % option_num
 	radio.button_pressed = is_correct
-	radio.add_theme_font_size_override("font_size", 26)
+	radio.add_theme_font_size_override("font_size", 20)
 	radio.toggled.connect(_on_answer_toggled.bind(option_num - 1))
 	hbox.add_child(radio)
 
@@ -115,15 +115,15 @@ func _add_option_editor(text: String = "", is_correct: bool = false):
 	var edit = LineEdit.new()
 	edit.text = text
 	edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	edit.custom_minimum_size = Vector2(0, 50)
-	edit.add_theme_font_size_override("font_size", 26)
+	edit.custom_minimum_size = Vector2(0, 38)
+	edit.add_theme_font_size_override("font_size", 20)
 	edit.placeholder_text = "選項內容..."
 	hbox.add_child(edit)
 
 	# 刪除按鈕
 	var del_btn = Button.new()
 	del_btn.text = "X"
-	del_btn.custom_minimum_size = Vector2(50, 50)
+	del_btn.custom_minimum_size = Vector2(38, 38)
 	del_btn.pressed.connect(_on_delete_option.bind(option_num - 1))
 	hbox.add_child(del_btn)
 

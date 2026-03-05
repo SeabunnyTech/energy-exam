@@ -3,17 +3,6 @@ extends BaseScreen
 var map_name
 var topic
 
-var tex_path = {
-	'wind': "res://screens/ending/苗栗離岸風電.jpg",
-	'geothermal': "res://screens/ending/仁澤地熱發電廠.jpg",
-	'solar': "res://screens/ending/台中太陽能.jpg",
-	'solar_ground': "res://screens/ending/台中太陽能.jpg",
-	'solar_roof': "res://screens/ending/台中太陽能.jpg",
-	'hydro': "res://screens/ending/鯉魚潭.jpg",
-	'energy_storage': "res://screens/quiz/photo/energy_storage.jpg",
-}
-
-const MISSING_TEXTURE_MSG = "[缺少圖片] 請為主題 '%s' 添加圖片到 tex_path"
 const MISSING_POLICY_MSG = "[缺少政策文字] 請在 GameState.load_policy() 中為 map='%s', topic='%s' 添加內容"
 
 
@@ -22,17 +11,6 @@ func on_pre_enter(param):
 	map_name = param['map_name']
 	topic = param['topic']
 
-	# 容錯：載入圖片
-	if tex_path.has(topic) and tex_path[topic] != null:
-		var tex = load(tex_path[topic])
-		if tex:
-			$Control/TextureRect.texture = tex
-		else:
-			push_warning(MISSING_TEXTURE_MSG % topic)
-	else:
-		push_warning(MISSING_TEXTURE_MSG % topic)
-		$Control/TextureRect.texture = null
-
 	# 容錯：載入政策文字
 	var policy_text = _safe_load_policy(map_name, topic)
 	$GuideLabel.text = policy_text
@@ -40,14 +18,19 @@ func on_pre_enter(param):
 
 
 func _ready() -> void:
-	ui_to_fade = [$GuideLabel, $GoalImage, %LeaveButton, $Control]
+	ui_to_fade = [$GuideLabel, %BackToMapButton, %LeaveButton]
 
 	%LeaveButton.pressed.connect(_on_leave_pressed)
+	%BackToMapButton.pressed.connect(_on_back_to_map_pressed)
 	reset()
 
 
 func _on_leave_pressed():
 	leave_for_screen('congrats')
+
+
+func _on_back_to_map_pressed():
+	leave_for_screen('map_changing', {'map_name': map_name})
 
 
 func _safe_load_policy(p_map_name: String, p_topic: String) -> String:

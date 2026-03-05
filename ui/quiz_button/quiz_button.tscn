@@ -8,25 +8,25 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0870"]
 bg_color = Color(1, 1, 1, 0.4509804)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 80
-corner_radius_top_right = 80
-corner_radius_bottom_right = 80
-corner_radius_bottom_left = 80
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 
 [node name="QuizButton" type="Button"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -2160.0
-offset_bottom = -1299.0
+offset_right = -1620.0
+offset_bottom = -974.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_f5ya4")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = ExtResource("2_s51xa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_y0870")
 theme_override_styles/hover = ExtResource("2_s51xa")

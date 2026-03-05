@@ -5,6 +5,7 @@ extends BaseScreen
 @onready var title = $Title
 @onready var guide = $GuideLabel
 @onready var page_dots = $PageDots
+@onready var panel = $Panel
 
 var dot_style_active: StyleBoxFlat
 var dot_style_inactive: StyleBoxFlat
@@ -20,16 +21,26 @@ func _ready():
 	button.pressed.connect(_on_button_pressed)
 	initial_button_position_y = button.position.y
 	ui_to_fade = [self, title, guide, button]
+	_enforce_panel_square()
 
 	dot_style_active = StyleBoxFlat.new()
 	dot_style_active.bg_color = Color(0.2, 0.2, 0.2, 1)
-	dot_style_active.set_corner_radius_all(12)
+	dot_style_active.set_corner_radius_all(9)
 
 	dot_style_inactive = StyleBoxFlat.new()
 	dot_style_inactive.bg_color = Color(0.7, 0.7, 0.7, 1)
-	dot_style_inactive.set_corner_radius_all(12)
+	dot_style_inactive.set_corner_radius_all(9)
 
 	reset()
+
+
+func _enforce_panel_square():
+	var vp = get_viewport_rect().size
+	var panel_width = (panel.anchor_right - panel.anchor_left) * vp.x
+	var center_y = (panel.anchor_top + panel.anchor_bottom) / 2.0
+	var half_height = (panel_width / vp.y) / 2.0
+	panel.anchor_top = center_y - half_height
+	panel.anchor_bottom = center_y + half_height
 
 
 func on_pre_enter(_param):

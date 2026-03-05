@@ -9,18 +9,18 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w0i8"]
 bg_color = Color(0, 0, 0, 0.43529412)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 80
-corner_radius_top_right = 80
-corner_radius_bottom_right = 80
-corner_radius_bottom_left = 80
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_68r2w"]
-font_size = 120
-outline_size = 10
+font_size = 90
+outline_size = 8
 outline_color = Color(1, 1, 1, 0.43137255)
 stacked_outline_count = 1
 stacked_outline_0/color = Color(1, 1, 1, 0.23529412)
@@ -90,7 +90,7 @@ anchor_right = 0.94
 anchor_bottom = 0.75
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 38
 text = "你體驗過新竹的大風嗎?
 如果你曾經被新竹的大風吹到站不穩而印象深刻
 那麼台灣海峽上空三倍速率的強風絕對會讓你更加驚嘆喔!"
@@ -110,7 +110,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_m8oqg")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = ExtResource("3_7vwis")
 theme_override_styles/pressed = ExtResource("4_pbshd")
 theme_override_styles/hover = ExtResource("4_pbshd")

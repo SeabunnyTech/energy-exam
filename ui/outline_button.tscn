@@ -6,17 +6,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ycl8"]
 bg_color = Color(1, 1, 1, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 55
-corner_radius_top_right = 55
-corner_radius_bottom_right = 55
-corner_radius_bottom_left = 55
+corner_radius_top_left = 41
+corner_radius_top_right = 41
+corner_radius_bottom_right = 41
+corner_radius_bottom_left = 41
 shadow_color = Color(0.03, 0.03, 0.03, 0)
-shadow_size = 15
+shadow_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63whc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -25,17 +25,17 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 42
-corner_radius_top_right = 42
-corner_radius_bottom_right = 42
-corner_radius_bottom_left = 42
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmuo3"]
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 39
-corner_radius_top_right = 39
-corner_radius_bottom_right = 39
-corner_radius_bottom_left = 39
+corner_radius_top_left = 29
+corner_radius_top_right = 29
+corner_radius_bottom_right = 29
+corner_radius_bottom_left = 29
 
 [sub_resource type="Gradient" id="Gradient_twblg"]
 colors = PackedColorArray(0.355, 0.71, 0.44375, 1, 0.2555, 0.4532, 0.73, 1)
@@ -54,24 +54,24 @@ gradient = SubResource("Gradient_twblg")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0g72q"]
 
 [node name="OutlineButton" type="PanelContainer"]
-offset_right = 184.0
-offset_bottom = 105.0
+offset_right = 138.0
+offset_bottom = 79.0
 pivot_offset = Vector2(294.5, 74)
 theme_override_styles/panel = SubResource("StyleBoxFlat_8ycl8")
 script = ExtResource("1_ssvtk")
 spacing_color = Color(1, 1, 1, 0)
 glow_color = Color(0.03, 0.03, 0.03, 0)
-text_margin_left = 60
-text_margin_right = 60
-text_margin_top = 15
-text_margin_bottom = 15
+text_margin_left = 45
+text_margin_right = 45
+text_margin_top = 11
+text_margin_bottom = 11
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -94,15 +94,15 @@ texture = SubResource("GradientTexture1D_uo0y8")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 11
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_wu0au")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 60
 text = "Button Text"
 horizontal_alignment = 1
 

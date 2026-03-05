@@ -26,13 +26,13 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.041667
 grow_horizontal = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
 [node name="TitleLabel" type="Label" parent="TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 36
 text = "後台管理"
 vertical_alignment = 1
 
@@ -41,23 +41,23 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.2, 0.6, 0.2, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SaveButton" type="Button" parent="TopBar"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "儲存"
 
 [node name="ReturnButton" type="Button" parent="TopBar"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "返回遊戲"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
@@ -68,16 +68,16 @@ anchor_right = 1.0
 anchor_bottom = 0.989583
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 400
+split_offset = 300
 
 [node name="NavPanel" type="PanelContainer" parent="HSplitContainer"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="NavTree" type="Tree" parent="HSplitContainer/NavPanel"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 
 [node name="EditorPanel" type="PanelContainer" parent="HSplitContainer"]
 layout_mode = 2

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://0x0rwxyg52od"]
+[gd_scene load_steps=3 format=3 uid="uid://0x0rwxyg52od"]
 
 [ext_resource type="Script" uid="uid://dr6ix05ckb071" path="res://screens/ending/policy.gd" id="1_mpu76"]
 [ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_u2qgy"]
-[ext_resource type="Texture2D" uid="uid://5vhc43v26xkx" path="res://screens/opening/能源轉型多元目標1.png" id="4_goal"]
 
 [node name="PolicyScreen" type="Control"]
 layout_mode = 3
@@ -13,35 +12,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mpu76")
 
-[node name="GoalImage" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.36447918
-anchor_right = 0.55
-anchor_bottom = 0.786875
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_goal")
-expand_mode = 1
-stretch_mode = 6
-metadata/_edit_use_anchors_ = true
-
 [node name="GuideLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.16354166
-anchor_right = 0.55
-anchor_bottom = 0.44625
+anchor_top = 0.08
+anchor_right = 0.95
+anchor_bottom = 0.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 36
 text = "政策文字"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="BackToMapButton" parent="." instance=ExtResource("3_u2qgy")]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.82
+anchor_right = 0.2
+anchor_bottom = 0.82
+theme_override_font_sizes/font_size = 34
+text = "還想了解其他設施"
 metadata/_edit_use_anchors_ = true
 
 [node name="LeaveButton" parent="." instance=ExtResource("3_u2qgy")]
@@ -49,32 +47,10 @@ unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.26510417
-anchor_top = 0.797917
-anchor_right = 0.33489582
-anchor_bottom = 0.855729
-theme_override_font_sizes/font_size = 50
+anchor_left = 0.8
+anchor_top = 0.82
+anchor_right = 0.8
+anchor_bottom = 0.82
+theme_override_font_sizes/font_size = 34
 text = "我瞭解了!"
 metadata/_edit_use_anchors_ = true
-
-[node name="Control" type="Control" parent="."]
-clip_contents = true
-layout_mode = 1
-anchor_left = 0.59765625
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.481775
-anchor_top = -0.027083335
-anchor_right = 2.070658
-anchor_bottom = 1.0395833
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true

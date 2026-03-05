@@ -11,25 +11,25 @@ content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(1, 1, 1, 1)
 border_blend = true
-corner_radius_top_left = 400
-corner_radius_top_right = 400
-corner_radius_bottom_right = 400
-corner_radius_bottom_left = 400
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_active"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_inactive"]
 bg_color = Color(0.7, 0.7, 0.7, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
 
 [node name="IntroScreen" type="Control"]
 layout_mode = 3
@@ -50,7 +50,7 @@ anchor_bottom = 0.8411458
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 36
 text = "歡迎參與能源轉型互動體驗遊戲！
 本遊戲結合聲光效果的數位互動展具，
 透過操作與問答，帶領你認識我國能源轉型的多元面向，
@@ -69,8 +69,8 @@ anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
-text = "歡迎來到能源轉型問答聲光互動遊戲! (Energy Quiz)"
+theme_override_font_sizes/font_size = 60
+text = "歡迎來到 Energy Quiz 源來如此互動遊戲"
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
@@ -113,7 +113,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 45
 text = "下一步"
 metadata/_edit_use_anchors_ = true
 
@@ -126,21 +126,21 @@ anchor_right = 0.520833
 anchor_bottom = 0.9325
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Dot1" type="Panel" parent="PageDots"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dot_active")
 
 [node name="Dot2" type="Panel" parent="PageDots"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dot_inactive")
 
 [node name="Dot3" type="Panel" parent="PageDots"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dot_inactive")

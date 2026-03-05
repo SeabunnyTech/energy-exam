@@ -3,7 +3,8 @@ extends BaseScreen
 
 @onready var button = $StartButton
 @onready var title = $Title
-#@onready var guide = $Control/GuideLabel
+@onready var panel = $Panel
+@onready var panel2 = $Panel2
 
 var beat_tween: Tween
 var initial_button_position_y: float
@@ -16,7 +17,19 @@ func _ready():
 	button.pressed.connect(_on_enter_map_button_pressed)
 	initial_button_position_y = button.position.y # Initialize here
 	ui_to_fade = [self, title, button]
+	_enforce_panel_square()
 	reset()
+
+
+func _enforce_panel_square():
+	var vp = get_viewport_rect().size
+	var panel_width = (panel.anchor_right - panel.anchor_left) * vp.x
+	var center_y = (panel.anchor_top + panel.anchor_bottom) / 2.0
+	var half_height = (panel_width / vp.y) / 2.0
+	panel.anchor_top = center_y - half_height
+	panel.anchor_bottom = center_y + half_height
+	panel2.anchor_top = panel.anchor_top
+	panel2.anchor_bottom = panel.anchor_bottom
 
 
 func on_pre_enter(_param):

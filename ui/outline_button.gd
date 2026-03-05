@@ -11,13 +11,13 @@ signal pressed
 		if label: label.text = text
 
 ## The master corner radius for all borders and backgrounds.
-@export_range(0, 100, 1) var corner_radius: int = 55:
+@export_range(0, 100, 1) var corner_radius: int = 41:
 	set(value):
 		corner_radius = value
 		_update_appearance()
 
 ## The width of the outermost border line.
-@export_range(0, 20, 1) var outer_border_width: int = 3:
+@export_range(0, 20, 1) var outer_border_width: int = 2:
 	set(value):
 		outer_border_width = value
 		_update_appearance()
@@ -29,7 +29,7 @@ signal pressed
 		_update_appearance()
 
 ## The spacing between the outer and inner borders.
-@export_range(0, 20, 1) var border_spacing: int = 10:
+@export_range(0, 20, 1) var border_spacing: int = 8:
 	set(value):
 		border_spacing = value
 		_update_appearance()
@@ -41,7 +41,7 @@ signal pressed
 		_update_appearance()
 
 ## The width of the inner border line.
-@export_range(0, 20, 1) var inner_border_width: int = 3:
+@export_range(0, 20, 1) var inner_border_width: int = 2:
 	set(value):
 		inner_border_width = value
 		_update_appearance()
@@ -65,7 +65,7 @@ signal pressed
 		_update_appearance()
 
 ## The size of the outer border's glow effect.
-@export_range(0, 50, 1) var outer_outline_glow_size: int = 15:
+@export_range(0, 50, 1) var outer_outline_glow_size: int = 11:
 	set(value):
 		outer_outline_glow_size = value
 		_update_appearance()
@@ -79,19 +79,19 @@ signal pressed
 
 # The padding around the text label.
 @export_group("Text Margins")
-@export var text_margin_left: int = 100:
+@export var text_margin_left: int = 75:
 	set(value):
 		text_margin_left = value
 		_update_appearance()
-@export var text_margin_right: int = 100:
+@export var text_margin_right: int = 75:
 	set(value):
 		text_margin_right = value
 		_update_appearance()
-@export var text_margin_top: int = 10:
+@export var text_margin_top: int = 8:
 	set(value):
 		text_margin_top = value
 		_update_appearance()
-@export var text_margin_bottom: int = 10:
+@export var text_margin_bottom: int = 8:
 	set(value):
 		text_margin_bottom = value
 		_update_appearance()

@@ -6,28 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://back_icon_button" path="res://screens/button_style/back_icon_button.tscn" id="8_back"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thlpt"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7aevs"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1121"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwjvs"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [node name="MapScreen" type="Control"]
 layout_mode = 3

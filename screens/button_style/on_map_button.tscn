@@ -9,7 +9,7 @@ clip_contents = false
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_eqdsw")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 45
 text = "On Map"
 script = ExtResource("1_1pt4i")
 

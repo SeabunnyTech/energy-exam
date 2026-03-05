@@ -15,22 +15,22 @@ class_name OnMapButton
 		border_color = value
 		if _background:
 			_background.queue_redraw()
-@export var border_width: float = 3.0:
+@export var border_width: float = 2.0:
 	set(value):
 		border_width = value
 		if _background:
 			_background.queue_redraw()
-@export var corner_radius: float = 30.0:
+@export var corner_radius: float = 23.0:
 	set(value):
 		corner_radius = value
 		if _background:
 			_background.queue_redraw()
-@export var pointer_size: Vector2 = Vector2(60, 40):
+@export var pointer_size: Vector2 = Vector2(45, 30):
 	set(value):
 		pointer_size = value
 		if _background:
 			_background.queue_redraw()
-@export var padding: Vector2 = Vector2(90, 35)
+@export var padding: Vector2 = Vector2(68, 26)
 
 var _background: Control = null
 var _original_bg_color: Color

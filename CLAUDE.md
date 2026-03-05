@@ -8,7 +8,7 @@ EnergyExam is a Godot 4.5 educational game about renewable energy in Taiwan. It 
 
 - **Engine**: Godot 4.5 (GL Compatibility)
 - **Language**: GDScript
-- **Resolution**: 2880x1920
+- **Resolution**: 1920x1080
 
 ## Development Commands
 

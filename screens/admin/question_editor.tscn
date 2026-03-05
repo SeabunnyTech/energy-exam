@@ -18,40 +18,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 11
 
 [node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer/TopBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 27
 text = "題庫"
 
 [node name="AddButton" type="Button" parent="VBoxContainer/TopBar"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(113, 38)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "新增題目"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 400
+split_offset = 300
 
 [node name="ListPanel" type="PanelContainer" parent="VBoxContainer/HSplitContainer"]
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(263, 0)
 layout_mode = 2
 
 [node name="QuestionList" type="ItemList" parent="VBoxContainer/HSplitContainer/ListPanel"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 
 [node name="DetailPanel" type="Control" parent="VBoxContainer/HSplitContainer"]
 unique_name_in_owner = true
@@ -70,46 +70,46 @@ horizontal_scroll_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
 [node name="TitleSection" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/TitleSection"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "題目標題"
 
 [node name="QuestionTitleEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/TitleSection"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 placeholder_text = "輸入題目標題..."
 
 [node name="ContentSection" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/ContentSection"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "問題內容"
 
 [node name="ContentEdit" type="TextEdit" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/ContentSection"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 placeholder_text = "輸入問題內容..."
 wrap_mode = 1
 
 [node name="OptionsSection" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/OptionsSection"]
 layout_mode = 2
@@ -118,20 +118,20 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "選項 (勾選正確答案)"
 
 [node name="AddOptionButton" type="Button" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/OptionsSection"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 40)
+custom_minimum_size = Vector2(90, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "+新增選項"
 
 [node name="OptionsContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/OptionsSection"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="ButtonSection" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -139,8 +139,8 @@ alignment = 2
 
 [node name="DeleteButton" type="Button" parent="VBoxContainer/HSplitContainer/DetailPanel/ScrollContainer/VBoxContainer/ButtonSection"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(113, 38)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.2, 0.2, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "刪除此題"

@@ -169,7 +169,7 @@ func _animate_button_selection():
 		var tween = create_tween()
 		var init_y = pressed_button.position.y
 		# 跳躍動畫
-		tween.tween_property(pressed_button, "position:y", init_y - 30, 0.12).set_ease(Tween.EASE_OUT)
+		tween.tween_property(pressed_button, "position:y", init_y - 23, 0.12).set_ease(Tween.EASE_OUT)
 		tween.tween_property(pressed_button, "position:y", init_y, 0.12).set_ease(Tween.EASE_IN)
 		# 跳躍後淡出
 		tween.tween_property(pressed_button, "modulate:a", 0.0, 0.15)

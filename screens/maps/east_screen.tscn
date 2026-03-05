@@ -1,33 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkoiq0e3uauie"]
+[gd_scene load_steps=9 format=3 uid="uid://bkoiq0e3uauie"]
 
 [ext_resource type="Script" uid="uid://kf15h3xpgqs" path="res://screens/maps/east_screen.gd" id="1_1ta68"]
 [ext_resource type="Texture2D" uid="uid://ujtcci35ycyr" path="res://screens/maps/east.jpg" id="2_1ta68"]
 [ext_resource type="PackedScene" uid="uid://b5kqoy1ol2mnq" path="res://screens/button_style/on_map_button.tscn" id="3_4gef3"]
-[ext_resource type="PackedScene" uid="uid://back_icon_button" path="res://screens/button_style/back_icon_button.tscn" id="4_back"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ta68"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+[ext_resource type="PackedScene" path="res://screens/button_style/back_icon_button.tscn" id="4_back"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdln4"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gef3"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cxekx"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfy3n"]
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [node name="MapScreen" type="Control"]
 layout_mode = 3
@@ -55,26 +55,26 @@ anchor_left = 0.19570312
 anchor_top = 0.54305553
 anchor_right = 0.33632812
 anchor_bottom = 0.61319447
-theme_override_styles/normal = SubResource("StyleBoxEmpty_1ta68")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_1ta68")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_1ta68")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ta68")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1ta68")
-text = "水力發電"
-metadata/_edit_use_anchors_ = true
-
-[node name="GeothermalButton" parent="." instance=ExtResource("3_4gef3")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.69375
-anchor_top = 0.10208333
-anchor_right = 0.8394531
-anchor_bottom = 0.17222223
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cdln4")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_cdln4")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_cdln4")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_cdln4")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cdln4")
+text = "小水力發電"
+metadata/_edit_use_anchors_ = true
+
+[node name="GeothermalButton" parent="." instance=ExtResource("3_4gef3")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6923611
+anchor_top = 0.1425926
+anchor_right = 0.83819443
+anchor_bottom = 0.22345679
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4gef3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4gef3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4gef3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gef3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4gef3")
 text = "地熱發電"
 metadata/_edit_use_anchors_ = true
 
@@ -85,26 +85,26 @@ anchor_left = 0.69023436
 anchor_top = 0.5229167
 anchor_right = 0.90117186
 anchor_bottom = 0.59305555
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4gef3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_4gef3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_4gef3")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gef3")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4gef3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cxekx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cxekx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cxekx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cxekx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cxekx")
 text = "屋頂型太陽能板"
 metadata/_edit_use_anchors_ = true
 
 [node name="EnergyStorageButton" parent="." instance=ExtResource("3_4gef3")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.428906
-anchor_top = 0.437934
-anchor_right = 0.553906
-anchor_bottom = 0.490538
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cxekx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_cxekx")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_cxekx")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_cxekx")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_cxekx")
+anchor_left = 0.40347221
+anchor_top = 0.4271605
+anchor_right = 0.54930556
+anchor_bottom = 0.5080247
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hfy3n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hfy3n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hfy3n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hfy3n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hfy3n")
 text = "儲能設施"
 metadata/_edit_use_anchors_ = true
 
@@ -120,5 +120,3 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 0

@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_cr1ej")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 44
 text = "臺灣各地已發展多種不同的能源設施，蘊藏許多再生能源發展潛力
 請點選你想要挑戰的地理環境"
 horizontal_alignment = 1
@@ -53,7 +53,7 @@ anchor_right = 0.930556
 anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 45
 alignment = 1
 
 [node name="MapCard" parent="HBoxContainer" instance=ExtResource("4_mej0n")]

@@ -1,27 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqx7akbefkcrn"]
+[gd_scene load_steps=8 format=3 uid="uid://cqx7akbefkcrn"]
 
 [ext_resource type="Script" uid="uid://b0ynk0inhvoqr" path="res://screens/maps/west_screen.gd" id="1_8e5lm"]
 [ext_resource type="Texture2D" uid="uid://djpp7rb7w47iy" path="res://screens/maps/west.jpg" id="2_8e5lm"]
 [ext_resource type="PackedScene" uid="uid://b5kqoy1ol2mnq" path="res://screens/button_style/on_map_button.tscn" id="3_y22tb"]
-[ext_resource type="PackedScene" uid="uid://back_icon_button" path="res://screens/button_style/back_icon_button.tscn" id="4_back"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e5lm"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+[ext_resource type="PackedScene" path="res://screens/button_style/back_icon_button.tscn" id="4_back"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_upmrt"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y22tb"]
-content_margin_left = 90.0
-content_margin_top = 35.0
-content_margin_right = 90.0
-content_margin_bottom = 35.0
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hqiqo"]
+content_margin_left = 68.0
+content_margin_top = 26.0
+content_margin_right = 68.0
+content_margin_bottom = 26.0
 
 [node name="MapScreen" type="Control"]
 layout_mode = 3
@@ -50,11 +50,11 @@ anchor_left = 0.65703124
 anchor_top = 0.16041666
 anchor_right = 0.79765624
 anchor_bottom = 0.23055555
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8e5lm")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_8e5lm")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_8e5lm")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_8e5lm")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8e5lm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_upmrt")
 text = "水力發電"
 metadata/_edit_use_anchors_ = true
 
@@ -65,11 +65,11 @@ anchor_left = 0.10507812
 anchor_top = 0.2888889
 anchor_right = 0.31601563
 anchor_bottom = 0.35902777
-theme_override_styles/normal = SubResource("StyleBoxEmpty_upmrt")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_upmrt")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_upmrt")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_upmrt")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_upmrt")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y22tb")
 text = "地面型太陽能板"
 metadata/_edit_use_anchors_ = true
 
@@ -80,11 +80,11 @@ anchor_left = 0.722266
 anchor_top = 0.540017
 anchor_right = 0.847266
 anchor_bottom = 0.592622
-theme_override_styles/normal = SubResource("StyleBoxEmpty_y22tb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_y22tb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_y22tb")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_y22tb")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y22tb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hqiqo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hqiqo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hqiqo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hqiqo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hqiqo")
 text = "儲能設施"
 metadata/_edit_use_anchors_ = true
 
@@ -100,5 +100,3 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 0

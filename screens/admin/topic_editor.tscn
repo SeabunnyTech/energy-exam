@@ -18,13 +18,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 27
 text = "編輯主題"
 
 [node name="TitleSection" type="VBoxContainer" parent="VBoxContainer"]
@@ -34,14 +34,14 @@ theme_override_constants/separation = 5
 [node name="Label" type="Label" parent="VBoxContainer/TitleSection"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "主題標題"
 
 [node name="TitleEdit" type="LineEdit" parent="VBoxContainer/TitleSection"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 placeholder_text = "輸入主題標題..."
 
 [node name="GuideSection" type="VBoxContainer" parent="VBoxContainer"]
@@ -52,14 +52,14 @@ theme_override_constants/separation = 5
 [node name="Label" type="Label" parent="VBoxContainer/GuideSection"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "引導文字"
 
 [node name="GuideEdit" type="TextEdit" parent="VBoxContainer/GuideSection"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 placeholder_text = "輸入引導文字..."
 wrap_mode = 1
 
@@ -71,13 +71,13 @@ theme_override_constants/separation = 5
 [node name="Label" type="Label" parent="VBoxContainer/PolicySection"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 21
 text = "政策說明"
 
 [node name="PolicyEdit" type="TextEdit" parent="VBoxContainer/PolicySection"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 placeholder_text = "輸入政策說明..."
 wrap_mode = 1

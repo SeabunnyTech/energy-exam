@@ -45,7 +45,13 @@
       "Bash(dirname:*)",
       "Bash(powershell -Command:*)",
       "Bash(copy \"doc\\\\policies.docx\" \"C:\\\\Users\\\\User\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-User-Documents-GitHub-energy-exam\\\\9ecb6b26-0b40-464c-a5db-f771f235ae75\\\\scratchpad\\\\policies.zip\")",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "WebSearch",
+      "Bash(cd C:/Users/User/Documents/GitHub/energy-exam && godot --screenshots all 2>&1)",
+      "Bash(cd C:/Users/User/Documents/GitHub/energy-exam && godot --screenshots pre_quiz:solar_ground 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\User\\\\Documents\\\\GitHub\\\\energy-exam\" && \"C:/Users/User/Documents/Godot/godot\" --path . --screenshots policy 2>&1)",
+      "Bash(cd /c/Users/User/Documents/GitHub/energy-exam && godot --path . --screenshots all 2>&1)",
+      "Bash(cd \"C:/Users/User/Documents/Projects/energy-exam\" && godot --screenshots all 2>&1)"
     ]
   }
 }

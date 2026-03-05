@@ -84,6 +84,8 @@ func _ready() -> void:
 
 	if _runs.is_empty():
 		push_warning("[ScreenshotTool] 沒有有效的截圖目標，結束")
+		await get_tree().create_timer(0.1).timeout
+		get_tree().quit()
 		return
 
 	print("[ScreenshotTool] 截圖排程：%d 組" % _runs.size())
@@ -103,12 +105,22 @@ func _add_all_runs() -> void:
 			_runs.append({"map": map_name, "topic": info["topic"], "button": info["button"]})
 
 
-## 將指定主題涉及的所有地圖加入 _runs
+## 將指定主題涉及的所有地圖加入 _runs（不重複）
 func _add_runs_for_topic(topic: String) -> void:
 	for map_name in MAP_TOPICS:
 		for info in MAP_TOPICS[map_name]:
 			if info["topic"] == topic:
-				_runs.append({"map": map_name, "topic": topic, "button": info["button"]})
+				var run = {"map": map_name, "topic": topic, "button": info["button"]}
+				if not _has_run(run):
+					_runs.append(run)
+
+
+## 檢查 _runs 中是否已有相同的 map+topic 組合
+func _has_run(run: Dictionary) -> bool:
+	for existing in _runs:
+		if existing["map"] == run["map"] and existing["topic"] == run["topic"]:
+			return true
+	return false
 
 
 ## 解析命令列參數，建立 _runs 清單與 _screen_filter
@@ -116,6 +128,9 @@ func _parse_args(screenshots_arg: String) -> void:
 	if screenshots_arg.to_lower() == "all":
 		_add_all_runs()
 		return
+
+	# 先收集純篩選類型（不帶冒號的 screen type），最後再決定是否需要 _add_all_runs
+	var filter_only_types: Array[String] = []
 
 	for part in screenshots_arg.split(","):
 		var trimmed = part.strip_edges()
@@ -125,8 +140,14 @@ func _parse_args(screenshots_arg: String) -> void:
 			var left = parts[0]
 			var right = parts[1]
 
-			if SCREEN_TYPES.has(left):
-				# screen_type:topic 格式（如 pre_quiz:wind, policy:solar_ground）
+			if SCREEN_TYPES.has(left) and MAP_TOPICS.has(right):
+				# screen_type:map_name 格式（如 map:west, map:coast）
+				if not _screen_filter.has(left):
+					_screen_filter.append(left)
+				for info in MAP_TOPICS[right]:
+					_runs.append({"map": right, "topic": info["topic"], "button": info["button"]})
+			elif SCREEN_TYPES.has(left):
+				# screen_type:topic 格式（如 pre_quiz:hydro, policy:solar_ground）
 				if not _screen_filter.has(left):
 					_screen_filter.append(left)
 				_add_runs_for_topic(right)
@@ -140,10 +161,10 @@ func _parse_args(screenshots_arg: String) -> void:
 				push_warning("[ScreenshotTool] 未知參數：%s" % trimmed)
 
 		elif SCREEN_TYPES.has(trimmed):
-			# 畫面類型篩選（如 pre_quiz, policy）
+			# 純畫面類型篩選（如 select_map, pre_quiz）
 			if not _screen_filter.has(trimmed):
 				_screen_filter.append(trimmed)
-			_add_all_runs()
+			filter_only_types.append(trimmed)
 
 		elif MAP_TOPICS.has(trimmed):
 			# 地圖全部能源（如 coast）
@@ -152,6 +173,10 @@ func _parse_args(screenshots_arg: String) -> void:
 
 		else:
 			push_warning("[ScreenshotTool] 未知參數：%s" % trimmed)
+
+	# 如果只有純篩選類型而沒有其他帶 topic 的 runs，才加入全部 runs
+	if not filter_only_types.is_empty() and _runs.is_empty():
+		_add_all_runs()
 
 
 ## 預計算全域編號（模擬 all 的完整流程順序）

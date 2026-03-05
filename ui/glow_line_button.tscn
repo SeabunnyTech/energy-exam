@@ -10,17 +10,17 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 44
-corner_radius_top_right = 44
-corner_radius_bottom_right = 44
-corner_radius_bottom_left = 44
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_448hf"]
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 43
-corner_radius_top_right = 43
-corner_radius_bottom_right = 43
-corner_radius_bottom_left = 43
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="Gradient" id="Gradient_0g72q"]
 colors = PackedColorArray(0.355, 0.71, 0.44375, 1, 0.2555, 0.4532, 0.73, 1)
@@ -49,10 +49,10 @@ script = ExtResource("1_gqccf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -74,15 +74,15 @@ texture = SubResource("GradientTexture1D_ru7wj")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_1su2o")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 60
 text = "Button Text"
 horizontal_alignment = 1
 
