@@ -12,10 +12,10 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 80
-corner_radius_top_right = 80
-corner_radius_bottom_right = 80
-corner_radius_bottom_left = 80
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mo8v"]
@@ -24,14 +24,14 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6rhq"]
@@ -40,15 +40,15 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 60
-corner_radius_top_right = 60
-corner_radius_bottom_right = 60
-corner_radius_bottom_left = 60
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lpv3"]
@@ -57,26 +57,26 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 corner_detail = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_o04c3"]
 font = ExtResource("2_x82q0")
-font_size = 235
+font_size = 176
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbu53"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 3
+border_width_left = 2
 border_color = Color(1, 1, 1, 1)
-expand_margin_left = 55.0
+expand_margin_left = 41.0
 
 [node name="QuizScreen" type="Control"]
 layout_mode = 3
@@ -127,17 +127,21 @@ anchor_left = 0.085
 anchor_top = 0.064
 anchor_right = 0.915
 anchor_bottom = 0.5
+offset_top = 19.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6rhq")
 
 [node name="Panel" type="Panel" parent="Panel/Panel/Panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01034
-anchor_top = 0.02629
-anchor_right = 0.98966
-anchor_bottom = 0.97371
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8lpv3")
@@ -161,7 +165,7 @@ anchor_left = 0.07
 anchor_top = 0.07
 anchor_right = 0.07
 anchor_bottom = 0.07
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "離岸風電政策與社會溝通"
 
 [node name="Q_content" type="Label" parent="Panel/Panel/Panel/Panel"]
@@ -175,7 +179,7 @@ anchor_bottom = 0.898
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_x82q0")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxFlat_dbu53")
 text = "台灣海峽是一個風力資源非常充沛的地區，世界前 50 名的風場，將近一半都位在台灣西部，清問該地區適合發展哪一種類型的再生能源？"
 autowrap_mode = 2
@@ -186,6 +190,8 @@ anchor_left = 0.095
 anchor_top = 0.555
 anchor_right = 0.905
 anchor_bottom = 0.935
+offset_top = -31.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -193,28 +199,36 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.39
-anchor_bottom = 0.433
+anchor_bottom = 0.4665
+offset_right = 0.0
+offset_bottom = 0.0
 text = "生質能發電"
 
 [node name="Button2" parent="Panel/FourAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.61
-anchor_bottom = 0.433
+anchor_bottom = 0.4665
+offset_right = 0.0
+offset_bottom = 0.0
 text = "氫能發電"
 
 [node name="Button3" parent="Panel/FourAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.567
+anchor_top = 0.5335
 anchor_right = 0.39
+offset_right = 0.0
+offset_bottom = 0.0
 text = "太陽能發電"
 
 [node name="Button4" parent="Panel/FourAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.61
-anchor_top = 0.567
+anchor_top = 0.5335
+offset_right = 0.0
+offset_bottom = 0.0
 text = "離岸風力發電"
 
 [node name="TwoAnswerContainer" type="Control" parent="Panel"]
@@ -223,6 +237,8 @@ anchor_left = 0.095
 anchor_top = 0.555
 anchor_right = 0.905
 anchor_bottom = 0.935
+offset_top = -31.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -231,13 +247,17 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_right = 0.8
-anchor_bottom = 0.433
+anchor_bottom = 0.4665
+offset_right = 0.0
+offset_bottom = 0.0
 text = "生質能發電"
 
 [node name="Button2" parent="Panel/TwoAnswerContainer" instance=ExtResource("3_x82q0")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
-anchor_top = 0.567
+anchor_top = 0.5335
 anchor_right = 0.8
+offset_right = 0.0
+offset_bottom = 0.0
 text = "太陽能發電"
