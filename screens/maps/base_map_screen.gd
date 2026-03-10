@@ -3,6 +3,7 @@ extends BaseScreen
 class_name BaseMapScreen
 
 var buttons: Array = []
+var button_topics: Dictionary = {}  # {Button: {map_name, topic}}
 var idle_timer: Timer
 
 
@@ -26,13 +27,24 @@ func _setup_buttons():
 
 func set_input_enable(enable: bool):
 	for button in buttons:
-		button.disabled = not enable
+		if enable and _is_topic_completed(button):
+			button.disabled = true
+		else:
+			button.disabled = not enable
 
 	if enable:
 		idle_timer.start()
 		_on_idle_timer_timeout()
 	else:
 		idle_timer.stop()
+
+
+func _is_topic_completed(button) -> bool:
+	if button not in button_topics:
+		return false
+	var info = button_topics[button]
+	var score = GameState.get_topic_score(info['map_name'], info['topic'])
+	return score['answered'] > 0
 
 
 func _on_idle_timer_timeout():
@@ -74,6 +86,9 @@ func _wait_for_camera_almost_ready():
 func reset():
 	for btn in buttons:
 		btn.reset()
+		# 已答過的主題保持 disabled
+		if _is_topic_completed(btn):
+			btn.disabled = true
 
 
 # 覆寫進場動畫，加快按鈕浮現速度

@@ -165,7 +165,7 @@ anchor_left = 0.07
 anchor_top = 0.07
 anchor_right = 0.07
 anchor_bottom = 0.07
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "離岸風電政策與社會溝通"
 
 [node name="Q_content" type="Label" parent="Panel/Panel/Panel/Panel"]
@@ -179,9 +179,9 @@ anchor_bottom = 0.898
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_x82q0")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_dbu53")
-text = "台灣海峽是一個風力資源非常充沛的地區，世界前 50 名的風場，將近一半都位在台灣西部，清問該地區適合發展哪一種類型的再生能源？"
+text = "台灣海峽是一個風力資源非常充沛的地區"
 autowrap_mode = 2
 
 [node name="FourAnswerContainer" type="Control" parent="Panel"]

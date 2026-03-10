@@ -32,6 +32,7 @@ func on_pre_enter(param):
 func reset():
 	super.reset()
 	index = 0
+	got_wrong = false
 	reset_buttons()
 
 
@@ -94,11 +95,23 @@ func load_next_question():
 	fade_all(1.0, 0.3, 0.1)
 
 
+var got_wrong := false  # 當題是否按過錯誤選項
+
 func answered(is_correct):
-	# 計分
-	GameState.push_score(map_name, topic, is_correct)
-	if is_correct:
+	if not is_correct:
+		# 按錯：標記該題得 0 分，按鈕自行淡出，等玩家繼續嘗試
+		got_wrong = true
+		return
+
+	# 按對：disable 其他選項
+	for btn in answer_container.get_children():
+		btn.disabled = true
+
+	# 計分（如果按過錯的就給 0 分）
+	GameState.push_score(map_name, topic, not got_wrong)
+	if not got_wrong:
 		self._super_scene.current_map.boost_facility(topic)
+	got_wrong = false
 
 	var new_index = index + 1
 

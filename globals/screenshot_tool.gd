@@ -202,9 +202,6 @@ func _build_numbering() -> void:
 		if not seen.has("welcome"):
 			seen["welcome"] = true
 			idx += 1; _all_numbering["welcome"] = idx
-		if not seen.has("energy_goal"):
-			seen["energy_goal"] = true
-			idx += 1; _all_numbering["energy_goal"] = idx
 		if not seen.has("intro"):
 			seen["intro"] = true
 			for p in range(intro_page_count):
@@ -245,8 +242,6 @@ func _calc_expected_captures() -> int:
 		# 共用畫面（只計一次）
 		if not seen.has("welcome") and _should_capture("welcome"):
 			seen["welcome"] = true; count += 1
-		if not seen.has("energy_goal") and _should_capture("energy_goal"):
-			seen["energy_goal"] = true; count += 1
 		if not seen.has("intro") and _should_capture("intro"):
 			seen["intro"] = true; count += intro_page_count
 		if not seen.has("select_map") and _should_capture("select_map"):
@@ -305,12 +300,6 @@ func _run_cycle(map_name: String, topic: String, topic_button: String, is_last: 
 	needs = _needs_capture_once("welcome", "welcome")
 	await _wait_for_screen("welcome", needs)
 	if needs: await _capture_once("welcome")
-	if _is_done(): return
-	_press_button("StartButton")
-
-	needs = _needs_capture_once("energy_goal", "energy_goal")
-	await _wait_for_screen("energy_goal", needs)
-	if needs: await _capture_once("energy_goal")
 	if _is_done(): return
 	_press_button("StartButton")
 
@@ -519,11 +508,11 @@ func _handle_quiz(prefix: String) -> void:
 		if needs:
 			await _numbered_capture("%s_quiz_%d" % [prefix, i + 1])
 
-		# 找到可用的答案按鈕並作答
+		# 找到正確答案按鈕並作答
 		var container = screen.answer_container
 		if container:
 			for child in container.get_children():
-				if not child.disabled:
+				if child is QuizButton and child.is_correct_answer and not child.disabled:
 					print("[ScreenshotTool] 作答第 %d 題" % (i + 1))
 					child.pressed.emit()
 					break

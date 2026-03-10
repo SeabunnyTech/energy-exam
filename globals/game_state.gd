@@ -4,6 +4,7 @@ extends Node
 ## 現在使用 ContentLoader 讀取政策和主題資料
 
 var scores_in_topics = reset_scores.duplicate(true)
+var total_score: int = 0
 
 const reset_scores = {
 	'coast' : {
@@ -27,6 +28,7 @@ const reset_scores = {
 
 func reset_all_scores():
 	scores_in_topics = reset_scores.duplicate(true)
+	total_score = 0
 
 
 func get_topic_score(map_name:String, topic:String):
@@ -44,6 +46,7 @@ func push_score(map_name:String, topic:String, is_correct:bool):
 	records['answered'] += 1
 	if is_correct:
 		records['correct'] += 1
+		total_score += 1
 
 func load_policy(map_name: String, topic: String):
 	# 使用 ContentLoader 讀取政策文字

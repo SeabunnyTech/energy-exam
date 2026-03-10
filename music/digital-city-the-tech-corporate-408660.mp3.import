@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/digital-city-the-tech-corporate-408660.mp3-58
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

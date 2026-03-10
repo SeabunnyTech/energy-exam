@@ -4,11 +4,8 @@ extends BaseScreen
 @onready var button = $StartButton
 @onready var title = $Title
 @onready var guide = $GuideLabel
-@onready var page_dots = $PageDots
+@onready var hint = $HintLabel
 @onready var panel = $Panel
-
-var dot_style_active: StyleBoxFlat
-var dot_style_inactive: StyleBoxFlat
 
 var beat_tween: Tween
 var initial_button_position_y: float
@@ -20,17 +17,8 @@ var pages: Array = []
 func _ready():
 	button.pressed.connect(_on_button_pressed)
 	initial_button_position_y = button.position.y
-	ui_to_fade = [self, title, guide, button]
+	ui_to_fade = [self, title, guide, hint, button]
 	_enforce_panel_square()
-
-	dot_style_active = StyleBoxFlat.new()
-	dot_style_active.bg_color = Color(0.2, 0.2, 0.2, 1)
-	dot_style_active.set_corner_radius_all(9)
-
-	dot_style_inactive = StyleBoxFlat.new()
-	dot_style_inactive.bg_color = Color(0.7, 0.7, 0.7, 1)
-	dot_style_inactive.set_corner_radius_all(9)
-
 	reset()
 
 
@@ -44,7 +32,6 @@ func _enforce_panel_square():
 
 
 func on_pre_enter(_param):
-	# 從 ContentLoader 載入頁面內容
 	pages = ContentLoader.get_intro_pages()
 	current_page = 0
 	guide.modulate.a = 1.0
@@ -53,13 +40,6 @@ func on_pre_enter(_param):
 
 func _update_page():
 	guide.text = pages[current_page]
-
-	for i in page_dots.get_child_count():
-		var dot = page_dots.get_child(i)
-		if i == current_page:
-			dot.add_theme_stylebox_override("panel", dot_style_active)
-		else:
-			dot.add_theme_stylebox_override("panel", dot_style_inactive)
 
 	if current_page < pages.size() - 1:
 		button.text = "下一步"

@@ -31,26 +31,31 @@ texture = ExtResource("2_rptjb")
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.197917
-anchor_top = 0.883854
-anchor_right = 0.802083
-anchor_bottom = 0.946875
+anchor_left = 0.1
+anchor_top = 0.04
+anchor_right = 0.9
+anchor_bottom = 0.12
+offset_left = -2.0
+offset_top = 42.8
+offset_right = 2.0
+offset_bottom = 42.800003
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_cr1ej")
 theme_override_font_sizes/font_size = 44
-text = "臺灣各地已發展多種不同的能源設施，蘊藏許多再生能源發展潛力
-請點選你想要挑戰的地理環境"
+text = "台灣各地蘊藏許多再生能源，各有不同的發展潛力，請點選您想要挑戰的地圖。"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.069444
-anchor_top = 0.05
+anchor_top = 0.14
 anchor_right = 0.930556
-anchor_bottom = 0.8
+anchor_bottom = 0.88
+offset_top = 42.800003
+offset_bottom = 42.799988
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 45
@@ -71,8 +76,8 @@ map_texture = ExtResource("5_x668e")
 
 [node name="MapCard3" parent="HBoxContainer" instance=ExtResource("4_mej0n")]
 layout_mode = 2
-title = "東部淺山"
-guide = "東部淺山具地熱潛力，可發展地熱發電，結合屋頂太陽能與儲能提升韌性。"
+title = "東部縱谷"
+guide = "東部縱谷具地熱潛力，可發展地熱發電，結合屋頂太陽能與儲能提升韌性。"
 map_name = "east"
 map_texture = ExtResource("6_2ultx")
 

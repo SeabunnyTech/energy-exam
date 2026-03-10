@@ -22,6 +22,8 @@ ContentLoader="*res://globals/content_loader.gd"
 GameState="*res://globals/game_state.gd"
 QuestionReader="*res://globals/question_reader.gd"
 ScreenshotTool="*res://globals/screenshot_tool.gd"
+TestTool="*res://globals/test_tool.gd"
+RecordTool="*res://globals/record_tool.gd"
 
 [display]
 

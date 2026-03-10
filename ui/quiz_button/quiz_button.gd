@@ -31,41 +31,35 @@ func _init_wrong_sfx_bus() -> void:
 
 # 當按鈕被按下時調用
 func _on_pressed():
-	var sfx = $wrong_sfx
-	
-	# 關鍵改動：獲取現有的 disabled 樣式，而不是創建全新的
-	var base_style = disabled_stylebox
-	
-	# 檢查樣式是否存在，並且是我們可以修改顏色的 StyleBoxFlat
-	if base_style and base_style is StyleBoxFlat:
-		# 複製樣式，這樣我們就能在不影響原始主題的情況下修改它
-		var new_style: StyleBoxFlat = base_style.duplicate()
-		
-		# 根據答案正確與否，設定副本的背景顏色
-		if is_correct_answer:
-			sfx = $success_sfx
-			new_style.bg_color = CORRECT_COLOR
-		else:
-			new_style.bg_color = INCORRECT_COLOR
-		
-		# 將修改後的樣式副本套用為 disabled 狀態的覆蓋樣式
-		add_theme_stylebox_override("disabled", new_style)
+	if is_correct_answer:
+		# 正確：顯示綠色、播放成功音效、通知父節點
+		_show_disabled_color(CORRECT_COLOR)
+		$success_sfx.play()
+		disabled = true
+		answered.emit(true)
 	else:
-		# 如果沒有可複製的樣式，提供一個降級方案 (雖然不太可能發生)
-		printerr("找不到 'disabled' 狀態的 StyleBoxFlat，無法變更顏色。")
+		# 錯誤：變紅、播放錯誤音效、再淡出按鈕
+		_show_disabled_color(INCORRECT_COLOR)
+		disabled = true
+		$wrong_sfx.play()
+		answered.emit(false)
+		var tween = create_tween()
+		tween.tween_interval(0.3)
+		tween.tween_property(self, "modulate:a", 0.0, 0.3)
 
-	# 播放音效
-	sfx.play()
-	# 發送信號，告知父節點答案是否正確
-	answered.emit(is_correct_answer)
-	
-	# 回答後禁用按鈕，使其顯示 disabled 狀態的樣式
-	disabled = true
+
+func _show_disabled_color(color: Color):
+	var base_style = disabled_stylebox
+	if base_style and base_style is StyleBoxFlat:
+		var new_style: StyleBoxFlat = base_style.duplicate()
+		new_style.bg_color = color
+		add_theme_stylebox_override("disabled", new_style)
 
 
 # 從外部調用此函數以重置按鈕狀態
 func reset():
 	# 恢復預設外觀
 	add_theme_stylebox_override("disabled", disabled_stylebox)
+	modulate.a = 1.0
 	# 重新啟用按鈕，為下一題做準備
 	disabled = false

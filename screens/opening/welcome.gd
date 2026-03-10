@@ -2,51 +2,66 @@ extends BaseScreen
 
 
 @onready var button = $StartButton
-@onready var title = $Title
-@onready var panel = $Panel
-@onready var panel2 = $Panel2
+@onready var bg_video: VideoStreamPlayer = $BgVideo
 
 var beat_tween: Tween
+var video_fade_tween: Tween
 var initial_button_position_y: float
 
 @export var idle_music: AudioStream
 
+const FADE_DURATION := 0.8
+const VIDEO_DURATION := 12.9
 
 
 func _ready():
 	button.pressed.connect(_on_enter_map_button_pressed)
-	initial_button_position_y = button.position.y # Initialize here
-	ui_to_fade = [self, title, button]
-	_enforce_panel_square()
+	initial_button_position_y = button.position.y
+	ui_to_fade = [self, button]
+	bg_video.finished.connect(_on_video_finished)
 	reset()
 
 
-func _enforce_panel_square():
-	var vp = get_viewport_rect().size
-	var panel_width = (panel.anchor_right - panel.anchor_left) * vp.x
-	var center_y = (panel.anchor_top + panel.anchor_bottom) / 2.0
-	var half_height = (panel_width / vp.y) / 2.0
-	panel.anchor_top = center_y - half_height
-	panel.anchor_bottom = center_y + half_height
-	panel2.anchor_top = panel.anchor_top
-	panel2.anchor_bottom = panel.anchor_bottom
+func _process(_delta):
+	if not bg_video.is_playing():
+		return
+	var pos = bg_video.stream_position
+	if pos >= VIDEO_DURATION - FADE_DURATION:
+		_start_fade_out()
+
+
+func _start_fade_out():
+	if video_fade_tween and video_fade_tween.is_valid():
+		return
+	video_fade_tween = create_tween()
+	video_fade_tween.tween_property(bg_video, "modulate:a", 0.0, FADE_DURATION)
+
+
+func _on_video_finished():
+	bg_video.modulate.a = 0.0
+	bg_video.play()
+	if video_fade_tween and video_fade_tween.is_valid():
+		video_fade_tween.kill()
+	video_fade_tween = create_tween()
+	video_fade_tween.tween_property(bg_video, "modulate:a", 1.0, FADE_DURATION)
 
 
 func on_pre_enter(_param):
 	GlobalAudioPlayer.play_music(idle_music, 1.)
 	GameState.reset_all_scores()
+	bg_video.modulate.a = 1.0
+	bg_video.play()
 
 
 func start_beat_animation():
 	if beat_tween and beat_tween.is_valid():
-		return # Animation is already running
+		return
 
 	button.pivot_offset = button.size / 2
 	beat_tween = create_tween().set_loops()
 
 	var jump_duration = 0.1
 
-	# Phase 1: Scale up and Move up (parallel)
 	beat_tween.tween_property(button, "scale", Vector2(1.03, 1.03), jump_duration)\
 			  .set_trans(Tween.TRANS_SINE)\
 			  .set_ease(Tween.EASE_OUT)
@@ -54,22 +69,20 @@ func start_beat_animation():
 			  .tween_property(button, "position:y", initial_button_position_y - 5, jump_duration)\
 			  .set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-	# Phase 2: Scale down and Move down (parallel, chained after Phase 1)
 	beat_tween.chain().tween_property(button, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	beat_tween.parallel().tween_property(button, "position:y", initial_button_position_y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
-	# Phase 3: Interval (chained after Phase 2)
 	beat_tween.chain().tween_interval(1.2)
 
 
 func stop_beat_animation():
 	if not beat_tween:
 		return
-	
+
 	beat_tween.kill()
 	beat_tween = null
 	button.scale = Vector2(1.0, 1.0)
-	button.position.y = initial_button_position_y # Reset position
+	button.position.y = initial_button_position_y
 
 
 func set_input_enable(enable):
@@ -82,4 +95,4 @@ func set_input_enable(enable):
 
 
 func _on_enter_map_button_pressed():
-	leave_for_screen("energy_goal")
+	leave_for_screen("intro")

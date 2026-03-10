@@ -1,8 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dpsqk5gq8gyg8"]
 
 [ext_resource type="Script" uid="uid://cigy26cvtnpuc" path="res://screens/opening/intro.gd" id="1_bvr78"]
+[ext_resource type="Texture2D" uid="uid://bgioyw6mvrmw5" path="res://screens/opening/intro_bg.png" id="2_bgimg"]
 [ext_resource type="VideoStream" uid="uid://cwk1otrc0atuo" path="res://screens/opening/temp.ogv" id="3_bvr78"]
 [ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_xpbca"]
+[ext_resource type="StyleBox" path="res://screens/button_style/white_button.tres" id="5_white"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nphfg"]
 content_margin_left = 0.0
@@ -17,20 +19,6 @@ corner_radius_bottom_right = 300
 corner_radius_bottom_left = 300
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_active"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
-corner_radius_top_left = 9
-corner_radius_top_right = 9
-corner_radius_bottom_right = 9
-corner_radius_bottom_left = 9
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_inactive"]
-bg_color = Color(0.7, 0.7, 0.7, 1)
-corner_radius_top_left = 9
-corner_radius_top_right = 9
-corner_radius_bottom_right = 9
-corner_radius_bottom_left = 9
-
 [node name="IntroScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -40,47 +28,58 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bvr78")
 
-[node name="GuideLabel" type="Label" parent="."]
+[node name="BgImage" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.103472225
-anchor_top = 0.29895833
-anchor_right = 0.57569444
-anchor_bottom = 0.8411458
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "歡迎參與能源轉型互動體驗遊戲！
-本遊戲結合聲光效果的數位互動展具，
-透過操作與問答，帶領你認識我國能源轉型的多元面向，
-了解各類再生能源的特色，
-以及政府在推動過程中所採取的政策與解決方案，
-一起思考如何透過能源轉型減少溫室氣體排放。"
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("2_bgimg")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.15
-anchor_right = 1.0
-anchor_bottom = 0.2
+anchor_left = 0.102604166
+anchor_top = 0.12777779
+anchor_right = 0.6610625
+anchor_bottom = 0.22777778
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-text = "歡迎來到 Energy Quiz 源來如此互動遊戲"
+theme_override_font_sizes/font_size = 72
+text = "歡迎來到Energy Quiz 問答遊戲"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="GuideLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104166664
+anchor_top = 0.2777778
+anchor_right = 0.5771666
+anchor_bottom = 0.81777775
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "為了達成2050年淨零排放目標，發展低碳能源是重要的一步。
+在這個遊戲中，您可以透過趣味問答，一起認識各種再生能源的特色，了解我國未來能源發展的多元面貌。
+
+一起來體驗吧~"
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
 clip_children = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.587847
-anchor_top = 0.3
-anchor_right = 0.865625
-anchor_bottom = 0.716667
+anchor_left = 0.6166667
+anchor_top = 0.2175926
+anchor_right = 0.89444464
+anchor_bottom = 0.71759295
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nphfg")
@@ -100,47 +99,42 @@ autoplay = true
 loop = true
 metadata/_edit_lock_ = true
 
-[node name="StartButton" parent="." instance=ExtResource("3_xpbca")]
-unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
+[node name="HintLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.708333
-anchor_top = 0.836849
-anchor_right = 0.869444
-anchor_bottom = 0.89987
+anchor_left = 0.103
+anchor_top = 0.7953704
+anchor_right = 0.7
+anchor_bottom = 0.8553704
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "完成後您將可獲得精美照相圖框，可自製個人化照片喔~"
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" parent="." instance=ExtResource("3_xpbca")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.675
+anchor_top = 0.8257669
+anchor_right = 0.836111
+anchor_bottom = 0.9109521
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-text = "下一步"
+theme_override_styles/normal = ExtResource("5_white")
+theme_override_styles/pressed = ExtResource("5_white")
+theme_override_styles/hover = ExtResource("5_white")
+theme_override_styles/disabled = ExtResource("5_white")
+theme_override_styles/focus = ExtResource("5_white")
+text = "開始"
 metadata/_edit_use_anchors_ = true
-
-[node name="PageDots" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.479167
-anchor_top = 0.92
-anchor_right = 0.520833
-anchor_bottom = 0.9325
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Dot1" type="Panel" parent="PageDots"]
-custom_minimum_size = Vector2(18, 18)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dot_active")
-
-[node name="Dot2" type="Panel" parent="PageDots"]
-custom_minimum_size = Vector2(18, 18)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dot_inactive")
-
-[node name="Dot3" type="Panel" parent="PageDots"]
-custom_minimum_size = Vector2(18, 18)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dot_inactive")

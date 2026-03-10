@@ -89,7 +89,6 @@ func set_input_enable(enable):
 func _on_enter_map_button_pressed():
 	var sfx:AudioStreamPlayer = $AudioStreamPlayer
 	sfx.play()
-	GlobalAudioPlayer.fade_out(1.0)
 	leave_for_screen("quiz", {'map_name':map_name, 'topic':topic, 'index':0})
 
 

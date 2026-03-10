@@ -3,6 +3,11 @@ extends BaseMapScreen
 
 func _setup_buttons():
 	buttons = [$GroundSolarButton, $HydroPowerButton, $EnergyStorageButton]
+	button_topics = {
+		$GroundSolarButton: {'map_name': 'west', 'topic': 'solar_ground'},
+		$HydroPowerButton: {'map_name': 'west', 'topic': 'hydro'},
+		$EnergyStorageButton: {'map_name': 'west', 'topic': 'energy_storage'},
+	}
 	ui_to_fade = buttons + [%BackButton]
 	$GroundSolarButton.pressed.connect(_on_solar_pressed)
 	$HydroPowerButton.pressed.connect(_on_hydro_pressed)
