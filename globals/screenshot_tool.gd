@@ -284,6 +284,7 @@ func _start_capture() -> void:
 		await _run_cycle(run["map"], run["topic"], run["button"], is_last)
 
 	print("[ScreenshotTool] 全部截圖完成，共 %d 張" % _capture_count)
+	OS.shell_open(ProjectSettings.globalize_path("res://screenshots"))
 	get_tree().quit()
 
 
