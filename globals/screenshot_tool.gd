@@ -63,6 +63,8 @@ var _expected_captures: int = 0
 
 var _is_active: bool = false
 var _super_scene: Node = null
+var _quit_on_finish: bool = false
+var _screenshots_dir: String = ""
 
 
 func _ready() -> void:
@@ -78,6 +80,7 @@ func _ready() -> void:
 		return
 
 	_is_active = true
+	_quit_on_finish = true
 	print("[ScreenshotTool] 截圖模式啟動，參數：%s" % screenshots_arg)
 
 	_parse_args(screenshots_arg)
@@ -95,6 +98,34 @@ func _ready() -> void:
 		print("[ScreenshotTool] 篩選畫面類型：%s" % str(_screen_filter))
 
 	await get_tree().create_timer(1.0).timeout
+	_start_capture()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if _is_active:
+		return
+	# Ctrl+1/2/3/4 觸發截圖
+	if event is InputEventKey and event.pressed and event.ctrl_pressed:
+		match event.keycode:
+			KEY_1: _trigger_screenshots("all")
+			KEY_2: _trigger_screenshots("coast")
+			KEY_3: _trigger_screenshots("west")
+			KEY_4: _trigger_screenshots("east")
+
+
+## 從遊戲中觸發截圖（快捷鍵用）
+func _trigger_screenshots(arg: String) -> void:
+	_is_active = true
+	_quit_on_finish = false
+	_runs.clear()
+	_screen_filter.clear()
+	_captured.clear()
+	_all_numbering.clear()
+	_capture_count = 0
+	_expected_captures = 0
+
+	print("[ScreenshotTool] Ctrl 快捷鍵觸發截圖：%s" % arg)
+	_parse_args(arg)
 	_start_capture()
 
 
@@ -273,7 +304,13 @@ func _start_capture() -> void:
 	_build_numbering()
 	_expected_captures = _calc_expected_captures()
 	print("[ScreenshotTool] 預期截圖：%d 張" % _expected_captures)
-	DirAccess.make_dir_recursive_absolute("res://screenshots")
+
+	# 截圖存放位置：exe 旁邊的 screenshots 資料夾（編輯器中用 res://）
+	if OS.has_feature("editor"):
+		_screenshots_dir = ProjectSettings.globalize_path("res://screenshots")
+	else:
+		_screenshots_dir = OS.get_executable_path().get_base_dir().path_join("screenshots")
+	DirAccess.make_dir_recursive_absolute(_screenshots_dir)
 
 	for i in range(_runs.size()):
 		if _is_done():
@@ -284,8 +321,11 @@ func _start_capture() -> void:
 		await _run_cycle(run["map"], run["topic"], run["button"], is_last)
 
 	print("[ScreenshotTool] 全部截圖完成，共 %d 張" % _capture_count)
-	OS.shell_open(ProjectSettings.globalize_path("res://screenshots"))
-	get_tree().quit()
+	OS.shell_open(_screenshots_dir)
+	if _quit_on_finish:
+		get_tree().quit()
+	else:
+		_is_active = false
 
 
 ## 是否已截完所有需要的圖
@@ -398,7 +438,7 @@ func _capture_once(capture_name: String) -> void:
 func _do_capture(filename: String) -> void:
 	await RenderingServer.frame_post_draw
 	var image = get_viewport().get_texture().get_image()
-	var file_path: String = "res://screenshots/%s.png" % filename
+	var file_path: String = _screenshots_dir.path_join("%s.png" % filename)
 	var error = image.save_png(file_path)
 	if error == OK:
 		print("[ScreenshotTool] 截圖已儲存：%s" % file_path)
