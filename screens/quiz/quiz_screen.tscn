@@ -182,7 +182,7 @@ theme_override_fonts/font = ExtResource("2_x82q0")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_dbu53")
 text = "台灣海峽是一個風力資源非常充沛的地區"
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="FourAnswerContainer" type="Control" parent="Panel"]
 layout_mode = 1
