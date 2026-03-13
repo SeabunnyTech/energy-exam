@@ -51,7 +51,21 @@
       "Bash(cd C:/Users/User/Documents/GitHub/energy-exam && godot --screenshots pre_quiz:solar_ground 2>&1)",
       "Bash(cd \"C:\\\\Users\\\\User\\\\Documents\\\\GitHub\\\\energy-exam\" && \"C:/Users/User/Documents/Godot/godot\" --path . --screenshots policy 2>&1)",
       "Bash(cd /c/Users/User/Documents/GitHub/energy-exam && godot --path . --screenshots all 2>&1)",
-      "Bash(cd \"C:/Users/User/Documents/Projects/energy-exam\" && godot --screenshots all 2>&1)"
+      "Bash(cd \"C:/Users/User/Documents/Projects/energy-exam\" && godot --screenshots all 2>&1)",
+      "Bash(which ffmpeg:*)",
+      "Bash(pip install:*)",
+      "Bash(\"$FFMPEG\":*)",
+      "Bash(git:*)",
+      "Bash(while read f)",
+      "Bash(do stat -c \"%Y %n\" \"D:/Projects/energy-exam/screenshots/$f\" done)",
+      "Bash(cd /d/Projects/energy-exam && /c/Users/User/Downloads/Godot_v4.5-rc3_win64.exe --headless --screenshots all 2>&1)",
+      "Bash(cd /d/Projects/energy-exam && godot --test quick 2>&1)",
+      "Bash(cd /d/Projects/energy-exam && godot --run-tests quick 2>&1)",
+      "Bash(start:*)",
+      "Bash(cd \"D:/Projects/energy-exam\" && python3 -c \"\nimport sys\nsys.stdout.reconfigure\\(encoding='utf-8'\\)\nfrom docx import Document\ndoc = Document\\('tmp/互動遊戲問答內容 0205v3.docx'\\)\nfor i, table in enumerate\\(doc.tables\\):\n    print\\(f'=== Table {i} ==='\\)\n    for row in table.rows:\n        cells = [cell.text.strip\\(\\) for cell in row.cells]\n        print\\(' | '.join\\(cells\\)\\)\n    print\\(\\)\n\" 2>&1)",
+      "Bash(cd \"D:/Projects/energy-exam\" && godot --screenshots all 2>&1)",
+      "Bash(cd \"D:/Projects/energy-exam\" && godot --export-debug \"Windows Desktop\" test_run.exe 2>&1)",
+      "Bash(cd \"D:/Projects/energy-exam\" && ./test_run.exe --screenshots all 2>&1)"
     ]
   }
 }

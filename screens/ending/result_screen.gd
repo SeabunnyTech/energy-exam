@@ -8,8 +8,8 @@ func on_pre_enter(param):
 	map_name = param['map_name']
 	topic = param['topic']
 	var score = GameState.get_topic_score(map_name, topic)['correct']
-	%score.text = "你獲得了 " + str(score) + " 點積分"
-	%total_score.text = "累計積分：" + str(GameState.total_score)
+	%score.text = "您答對了 " + str(score) + " 題"
+	%total_score.text = "累計答對 " + str(GameState.total_score) + " 題"
 	# print(questions)
 
 
