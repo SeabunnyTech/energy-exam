@@ -3,6 +3,11 @@ extends BaseScreen
 var map_name
 var topic
 
+var celebration_frames: Array[Texture2D] = []
+var celebration_durations := [0.2, 0.2, 0.1]  # seconds per frame
+var current_frame := 0
+var frame_timer := 0.0
+
 
 func on_enter(_param):
 	pass
@@ -12,8 +17,21 @@ func on_enter(_param):
 func _ready() -> void:
 	ui_to_fade = [$GuideLabel, $GuideLabel2, %LeaveButton, $TextureRect, $QRCodeRect]
 
+	for i in 3:
+		celebration_frames.append(load("res://screens/ending/celebration/frame_%d.png" % i))
+
 	%LeaveButton.pressed.connect(_on_leave_pressed)
 	reset()
+
+
+func _process(delta):
+	if celebration_frames.is_empty():
+		return
+	frame_timer += delta
+	if frame_timer >= celebration_durations[current_frame]:
+		frame_timer = 0.0
+		current_frame = (current_frame + 1) % celebration_frames.size()
+		$TextureRect.texture = celebration_frames[current_frame]
 
 
 func _on_leave_pressed():

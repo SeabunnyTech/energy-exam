@@ -42,9 +42,9 @@ func _update_page():
 	guide.text = pages[current_page]
 
 	if current_page < pages.size() - 1:
-		button.text = "下一步"
+		button.text = "下一頁"
 	else:
-		button.text = "開始"
+		button.text = "下一頁"
 
 
 func start_beat_animation():
