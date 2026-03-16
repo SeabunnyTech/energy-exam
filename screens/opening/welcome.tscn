@@ -1,10 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7e5aoaa24bb0"]
+[gd_scene load_steps=7 format=3 uid="uid://c7e5aoaa24bb0"]
 
 [ext_resource type="Script" uid="uid://bc8mogyf4gfqb" path="res://screens/opening/welcome.gd" id="1_x2pcs"]
 [ext_resource type="AudioStream" uid="uid://cwo0hfyolqqyh" path="res://music/smart-sparks-436614.mp3" id="2_1bms1"]
-[ext_resource type="VideoStream" uid="uid://5egmnjh3i7la" path="res://screens/opening/welcome_bg.ogv" id="3_gnp13"]
+[ext_resource type="VideoStream" uid="uid://cwk1otrc0atuo" path="res://screens/opening/temp.ogv" id="3_gnp13"]
 [ext_resource type="PackedScene" uid="uid://djt008fka1ggk" path="res://screens/button_style/okay_button.tscn" id="3_xhiol"]
 [ext_resource type="StyleBox" path="res://screens/button_style/white_button.tres" id="5_white"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnp13"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhiol"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
+corner_detail = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
 [node name="WelcomeScreen" type="Control"]
 layout_mode = 3
@@ -16,15 +51,59 @@ grow_vertical = 2
 script = ExtResource("1_x2pcs")
 idle_music = ExtResource("2_1bms1")
 
-[node name="BgVideo" type="VideoStreamPlayer" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.07
+anchor_right = 0.5
+anchor_bottom = 0.14
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "歡迎來到 Energy Quiz 源來如此！"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37
+anchor_top = 0.254
+anchor_right = 0.63
+anchor_bottom = 0.716
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnp13")
+metadata/_edit_use_anchors_ = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.2075
+anchor_top = -0.19875
+anchor_right = 1.1925
+anchor_bottom = 1.15125
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("3_gnp13")
 autoplay = true
+loop = true
+metadata/_edit_lock_ = true
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37
+anchor_top = 0.254
+anchor_right = 0.63
+anchor_bottom = 0.716
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xhiol")
+metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" parent="." instance=ExtResource("3_xhiol")]
 layout_mode = 1
