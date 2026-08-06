@@ -36,6 +36,8 @@ git clone https://github.com/SeabunnyTech/energy-exam.git
 git clone https://github.com/SeabunnyTech/EnergyCityMaps_TRI.git
 ```
 
+兩個 repo 的預設分支就是最新版本，不需要切換分支。
+
 完成後結構應該是這樣（兩個資料夾平行放置）：
 
 ```
@@ -46,23 +48,10 @@ D:\Projects\
 
 ---
 
-## 步驟 2：切換到 `16x9` 分支（重要，別跳過）
+## 步驟 2：確認 LFS 素材真的下載下來了
 
 ```
-cd energy-exam
-git checkout 16x9
-```
-
-預設的 `main` 分支是舊版本，最新的 1920x1080 版面與所有近期修改都在 `16x9` 分支上。
-
-驗證：`git branch --show-current` 要顯示 `16x9`。
-
----
-
-## 步驟 3：確認 LFS 素材真的下載下來了
-
-```
-cd ..\EnergyCityMaps_TRI
+cd EnergyCityMaps_TRI
 git lfs pull
 ```
 
@@ -72,7 +61,7 @@ git lfs pull
 
 ---
 
-## 步驟 4：建立 `maps` 連結（最關鍵的一步）
+## 步驟 3：建立 `maps` 連結（最關鍵的一步）
 
 `energy-exam` 的程式用 `res://maps/...` 這種路徑讀取地圖，但 `maps` 資料夾**不在** energy-exam repo 裡，必須連結到另一個 repo 的 `maps` 子資料夾。
 
@@ -82,9 +71,10 @@ git lfs pull
 2. 目標是 `EnergyCityMaps_TRI\maps` 這個**子資料夾**，不是 repo 根目錄
 3. 用 junction（`/J`）**不需要管理員權限**；用 `/D` 才需要
 
-**Windows**（在 `energy-exam` 目錄下，一般命令提示字元即可）：
+**Windows**（一般命令提示字元即可）：
 
 ```
+cd ..\energy-exam
 mklink /J maps ..\EnergyCityMaps_TRI\maps
 ```
 
@@ -97,6 +87,7 @@ mklink /J maps D:\Projects\EnergyCityMaps_TRI\maps
 **macOS / Linux**：
 
 ```
+cd ../energy-exam
 ln -s ../EnergyCityMaps_TRI/maps maps
 ```
 
@@ -112,7 +103,7 @@ dir maps\Scene
 
 ---
 
-## 步驟 5：開啟並執行
+## 步驟 4：開啟並執行
 
 用 **Godot 4.5** 開啟 `energy-exam\project.godot`。
 
@@ -124,18 +115,17 @@ dir maps\Scene
 
 | 症狀 | 原因與解法 |
 |---|---|
-| 地圖一片空白 / 模型破圖 / 貼圖全黑 | LFS 素材沒下載 → 回步驟 3 |
-| 報錯找不到 `res://maps/Scene/map_coast.tscn` | 連結沒建好或名稱錯 → 回步驟 4 |
+| 地圖一片空白 / 模型破圖 / 貼圖全黑 | LFS 素材沒下載 → 回步驟 2 |
+| 報錯找不到 `res://maps/Scene/map_coast.tscn` | 連結沒建好或名稱錯 → 回步驟 3 |
 | `mklink` 說權限不足 | 確認用的是 `/J` 不是 `/D` |
-| 資料夾搬家後突然跑不動 | junction 記的是絕對路徑。先 `rmdir maps`（這只會刪連結，不會刪素材），再重做步驟 4 |
+| 資料夾搬家後突然跑不動 | junction 記的是絕對路徑。先 `rmdir maps`（這只會刪連結，不會刪素材），再重做步驟 3 |
 | 匯出 Windows 執行檔 | Godot 編輯器 → 專案 → 匯出，使用 `export_presets.cfg` 內既有的預設 |
 
 ---
 
 ## 完成確認
 
-全部做完後，請回報以下三項是否都成立：
+全部做完後，請回報以下兩項是否都成立：
 
-1. `git branch --show-current` 在 energy-exam 顯示 `16x9`
-2. `energy-exam\maps\Scene\map_west.tscn` 存在且約 30 MB
-3. Godot 按 F5 能進入遊戲首頁，並且能點進地圖看到 3D 場景
+1. `energy-exam\maps\Scene\map_west.tscn` 存在且約 30 MB
+2. Godot 按 F5 能進入遊戲首頁，並且能點進地圖看到 3D 場景
