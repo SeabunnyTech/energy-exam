@@ -24,3 +24,11 @@ facilities/
 export/*
 *.exe
 screenshots/
+
+# Local build output (保留 .gdignore 讓 Godot 不去 import 匯出檔)
+bin/*
+!bin/.gdignore
+
+# 素材/文件暫存區、錄影檔
+tmp/
+*.avi
