@@ -60,13 +60,8 @@ func apply_language() -> void:
 	guide = Lang.t("map_%s_guide" % map_name)
 	button.text = Lang.t("select_map_button")
 
-	_set_anchors(title_label, TITLE_ANCHORS_EN if Lang.is_en() else TITLE_ANCHORS_ZH)
-	_set_anchors(guide_label, GUIDE_ANCHORS_EN if Lang.is_en() else GUIDE_ANCHORS_ZH)
-
-
-func _set_anchors(control: Control, anchors: Array) -> void:
-	for side in 4:
-		control.set_anchor(side, anchors[side], true, false)
+	Lang.set_anchors(title_label, TITLE_ANCHORS_ZH, TITLE_ANCHORS_EN)
+	Lang.set_anchors(guide_label, GUIDE_ANCHORS_ZH, GUIDE_ANCHORS_EN)
 
 
 ## 依卡片大小調整字級，需在排版完成後呼叫

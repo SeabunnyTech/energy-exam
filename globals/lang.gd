@@ -92,6 +92,13 @@ func _largest_fitting_size(control: Control, settings: LabelSettings, max_size: 
 	return min_size
 
 
+## 依語系切換版面範圍，anchors 順序為 [左, 上, 右, 下]（offset 不變）
+func set_anchors(control: Control, zh_anchors: Array, en_anchors: Array) -> void:
+	var anchors := en_anchors if is_en() else zh_anchors
+	for side in 4:
+		control.set_anchor(side, anchors[side], true, false)
+
+
 ## 元件依 anchor/offset 應有的大小（文字溢出時 Label 會被撐大，不能直接用 size）
 func _layout_size(control: Control) -> Vector2:
 	if control.get_parent() is Container:
@@ -127,17 +134,17 @@ const UI_TEXT := {
 	"map_coast_title": {"zh": "濱海城市", "en": "Coastal Cities"},
 	"map_coast_guide": {
 		"zh": "臨海城市風場佳、日照足\n配置離岸風電與地面/屋頂太陽能，搭配科技儲能穩定供電",
-		"en": "Taiwan Coastal cities have strong wind resources and abundant sunlight, making them suitable for deploying offshore wind power and ground-mounted/rooftop solar systems, combined with energy storage technologies to ensure a stable power supply.",
+		"en": "Strong winds and plenty of sunshine make coastal cities ideal for offshore wind, solar power and energy storage.",
 	},
 	"map_west_title": {"zh": "西部平原", "en": "Western Plains"},
 	"map_west_guide": {
 		"zh": "西部平原地勢開闊、灌溉水系多，適合地面太陽能與小水力發電，並以儲能調節尖離峰。",
-		"en": "Taiwan western plains have wide-open terrain and extensive irrigation systems, making them suitable for ground-mounted solar power and small hydropower generation, with energy storage used to balance peak and off-peak demand.",
+		"en": "Open terrain and irrigation channels suit ground-mounted solar and small hydropower, with storage balancing demand.",
 	},
 	"map_east_title": {"zh": "東部縱谷", "en": "Eastern Rift Valley"},
 	"map_east_guide": {
 		"zh": "東部縱谷具地熱潛力，可發展地熱發電，結合屋頂太陽能與儲能提升韌性。",
-		"en": "Taiwan eastern rift valley has geothermal potential and can be developed for geothermal power generation. By integrating rooftop solar and energy storage, overall energy resilience can be enhanced.",
+		"en": "Rich in geothermal potential, the valley also uses rooftop solar and energy storage to boost energy resilience.",
 	},
 	"loading": {"zh": "載入中", "en": "Loading"},
 
@@ -159,9 +166,9 @@ const UI_TEXT := {
 	"finish": {"zh": "完成", "en": "Finish"},
 
 	# 完成頁
-	"congrats_title": {"zh": "恭喜你完成挑戰!", "en": "Congratulations!"},
+	"congrats_title": {"zh": "恭喜你完成挑戰!", "en": "Congratulations on completing the challenge!"},
 	"congrats_guide": {
 		"zh": "請掃描QR Code \n選擇喜愛圖框上傳照片分享好友!",
-		"en": "You have completed the challenge!\nScan the QR code, pick your favorite frame and share your photo with friends!",
+		"en": "Scan the QR code, pick your favorite frame, and share your photo with friends.",
 	},
 }
