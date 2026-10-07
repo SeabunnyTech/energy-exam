@@ -14,6 +14,9 @@ func on_pre_enter(param):
 	# 容錯：載入政策文字
 	var policy_text = _safe_load_policy(map_name, topic)
 	$GuideLabel.text = policy_text
+	Lang.fit_font($GuideLabel, 36, 22)
+	%BackToMapButton.text = Lang.t("back_to_map")
+	%LeaveButton.text = Lang.t("finish")
 	self._super_scene.fade_curtain(1.0)
 
 

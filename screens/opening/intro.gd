@@ -32,19 +32,24 @@ func _enforce_panel_square():
 
 
 func on_pre_enter(_param):
-	pages = ContentLoader.get_intro_pages()
+	pages = ContentLoader.get_localized_intro_pages()
 	current_page = 0
 	guide.modulate.a = 1.0
+	title.text = Lang.t("intro_title")
+	hint.text = Lang.t("intro_hint")
+	Lang.fit_font(title, 72, 40)
+	Lang.fit_font(hint, 28, 18)
 	_update_page()
 
 
 func _update_page():
 	guide.text = pages[current_page]
+	Lang.fit_font(guide, 44, 26)
 
 	if current_page < pages.size() - 1:
-		button.text = "下一頁"
+		button.text = Lang.t("next_page")
 	else:
-		button.text = "下一頁"
+		button.text = Lang.t("next_page")
 
 
 func start_beat_animation():

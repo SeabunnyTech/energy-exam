@@ -49,6 +49,12 @@ Screen → emit goto_screen("target_screen", {params}) → SuperScene → Load n
 5. **QuestionReader** (`globals/question_reader.gd`) - Autoload
    - Parses quiz CSV files from `questions/` directory
 
+6. **Lang** (`globals/lang.gd`) - Autoload
+   - Current language (`zh` / `en`), toggled by the button on the welcome screen; resets to default each time welcome is entered
+   - UI strings live in `Lang.UI_TEXT` (`Lang.t(key)`); content (intro, topics, questions) uses `<field>_en` keys in `data/content.json`, read via `ContentLoader._localized()` with fallback to Chinese
+   - `Lang.fit_font(control, en_max, en_min)` keeps the scene's font size for Chinese and shrinks English text to fit its box
+   - `--lang en` sets the default language, e.g. `godot --screenshots all --lang en`
+
 ### Screen Flow
 
 ```

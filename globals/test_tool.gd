@@ -53,6 +53,7 @@ func _run_all_tests() -> void:
 	await _test_4_correct_then_tap_wrong()
 	await _test_5_double_tap_two_wrong()
 	await _test_6_disable_after_correct()
+	await _test_10_language_switch()
 
 	if not _quick_only:
 		await _test_7_cumulative_score()
@@ -308,6 +309,45 @@ func _test_9_reset_scores() -> void:
 	var score = GameState.get_topic_score("coast", "wind")
 	assert_eq(score["answered"], 0, "answered=0")
 	assert_eq(score["correct"], 0, "correct=0")
+
+
+## 10. 語系切換：英文玩一輪後回首頁，下一位玩家恢復中文與原本版面
+func _test_10_language_switch() -> void:
+	_current_test = "10. 語系切換"
+	print("\n[TestTool] --- %s ---" % _current_test)
+	GameState.reset_all_scores()
+
+	await _wait_for_screen("welcome")
+	_press_button("LangButton")
+	assert_true(Lang.is_en(), "按語系按鈕切到英文")
+	var start_btn = _super_scene._current_screen.find_child("StartButton", true, false)
+	assert_eq(start_btn.text, "Start", "首頁按鈕為英文")
+
+	await _navigate_to_quiz("coast", "wind")
+	var quiz = _super_scene._current_screen
+	assert_eq(quiz.q_content.text, "How does wind power convert natural energy into electricity?", "題目為英文")
+	assert_eq(quiz.four_ans.get_node("Button1").text, "1.Wind drives the turbine blades", "選項為英文")
+
+	# 回首頁會恢復預設語系
+	await _navigate_back_to_welcome()
+	assert_eq(Lang.current, Lang.ZH, "回首頁恢復中文")
+
+	await _navigate_to_quiz("coast", "wind")
+	quiz = _super_scene._current_screen
+	assert_eq(quiz.q_content.text, "風力發電如何把自然能源轉換成電力？", "題目恢復中文")
+	assert_eq(quiz.q_content.get_theme_font_size("font_size"), 80, "題目字級恢復")
+	assert_eq(quiz.four_ans.get_node("Button1").get_theme_font_size("font_size"), 44, "選項字級恢復")
+
+	var card = _super_scene.screen_instances["select_map"].find_child("MapCard", true, false)
+	assert_eq(card.title_label.text, "濱海城市", "地圖卡片標題恢復中文")
+	assert_true(is_equal_approx(card.title_label.anchor_left, 0.22358), "地圖卡片標題寬度恢復")
+	assert_eq(card.guide_label.label_settings.font_size, 30, "地圖卡片說明字級恢復")
+
+	var wind_btn = _super_scene.screen_instances["coast"].find_child("WindPowerButton", true, false)
+	assert_eq(wind_btn.text, "離岸風電", "地圖按鈕恢復中文")
+	assert_eq(wind_btn.get_theme_font_size("font_size"), 45, "地圖按鈕字級恢復")
+
+	await _navigate_back_to_welcome()
 
 
 # ─── 導航輔助 ───

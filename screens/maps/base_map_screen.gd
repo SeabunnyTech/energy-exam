@@ -62,9 +62,21 @@ func _on_idle_timer_timeout():
 
 func on_pre_enter(_param):
 	reset()
+	_apply_button_texts()
 	# 等待相機動畫幾乎完成後再定位按鈕（提前一點避免停頓感）
 	await _wait_for_camera_almost_ready()
 	_position_buttons_from_3d()
+
+
+## 依語系設定按鈕文字（button_topics 可用 'text_key' 指定，預設為 facility_<topic>）
+func _apply_button_texts():
+	for button in button_topics:
+		var info = button_topics[button]
+		button.text = Lang.t(info.get('text_key', 'facility_' + info['topic']))
+		# 英文字較長，固定縮小字級避免對話框互相重疊
+		Lang.fit_font(button, 36, 36)
+		# 文字長度改變後重設為最小尺寸，定位時才會以新尺寸置中
+		button.reset_size()
 
 
 func _wait_for_camera_almost_ready():

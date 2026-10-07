@@ -38,4 +38,4 @@ func _on_loading_timer_timeout() -> void:
 			 + " ".repeat(6 - _current_dot_count)
 
 	if _loading_label:
-		_loading_label.text = "載入中" + dots
+		_loading_label.text = Lang.t("loading") + dots

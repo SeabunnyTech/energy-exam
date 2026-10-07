@@ -19,6 +19,9 @@ func on_pre_enter(param):
 	var title_and_guide = GameState.load_topic_title_and_guide(map_name, topic)
 	title.text = title_and_guide['title']
 	guide.text = title_and_guide['guide']
+	button.text = Lang.t("start")
+	Lang.fit_font(title, 96, 48)
+	Lang.fit_font(guide, 42, 24)
 
 	# 載入主題照片（支援 .jpg 和 .png）
 	var photo_loaded := false

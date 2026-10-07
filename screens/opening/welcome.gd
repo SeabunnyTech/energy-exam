@@ -2,6 +2,7 @@ extends BaseScreen
 
 
 @onready var button = $StartButton
+@onready var lang_button = $LangButton
 @onready var bg_video: VideoStreamPlayer = $BgVideo
 
 var beat_tween: Tween
@@ -16,8 +17,9 @@ const VIDEO_STOP_AT := 23.0
 
 func _ready():
 	button.pressed.connect(_on_enter_map_button_pressed)
+	lang_button.pressed.connect(_on_lang_button_pressed)
 	initial_button_position_y = button.position.y
-	ui_to_fade = [self, button]
+	ui_to_fade = [self, button, lang_button]
 	reset()
 
 
@@ -46,8 +48,16 @@ func _restart_video():
 func on_pre_enter(_param):
 	GlobalAudioPlayer.play_music(idle_music, 1.)
 	GameState.reset_all_scores()
+	# 每位新玩家從預設語系開始
+	Lang.reset_to_default()
+	_apply_language()
 	bg_video.modulate.a = 1.0
 	bg_video.play()
+
+
+func _apply_language():
+	button.text = Lang.t("start")
+	lang_button.text = Lang.t("switch_language")
 
 
 func start_beat_animation():
@@ -84,6 +94,7 @@ func stop_beat_animation():
 
 func set_input_enable(enable):
 	button.disabled = not enable
+	lang_button.disabled = not enable
 
 	if enable:
 		start_beat_animation()
@@ -93,3 +104,8 @@ func set_input_enable(enable):
 
 func _on_enter_map_button_pressed():
 	leave_for_screen("intro")
+
+
+func _on_lang_button_pressed():
+	Lang.toggle()
+	_apply_language()

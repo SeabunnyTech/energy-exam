@@ -11,6 +11,15 @@ func on_pre_enter(_param):
 	# 恢復白色遮罩（從地圖返回時需要）
 	_super_scene.fade_curtain(1.0, 0.5)
 
+	$Label.text = Lang.t("select_map_hint")
+	Lang.fit_font($Label, 44, 24)
+	for card in map_cards_container.get_children():
+		card.apply_language()
+	# 卡片由 HBoxContainer 排版，等一幀讓尺寸確定後再依大小調整字級
+	await get_tree().process_frame
+	for card in map_cards_container.get_children():
+		card.fit_fonts()
+
 
 func _ready():
 	for card in map_cards_container.get_children():

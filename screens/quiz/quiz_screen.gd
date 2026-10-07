@@ -50,6 +50,7 @@ func load_question():
 	q_index.text = "Q" + str(index+1) + ":"
 	q_title.text = question['標題']
 	q_content.text = question['內容']
+	Lang.fit_font(q_content, 72, 32)
 
 	### 設定選項區塊的文字
 	var ans_options = question['選項']
@@ -68,6 +69,7 @@ func load_question():
 	for ans_index in range(ans_options.size()):
 		var btn : QuizButton = answer_container.get_node("Button" + str(ans_index+1))
 		btn.text = ans_options[ans_index]
+		Lang.fit_font(btn, 40, 20)
 		btn.is_correct_answer = question['答案'] == ans_index + 1
 
 

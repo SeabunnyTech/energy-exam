@@ -9,6 +9,13 @@ var current_frame := 0
 var frame_timer := 0.0
 
 
+func on_pre_enter(_param):
+	$GuideLabel.text = Lang.t("congrats_title")
+	$GuideLabel2.text = Lang.t("congrats_guide")
+	Lang.fit_font($GuideLabel, 75, 40)
+	Lang.fit_font($GuideLabel2, 45, 24)
+
+
 func on_enter(_param):
 	pass
 	#$sfx.play()

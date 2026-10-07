@@ -87,12 +87,29 @@ func reset_to_default():
 	_load_content()
 
 
+## 依目前語系取欄位：英文時優先讀 `<key>_en`，缺少時退回中文
+## （後台編輯器只編中文，因此 get_/set_ 系列 API 維持讀寫原欄位）
+func _localized(data: Dictionary, key: String, default = ""):
+	if Lang.current != Lang.ZH:
+		var localized_key = "%s_%s" % [key, Lang.current]
+		if data.has(localized_key):
+			return data[localized_key]
+	return data.get(key, default)
+
+
 # ===== Intro Pages API =====
 
 func get_intro_pages() -> Array:
 	if not _is_loaded or not _content.has("intro"):
 		return []
 	return _content["intro"].get("pages", [])
+
+
+## 遊戲畫面用：依目前語系取得介紹頁
+func get_localized_intro_pages() -> Array:
+	if not _is_loaded or not _content.has("intro"):
+		return []
+	return _localized(_content["intro"], "pages", [])
 
 
 func set_intro_pages(pages: Array):
@@ -161,9 +178,10 @@ func set_topic_policy(topic: String, policy: String):
 
 ## 取得特定地圖+主題的標題和引導文字（支援覆寫）
 func get_topic_title_and_guide(map_name: String, topic: String) -> Dictionary:
+	var data = get_topic_data(topic)
 	var result = {
-		"title": get_topic_title(topic),
-		"guide": get_topic_guide(topic)
+		"title": _localized(data, "title"),
+		"guide": _localized(data, "guide")
 	}
 
 	# 檢查是否有地圖特定的覆寫
@@ -172,9 +190,9 @@ func get_topic_title_and_guide(map_name: String, topic: String) -> Dictionary:
 		if overrides.has(map_name) and overrides[map_name].has(topic):
 			var override_data = overrides[map_name][topic]
 			if override_data.has("title"):
-				result["title"] = override_data["title"]
+				result["title"] = _localized(override_data, "title")
 			if override_data.has("guide"):
-				result["guide"] = override_data["guide"]
+				result["guide"] = _localized(override_data, "guide")
 
 	# 容錯處理
 	if result["title"] == "":
@@ -199,7 +217,7 @@ func set_topic_override(map_name: String, topic: String, title: String, guide: S
 ## 取得政策文字
 func get_policy(map_name: String, topic: String) -> String:
 	# 政策文字不需要按地圖區分，直接用 topic
-	var policy = get_topic_policy(topic)
+	var policy = _localized(get_topic_data(topic), "policy")
 	if policy == "":
 		push_warning("[ContentLoader] 找不到政策: map=%s, topic=%s" % [map_name, topic])
 	return policy
@@ -265,13 +283,17 @@ func get_questions_for_quiz(topic: String) -> Array:
 
 	for q in questions:
 		var options_formatted = []
-		var options = q.get("options", [])
+		var options = _localized(q, "options", [])
+		# 答案編號共用中文題目，翻譯的選項數量不同時退回中文避免答案錯位
+		if options.size() != q.get("options", []).size():
+			push_warning("[ContentLoader] %s 題目「%s」的翻譯選項數量不符，改用中文" % [topic, q.get("title", "")])
+			options = q.get("options", [])
 		for i in range(options.size()):
 			options_formatted.append("%d.%s" % [i + 1, options[i]])
 
 		result.append({
-			"標題": q.get("title", ""),
-			"內容": q.get("content", ""),
+			"標題": _localized(q, "title"),
+			"內容": _localized(q, "content"),
 			"答案": q.get("answer", 1),
 			"選項": options_formatted
 		})

@@ -107,13 +107,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.103
 anchor_top = 0.7953704
-anchor_right = 0.7
-anchor_bottom = 0.8553704
+anchor_right = 0.66
+anchor_bottom = 0.88
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 28
 text = "完成後您將可獲得精美照相圖框，可自製個人化照片喔~"
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" parent="." instance=ExtResource("3_xpbca")]

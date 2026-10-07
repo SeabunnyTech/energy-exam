@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Lang="*res://globals/lang.gd"
 GlobalAudioPlayer="*res://globals/audio.gd"
 ContentLoader="*res://globals/content_loader.gd"
 GameState="*res://globals/game_state.gd"
