@@ -3,6 +3,7 @@
 ## 用法：
 ##   godot --run-tests         → 執行所有測試
 ##   godot --run-tests quick   → 只跑快速測試（不含完整流程）
+##   godot --run-tests 8       → 只跑指定編號的測試（可用逗號：8,10）
 extends Node
 
 
@@ -11,7 +12,7 @@ var _super_scene: Node = null
 var _pass_count: int = 0
 var _fail_count: int = 0
 var _current_test: String = ""
-var _quick_only: bool = false
+var _selected: Array[int] = []  # 要跑的測試編號
 
 
 func _ready() -> void:
@@ -29,7 +30,11 @@ func _ready() -> void:
 		return
 
 	_is_active = true
-	_quick_only = (test_arg == "quick")
+	_selected = _parse_selection(test_arg)
+	if _selected.is_empty():
+		push_error("[TestTool] 無效的測試參數：%s" % test_arg)
+		get_tree().quit(1)
+		return
 	print("[TestTool] 測試模式啟動，參數：%s" % test_arg)
 
 	await get_tree().create_timer(1.0).timeout
@@ -47,24 +52,51 @@ func _run_all_tests() -> void:
 
 	print("[TestTool] ====== 開始測試 ======")
 
-	await _test_1_basic_answer()
-	await _test_2_wrong_then_correct()
-	await _test_3_double_tap_wrong()
-	await _test_4_correct_then_tap_wrong()
-	await _test_5_double_tap_two_wrong()
-	await _test_6_disable_after_correct()
-	await _test_10_language_switch()
-
-	if not _quick_only:
-		await _test_7_cumulative_score()
-		await _test_8_map_button_disable()
-		await _test_9_reset_scores()
+	var tests := _all_tests()
+	for n in _selected:
+		await tests[n].call()
 
 	print("[TestTool] ====== 測試結束 ======")
 	print("[TestTool] PASS: %d, FAIL: %d" % [_pass_count, _fail_count])
 
 	var exit_code = 0 if _fail_count == 0 else 1
 	get_tree().quit(exit_code)
+
+
+## 測試編號 → 測試函式；all 的執行順序與原本相同（快速測試在前）
+func _all_tests() -> Dictionary:
+	return {
+		1: _test_1_basic_answer,
+		2: _test_2_wrong_then_correct,
+		3: _test_3_double_tap_wrong,
+		4: _test_4_correct_then_tap_wrong,
+		5: _test_5_double_tap_two_wrong,
+		6: _test_6_disable_after_correct,
+		10: _test_10_language_switch,
+		7: _test_7_cumulative_score,
+		8: _test_8_map_button_disable,
+		9: _test_9_reset_scores,
+	}
+
+
+const QUICK_TESTS: Array[int] = [1, 2, 3, 4, 5, 6, 10]
+
+
+## quick / all / 逗號分隔的編號；無效時回傳空陣列
+func _parse_selection(arg: String) -> Array[int]:
+	var tests := _all_tests()
+	var result: Array[int] = []
+	if arg == "all":
+		result.assign(tests.keys())
+	elif arg == "quick":
+		result = QUICK_TESTS.duplicate()
+	else:
+		for part in arg.split(","):
+			var n := part.strip_edges().to_int()
+			if not tests.has(n):
+				return []
+			result.append(n)
+	return result
 
 
 # ─── 測試案例 ───
@@ -263,21 +295,13 @@ func _test_8_map_button_disable() -> void:
 			correct_btn.pressed.emit()
 			await get_tree().create_timer(1.5).timeout
 
-	# 通過 result → policy → congrats 回到 welcome
+	# 從 policy 的「還想了解其他設施」回到同一張地圖（不經過 welcome，分數保留）
+	# 注意：回 welcome 會 reset_all_scores，按鈕本來就會全部重新啟用
 	await _wait_for_screen("result")
 	_press_button("MorePolicyButton")
 	await _wait_for_screen("policy")
-	_press_button("LeaveButton")
-	await _wait_for_screen("congrats")
-	_press_button("LeaveButton")
-
-	# 再次導航到 coast 地圖
-	await _wait_for_screen("welcome")
-	_press_button("StartButton")
-	await _wait_for_screen("intro")
-	await _skip_intro()
-	await _wait_for_screen("select_map")
-	_select_map_card("coast")
+	_press_button("BackToMapButton")
+	await _wait_for_screen("map_changing")
 	await _wait_for_screen("coast")
 	# 等待 enter_animation 完成（含相機動畫 + 按鈕 fade in + set_input_enable）
 	await get_tree().create_timer(3.0).timeout
