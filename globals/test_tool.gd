@@ -335,7 +335,7 @@ func _test_9_reset_scores() -> void:
 	assert_eq(score["correct"], 0, "correct=0")
 
 
-## 10. 語系切換：英文玩一輪後回首頁，下一位玩家恢復中文與原本版面
+## 10. 語系切換：英文玩一輪後回首頁仍是英文；切回中文後文字與版面恢復原狀
 func _test_10_language_switch() -> void:
 	_current_test = "10. 語系切換"
 	print("\n[TestTool] --- %s ---" % _current_test)
@@ -352,10 +352,15 @@ func _test_10_language_switch() -> void:
 	assert_eq(quiz.q_content.text, "How does wind power convert natural energy into electricity?", "題目為英文")
 	assert_eq(quiz.four_ans.get_node("Button1").text, "1.Wind drives the turbine blades", "選項為英文")
 
-	# 回首頁會恢復預設語系
+	# 回首頁後語系沿用英文
 	await _navigate_back_to_welcome()
-	assert_eq(Lang.current, Lang.ZH, "回首頁恢復中文")
+	assert_eq(Lang.current, Lang.EN, "回首頁仍是英文")
+	start_btn = _super_scene._current_screen.find_child("StartButton", true, false)
+	assert_eq(start_btn.text, "Start", "回首頁後按鈕仍是英文")
 
+	# 切回中文，檢查文字與版面恢復
+	_press_button("LangButton")
+	assert_eq(Lang.current, Lang.ZH, "按語系按鈕切回中文")
 	await _navigate_to_quiz("coast", "wind")
 	quiz = _super_scene._current_screen
 	assert_eq(quiz.q_content.text, "風力發電如何把自然能源轉換成電力？", "題目恢復中文")

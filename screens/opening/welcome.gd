@@ -48,8 +48,7 @@ func _restart_video():
 func on_pre_enter(_param):
 	GlobalAudioPlayer.play_music(idle_music, 1.)
 	GameState.reset_all_scores()
-	# 每位新玩家從預設語系開始
-	Lang.reset_to_default()
+	# 語系沿用上一輪的選擇，直到再按語系按鈕切換
 	_apply_language()
 	bg_video.modulate.a = 1.0
 	bg_video.play()

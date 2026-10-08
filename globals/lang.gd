@@ -2,15 +2,14 @@ extends Node
 
 ## Lang - 語系管理（中文 / English）
 ## 介面文字集中在 UI_TEXT；題目、引導、政策等內容放在 content.json 的 `<欄位>_en`
-## 預設語系可由命令列指定：godot --lang en（截圖工具可搭配：godot --screenshots all --lang en）
+## 語系在首頁切換後一直沿用（玩完一輪回到首頁也不會變），直到再次切換
+## 啟動時的語系可由命令列指定：godot --lang en（截圖工具可搭配：godot --screenshots all --lang en）
 
 signal language_changed(lang: String)
 
 const ZH := "zh"
 const EN := "en"
 
-## 回到首頁時恢復的語系
-var default_language: String = ZH
 var current: String = ZH
 
 
@@ -18,8 +17,7 @@ func _ready() -> void:
 	var args = OS.get_cmdline_args()
 	var i = args.find("--lang")
 	if i != -1 and i + 1 < args.size() and args[i + 1] in [ZH, EN]:
-		default_language = args[i + 1]
-	current = default_language
+		current = args[i + 1]
 
 
 func set_language(lang: String) -> void:
@@ -32,10 +30,6 @@ func set_language(lang: String) -> void:
 
 func toggle() -> void:
 	set_language(ZH if current == EN else EN)
-
-
-func reset_to_default() -> void:
-	set_language(default_language)
 
 
 func is_en() -> bool:
