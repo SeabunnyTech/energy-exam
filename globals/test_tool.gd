@@ -73,13 +73,14 @@ func _all_tests() -> Dictionary:
 		5: _test_5_double_tap_two_wrong,
 		6: _test_6_disable_after_correct,
 		10: _test_10_language_switch,
+		11: _test_11_narration,
 		7: _test_7_cumulative_score,
 		8: _test_8_map_button_disable,
 		9: _test_9_reset_scores,
 	}
 
 
-const QUICK_TESTS: Array[int] = [1, 2, 3, 4, 5, 6, 10]
+const QUICK_TESTS: Array[int] = [1, 2, 3, 4, 5, 6, 10, 11]
 
 
 ## quick / all / 逗號分隔的編號；無效時回傳空陣列
@@ -377,6 +378,103 @@ func _test_10_language_switch() -> void:
 	assert_eq(wind_btn.get_theme_font_size("font_size"), 45, "地圖按鈕字級恢復")
 
 	await _navigate_back_to_welcome()
+
+
+## 11. 語音口白：英文模式播完才開放點選、背景音樂調小；中文模式不播
+func _test_11_narration() -> void:
+	_current_test = "11. 語音口白"
+	print("
+[TestTool] --- %s ---" % _current_test)
+	GameState.reset_all_scores()
+	var original_lang := Lang.current
+
+	# 每個會出現的能源都要有語音，且都在 10 秒內
+	var missing := []
+	for map_name in GameState.reset_scores:
+		for topic in GameState.reset_scores[map_name]:
+			if not Narration.EN_CLIPS.has(topic):
+				missing.append(topic)
+	assert_eq(missing, [], "所有能源都有語音")
+	var too_long := []
+	for key in Narration.EN_CLIPS:
+		if Narration.EN_CLIPS[key].get_length() > 10.0:
+			too_long.append(key)
+	assert_eq(too_long, [], "所有語音都在 10 秒內")
+
+	# 英文：遊戲說明頁
+	await _wait_for_screen("welcome")
+	Lang.set_language(Lang.EN)
+	_press_button("StartButton")
+	await _wait_for_screen("intro")
+	await get_tree().create_timer(2.0).timeout  # 淡入已結束，沒有鎖的話按鈕這時已開放
+	var button = _super_scene._current_screen.find_child("StartButton", true, false)
+	assert_eq(Narration.stream, Narration.EN_CLIPS["intro"], "遊戲說明頁播開場口白")
+	assert_true(Narration.playing, "語音播放中")
+	assert_true(button.disabled, "語音播放中不能按")
+	assert_true(button.self_modulate.a < 1.0, "語音播放中按鈕變淡")
+
+	# 背景音樂要真的變小，且語音真的有輸出到 Master
+	var music_idx := AudioServer.get_bus_index(GlobalAudioPlayer.MUSIC_BUS)
+	assert_true(is_equal_approx(AudioServer.get_bus_volume_db(music_idx), GlobalAudioPlayer.DUCK_DB), "背景音樂已調小")
+	var peaks_during = await _sample_peaks(music_idx, 1.5)
+	print("[TestTool] 播放中 peak：music=%.1f dB, master=%.1f dB" % [peaks_during[0], peaks_during[1]])
+	assert_true(peaks_during[1] > peaks_during[0] + 6.0, "語音明顯大於背景音樂")
+
+	await _wait_for_button_enabled(button, 12.0)
+	assert_true(not button.disabled, "語音播完後可以按")
+	assert_true(not Narration.playing, "語音已結束")
+	assert_eq(button.self_modulate.a, 1.0, "播完後按鈕恢復")
+	await get_tree().create_timer(0.5).timeout
+	assert_true(is_equal_approx(AudioServer.get_bus_volume_db(music_idx), 0.0), "背景音樂恢復")
+	var peaks_after = await _sample_peaks(music_idx, 1.5)
+	print("[TestTool] 播完後 peak：music=%.1f dB, master=%.1f dB" % [peaks_after[0], peaks_after[1]])
+	assert_true(peaks_after[0] > peaks_during[0] + 12.0, "背景音樂實際音量恢復")
+	# 只剩音樂時 Master 應該等於音樂 bus；差很多代表有聲音沒走音樂 bus，語音時不會被調小
+	assert_true(absf(peaks_after[1] - peaks_after[0]) < 1.0, "遊戲說明頁的聲音都走音樂 bus")
+
+	# 英文：能源介紹頁（返回鍵也要等語音）
+	_press_button("StartButton")
+	await _wait_for_screen("select_map")
+	_select_map_card("coast")
+	await _wait_for_screen("coast")
+	await get_tree().create_timer(0.5).timeout
+	_press_button("WindPowerButton")
+	await _wait_for_screen("pre_quiz")
+	await get_tree().create_timer(2.0).timeout
+	var screen = _super_scene._current_screen
+	button = screen.find_child("StartButton", true, false)
+	var back_btn = screen.find_child("BackButton", true, false)
+	assert_eq(Narration.stream, Narration.EN_CLIPS["wind"], "離岸風電頁播風電語音")
+	assert_true(button.disabled and back_btn.disabled, "語音播放中開始鍵與返回鍵都不能按")
+	await _wait_for_button_enabled(button, 12.0)
+	assert_true(not button.disabled and not back_btn.disabled, "語音播完後開始鍵與返回鍵可以按")
+	await _navigate_back_to_welcome()
+
+	# 中文：不播語音、不鎖按鈕
+	Lang.set_language(Lang.ZH)
+	_press_button("StartButton")
+	await _wait_for_screen("intro")
+	await get_tree().create_timer(2.0).timeout
+	button = _super_scene._current_screen.find_child("StartButton", true, false)
+	assert_true(not Narration.playing, "中文模式不播語音")
+	assert_true(not button.disabled, "中文模式按鈕直接開放")
+	assert_eq(button.self_modulate.a, 1.0, "中文模式按鈕不變淡")
+	await _navigate_back_to_welcome()
+
+	Lang.set_language(original_lang)
+
+
+## 一段時間內 [音樂 bus, Master] 的最大音量
+func _sample_peaks(music_idx: int, seconds: float) -> Array:
+	var music := -200.0
+	var master := -200.0
+	var elapsed := 0.0
+	while elapsed < seconds:
+		await get_tree().create_timer(0.02).timeout
+		elapsed += 0.02
+		music = max(music, AudioServer.get_bus_peak_volume_left_db(music_idx, 0))
+		master = max(master, AudioServer.get_bus_peak_volume_left_db(0, 0))
+	return [music, master]
 
 
 # ─── 導航輔助 ───

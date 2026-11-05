@@ -18,6 +18,9 @@ func _ready():
 	button.pressed.connect(_on_button_pressed)
 	initial_button_position_y = button.position.y
 	ui_to_fade = [self, title, guide, hint, button]
+	narration_locked_ui = [button]
+	# 影片本身有音軌，要和背景音樂一起在語音口白時調小
+	$Panel/VideoStreamPlayer.bus = GlobalAudioPlayer.MUSIC_BUS
 	_enforce_panel_square()
 	reset()
 
@@ -40,6 +43,7 @@ func on_pre_enter(_param):
 	Lang.fit_font(title, 72, 40)
 	Lang.fit_font(hint, 28, 18)
 	_update_page()
+	start_narration("intro")
 
 
 func _update_page():

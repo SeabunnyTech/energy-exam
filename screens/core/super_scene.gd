@@ -115,6 +115,7 @@ func _enter_admin_mode() -> void:
 		return
 
 	is_admin_mode = true
+	Narration.stop_speaking()
 
 	# 隱藏當前遊戲畫面
 	if _current_screen:

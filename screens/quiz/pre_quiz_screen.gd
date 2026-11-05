@@ -22,6 +22,7 @@ func on_pre_enter(param):
 	button.text = Lang.t("start")
 	Lang.fit_font(title, 96, 48)
 	Lang.fit_font(guide, 42, 24)
+	start_narration(topic)
 
 	# 載入主題照片（支援 .jpg 和 .png）
 	var photo_loaded := false
@@ -41,6 +42,7 @@ func _ready():
 	%BackButton.pressed.connect(_on_back_pressed)
 	initial_button_position_y = button.position.y # Initialize here
 	ui_to_fade = [self, title, photo, guide, button, %BackButton]
+	narration_locked_ui = [button, %BackButton]
 	reset()
 
 

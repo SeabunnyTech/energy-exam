@@ -10,9 +10,31 @@ var current_track: AudioStream = null
 var fade_tween: Tween
 var is_muted: bool = false
 
+const MUSIC_BUS := "Music"
+const DUCK_DB := -24.0  # 語音口白時音樂降低的量（最大聲的音樂也要比口白小 10 dB 以上）
+var duck_tween: Tween
+
 
 func _ready():
 	stream_paused = false
+	# 音樂走獨立的 bus：語音口白時調小 bus，不會和 fade_in/fade_out 搶 volume_db
+	AudioServer.add_bus()
+	AudioServer.set_bus_name(AudioServer.bus_count - 1, MUSIC_BUS)
+	AudioServer.set_bus_send(AudioServer.bus_count - 1, "Master")
+	bus = MUSIC_BUS
+
+
+func duck(enable: bool, duration: float = 0.3):
+	var idx := AudioServer.get_bus_index(MUSIC_BUS)
+	if duck_tween:
+		duck_tween.kill()
+	duck_tween = create_tween()
+	duck_tween.tween_method(
+		func(db: float): AudioServer.set_bus_volume_db(idx, db),
+		AudioServer.get_bus_volume_db(idx),
+		DUCK_DB if enable else 0.0,
+		duration
+	)
 
 
 func play_music(new_track: AudioStream, fade_duration: float = 1.0):

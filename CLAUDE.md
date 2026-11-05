@@ -55,6 +55,12 @@ Screen → emit goto_screen("target_screen", {params}) → SuperScene → Load n
    - `Lang.fit_font(control, en_max, en_min)` keeps the scene's font size for Chinese and shrinks English text to fit its box
    - `--lang en` sets the starting language, e.g. `godot --screenshots all --lang en`
 
+7. **Narration** (`globals/narration.gd`) - Autoload
+   - English voice-over on the intro page and each energy intro (pre_quiz) page; Chinese mode plays nothing
+   - Screens call `start_narration(key)` in `on_pre_enter`; `BaseScreen.enter_animation` keeps input locked until it ends, and buttons in `narration_locked_ui` are dimmed meanwhile
+   - Music is ducked through the `Music` audio bus (`GlobalAudioPlayer.duck()`), so it doesn't fight `fade_in`/`fade_out`
+   - Clips live in `narration/en/`; Godot can't import m4a, so use mp3/ogg
+
 ### Screen Flow
 
 ```

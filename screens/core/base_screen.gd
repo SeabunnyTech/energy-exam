@@ -37,8 +37,31 @@ func fade_all(target_opacity, duration=0.7, latency=0.2):
 
 func enter_animation():
 	await fade_all(1.0)
+	await _wait_for_narration()
 	set_input_enable(true)
 	start_beating_anim()
+
+
+## 語音口白播放期間，這些按鈕會變淡（不能按由 enter_animation 等語音播完才開放）
+var narration_locked_ui = []
+
+## 子類在 on_pre_enter 呼叫；沒有對應語音時（例如中文模式）不影響進場流程
+func start_narration(key: String):
+	Narration.speak(key)
+	_dim_narration_locked_ui(Narration.playing)
+	if Narration.playing:
+		set_input_enable(false)
+
+
+func _wait_for_narration():
+	if Narration.playing:
+		await Narration.ended
+	_dim_narration_locked_ui(false)
+
+
+func _dim_narration_locked_ui(dim: bool):
+	for ui in narration_locked_ui:
+		ui.self_modulate.a = 0.35 if dim else 1.0
 
 
 func leave_animation():
@@ -75,6 +98,7 @@ func __enter__(param=null):
 
 
 func __leave__():
+	Narration.stop_speaking()
 	set_input_enable(false)
 	on_pre_leave()
 	await leave_animation()

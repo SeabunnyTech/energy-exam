@@ -470,6 +470,10 @@ func _wait_for_screen(screen_name: String, needs_capture: bool = true) -> bool:
 	# 需要截圖：等動畫完成；不需要：只等按鈕可用的最小時間
 	var wait_time := 2.5 if needs_capture else 0.5
 	await get_tree().create_timer(wait_time).timeout
+
+	# 語音口白播放中按鈕是淡的，截圖要等播完
+	while needs_capture and Narration.playing:
+		await get_tree().create_timer(0.1).timeout
 	return true
 
 
